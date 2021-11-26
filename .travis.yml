@@ -27,7 +27,7 @@ deploy:
   strategy: git
   provider: pages
   target_branch: gh-pages
-  cleanup: false
+  skip_cleanup: false
   token: $GITHUB_TOKEN
   committer_from_gh: true
   keep_history: true
