@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo
+echo "------------------------------------------------------------------------------------------------------------------------"
+echo "Sleeping 60 seconds"
+sleep 60s
+
+echo
+echo "Pinging new sitemap"
+
+echo "--------------------------------------------------------------------------------"
+echo "Google"
+wget -O- http://www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
+
+echo "--------------------------------------------------------------------------------"
+echo "Bing"
+wget -O- http://www.bing.com/ping?siteMap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
+
+echo
+echo "------------------------------------------------------------------------------------------------------------------------"

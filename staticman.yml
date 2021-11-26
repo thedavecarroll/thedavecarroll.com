@@ -1,0 +1,29 @@
+comments:
+  # identification
+  name: "My Technical Journal - Dave Carroll"
+
+  # general configuration
+  moderation: true
+  format: "yaml"
+  commitMessage: "New comment by {fields.name}"
+  requiredFields: ["name", "email", "message"]
+  transforms:
+    email: md5
+  generatedFields:
+    date:
+      type: "date"
+      options:
+        format: "iso8601"
+
+  # required properties
+  allowedFields: ["name", "email", "url","message"]
+  allowedOrigins: ["thedavecarroll.com"]
+  branch: "main"
+  filename: "comment-{@timestamp}"
+  path: "_data/comments/{options.slug}"
+
+  # reCaptcha
+  reCaptcha:
+    enabled: true
+    siteKey: "6Lc8i18dAAAAAOYnO-hByiyvka10gKoFEeOPj9ew"
+    secret: "TziqEh04wif227oSMbOTngYQ4uVciE2p/nRkXx1jqtuLsCCsJKPWc0WKH1czZAV5xIJ3m/YBZgeoQvSnbUbOCjDOJrGREz/DQ3/i26Gc8cDsi06eciYlVB3JPZFYGazJftccRQoSljibPJe7PTG5r6d+TlVo/XqR7QHEIDWzIhA="

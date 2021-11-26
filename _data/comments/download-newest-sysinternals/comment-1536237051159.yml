@@ -1,0 +1,9 @@
+_id: b06e9070-b1d0-11e8-afd3-cbef5b601756
+message: >-
+  I just use install-package -Name sysinternals -ProviderName Chocolatey
+  -confirm:$false -force
+name: jkavpowershell
+email: 7400079578fa7ea548606c80eb72668c
+url: ''
+hidden: ''
+date: '2018-09-06T12:30:51.158Z'

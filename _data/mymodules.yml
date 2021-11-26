@@ -1,0 +1,35 @@
+- name: BluebirdPS
+  description: 'A Twitter Automation Client for PowerShell 7. Tweet, retweet, send direct messages, manage lists, and more.'
+  help: 'External file'
+  onlinehelp: 'https://docs.bluebirdps.dev/en/latest/'
+  updatablehelp: false
+  pester: false
+  build: true
+  psgallery: true
+
+- name: PoShEvents
+  description: 'PowerShell module to query Windows Event Logs.'
+  help: 'External file'
+  onlinehelp: 'https://poshevents.anovelidea.org/en/latest/'
+  updatablehelp: true
+  pester: false
+  build: false
+  psgallery: true
+
+- name: PoShGroupPolicy
+  description: 'PowerShell module to assist with Group Policy.'
+  help: 'Comment based'
+  onlinehelp: 'https://poshgrouppolicy.anovelidea.org/en/latest/'
+  updatablehelp: false
+  pester: false
+  build: false
+  psgallery: true
+
+- name: PoShDynDnsApi
+  description: 'PowerShell module used to interact with Dyn Managed DNS REST API.'
+  help: 'External file'
+  onlinehelp: 'https://thedavecarroll.com/modulehelp/PoShDynDnsApi/'
+  updatablehelp: false
+  pester: false
+  build: true
+  psgallery: true

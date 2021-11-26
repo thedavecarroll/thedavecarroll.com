@@ -1,0 +1,7 @@
+_id: 3948ef90-3e39-11e9-9b2a-91601e299ccf
+message: "Thanks for the write-up on PSGSuite, Dave!! Here are some additional tips/shortcuts from my end, in case anyone reading is curious!\r\n\r\n***\r\n\r\n**New user schema creation with PSGSuite:**\r\n\r\n```powershell\r\nNew-GSUserSchema -SchemaName \"CustomUniversity\" -Fields (Add-GSUserSchemaField -FieldName \"EmployeeType\" -FieldType STRING -ReadAccessType ALL_DOMAIN_USERS)\r\n```\r\n\r\n***\r\n\r\n**Quick and easy email alias enumeration:**\r\n\r\nThe list of all addresses for each user is on their user object, albeit a bit buried. I stick to expanding the final `Address` property this way since `Address` can be a reserved property for some objects:\r\n\r\n```powershell\r\n(Get-GSUser -Filter *).Emails | Select-Object -ExpandProperty Address\r\n```\r\n\r\n***\r\n\r\n**`Get-GSUserList` vs `Get-GSUser`:**\r\n\r\nSo, `Get-GSUser` without specifying a filter or user will get the AdminEmail user from the PSGSuite config. `Get-GSUserList` is an alias pointing at `Get-GSUser -Filter *`, there as a convenience wrapper from when they were actually separate functions completely. They call 2 different methods from the Google .NET SDK (`Get` vs `List`), but they should all return the same level of data by default. \r\n\r\n***\r\n\r\nThanks again for the write-up, Dave!!\r\n\r\n\r\n- Nate @ SCRT HQ"
+name: Nate Ferrell
+email: 88b219130d9296d353ee3ce39a6a992a
+url: 'https://ferrell.io/'
+hidden: ''
+date: '2019-03-04T04:51:51.246Z'
