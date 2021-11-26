@@ -1,0 +1,23 @@
+name: Publish Blog Drafts
+
+on:
+  schedule:
+    # every 4 hours on the half hour
+    # - cron: '30 */4 * * *'
+    # every hour at 5 minutes past the hour
+    - cron: '05 * * * *'
+  # on demand
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Jekyll Publish Drafts
+      uses: soywiz/github-action-jekyll-publish-drafts@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        jekyll_path: ./
+        branch: main
