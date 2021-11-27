@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "air" # "default" # "air", "aqua", "contrast", "dark"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "My Technical Journal"
+title                    : "Dave's Technical Journal"
 title_separator          : "-"
 name                     : Dave Carroll
 description              : Articles on PowerShell, general IT, and retro-computing
@@ -32,7 +32,7 @@ comments:
   provider               : "staticman_v2"
   staticman:
     branch               : "main"
-    endpoint             : "https://dev.staticman.net/v3/entry/github/"
+    endpoint             : "https://api.staticman.net/v3/entry/thedavecarroll/thedavecarroll.com/"
 
 reCaptcha:
   siteKey                : "6LfTsmoUAAAAAKI2qS8kGdIxL5rAxjr4vKfD1yH8"
