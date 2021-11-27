@@ -7,6 +7,15 @@
   build: true
   psgallery: true
 
+- name: PSTemperature
+  description: 'Binary module written in C# with PowerShell 7 experimental feature. Converts temperature between Celsius, Fahrenheit, Kelvin, and Rankine.'
+  help: None
+  onlinehelp: null
+  updatablehelp: false
+  pester: false
+  build: false
+  psgallery: false
+
 - name: PoShEvents
   description: 'PowerShell module to query Windows Event Logs.'
   help: 'External file'
