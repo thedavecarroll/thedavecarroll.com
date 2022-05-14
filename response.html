@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BluebirdPS Twitter API Authorization</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="data:,">
+        <!-- <script>
+            function getParameter(parameterName){
+                let parameters = new URLSearchParams(window.location.search)
+                return parameters.get(parameterName)
+            }
+        </script> -->
+    </head>
+    <body>
+        <h1>BluebirdPS Twitter API Authorization</h1>
+        <p id="paragraph">
+        <script>
+            let parameters = new URLSearchParams(window.location.search);
+            parameters.forEach(function(value,key) {
+                document.getElementById("paragraph").innerHTML +=  `${key}: <span id="name">${value}</span><br/>`;
+            })
+        </script>
+        </p>
+    </body>
+</html>
