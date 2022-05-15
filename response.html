@@ -4,12 +4,11 @@
         <title>BluebirdPS Twitter API Authorization</title>
         <meta charset="UTF-8">
         <link rel="icon" href="data:,">
-        <!-- <script>
-            function getParameter(parameterName){
-                let parameters = new URLSearchParams(window.location.search)
-                return parameters.get(parameterName)
-            }
-        </script> -->
+        <style>
+            body { font-family: Arial, Helvetica, sans-serif; }
+            #searchParams p { font-family: Arial, Helvetica, sans-serif; }
+            #responseUrl p { font-family: "Lucida Console", "Courier New", monospace; }
+        </style>
     </head>
     <body>
         <h1>BluebirdPS Twitter API Authorization</h1>
@@ -18,9 +17,9 @@
         <script>
             let parameters = new URLSearchParams(window.location.search);
             parameters.forEach(function(value,key) {
-                document.getElementById("searchParams").innerHTML +=  `${key}: <span id="name">${value}</span><br/>`;
+                document.getElementById("searchParams").innerHTML +=  `${key}: <span id="params">${value}</span><br/>`;
             })
-            document.getElementById("searchParams").innerHTML += `Response URL: <span id="name">${window.location}</span>`;
+            document.getElementById("searchParams").innerHTML += `Response URL: <span id="response">${window.location}</span>`;
         </script>
     </body>
 </html>
