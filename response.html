@@ -13,13 +13,14 @@
     </head>
     <body>
         <h1>BluebirdPS Twitter API Authorization</h1>
-        <p id="paragraph">
+        <p id="searchParams"></p>
+        <p id="responseUrl"></p>
         <script>
             let parameters = new URLSearchParams(window.location.search);
             parameters.forEach(function(value,key) {
-                document.getElementById("paragraph").innerHTML +=  `${key}: <span id="name">${value}</span><br/>`;
+                document.getElementById("searchParams").innerHTML +=  `${key}: <span id="name">${value}</span><br/>`;
             })
+            document.getElementById("searchParams").innerHTML += `Response URL: <span id="name">${window.location}</span>`;
         </script>
-        </p>
     </body>
 </html>
