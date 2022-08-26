@@ -21,4 +21,4 @@ jobs:
       - name: Get File List
         shell: pwsh
         run: |
-          Get-ChildItem | Format-Table UnixMode,LastWriteTime,Size,BaseName -AutoSize
+          Get-Content -Path script/cibuild
