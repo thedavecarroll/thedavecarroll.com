@@ -1,0 +1,25 @@
+name: Publishing Dave's Technical Journal
+
+on:
+  # Run on PRs to main
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+  # Allow to run manually
+  workflow_dispatch:
+
+jobs:
+  build-jekyll-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Get File List
+        shell: pwsh
+        run: |
+          Set-Location -Path /thedavecarroll.com
+          Get-ChildItem
