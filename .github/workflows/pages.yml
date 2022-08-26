@@ -41,7 +41,7 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: |
-          ech ${{ steps.pages.outputs.base_path }}
+          echo ${{ steps.pages.outputs.base_path }}
           bundle exec jekyll build --config _config.yml --source .
         # --destination ./docs
       #- name: Run HTML Proofer
