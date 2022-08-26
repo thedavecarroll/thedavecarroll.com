@@ -49,9 +49,9 @@ jobs:
         run: |
           bundle exec jekyll build --config _config.yml --source .
         # --destination ./docs
-      - name: Run HTML Proofer
-        env:
-          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+      # - name: Run HTML Proofer
+      #   env:
+      #     NOKOGIRI_USE_SYSTEM_LIBRARIES: true
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
@@ -65,13 +65,13 @@ jobs:
           wget -O- http://www.bing.com/ping?siteMap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
 
   # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+  # deploy:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v1
