@@ -16,10 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get File List
         shell: pwsh
         run: |
-          Set-Location -Path /thedavecarroll.com
           Get-ChildItem
