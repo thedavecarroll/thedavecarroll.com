@@ -5,9 +5,11 @@ services:
           - JEKYLL_ENV=docker
         image: jekyll/jekyll:latest
         container_name: thedavecarroll-com
-        command: jekyll serve --force_polling --watch --port 4000 --config _config.yml,_docker_config.yml --destination ./docs --drafts --future --incremental
+        command: >
+          bash -c "jekyll clean --destination ./docs
+          && jekyll serve --force_polling --watch --port 4000 --config _config.yml,_config.docker.yml --destination ./docs --drafts --future --incremental"
         ports:
           - "4000:4000"
         volumes:
-          - D:\\GitHub\\thedavecarroll.com:/srv/jekyll
-          - D:\\Docker\\Images\\jekyll\\bundle:/usr/local/bundle
+          - C:\\GitHub\\thedavecarroll.com:/srv/jekyll
+          - C:\\Docker\\Images\\jekyll\\bundle:/usr/local/bundle

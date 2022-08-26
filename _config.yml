@@ -84,8 +84,8 @@ analytics:
 # Site Author
 author:
   name             : Dave Carroll
-  avatar           : /assets/images/me.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : PowerShell developer with background in multiple scripting languages, identity management, and the Microsoft technology stack. PowerShell to the people! #
+  avatar           : /assets/images/thedavecarroll-avatar.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : PowerShell developer, enthusiast, and evangelist with a side of DevOps, infrastructure, and retrocomputing. #
   location         : Nashville, TN
   email            :
   uri              :
