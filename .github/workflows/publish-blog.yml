@@ -21,4 +21,4 @@ jobs:
       - name: Get File List
         shell: pwsh
         run: |
-          Get-ChildItem
+          Get-ChildItem | Format-Table UnixMode,LastWriteTime,Size,FullName,
