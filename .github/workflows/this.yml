@@ -1,0 +1,15 @@
+name: Publishing Dave's Technical Journal
+
+on:
+  push
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing PowerShell
+        shell: pwsh
+        env:
+          TEST_VAR: Testing
+        run: |
+          $env:TEST_VAR
