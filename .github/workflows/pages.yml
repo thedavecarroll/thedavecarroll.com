@@ -20,42 +20,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa
-        with:
-          ruby-version: '3.0' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v2
+        with:
+          generator_config_file: _config.yml
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
-        #run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-        run: |
-          echo ${{ steps.pages.outputs.base_path }}
-          bundle exec jekyll build --config _config.yml --source .
-        # --destination ./docs
-      #- name: Run HTML Proofer
-      #  env:
-      #    NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-      #  run: |
-      #    bundle exec htmlproofer --disable-external --allow_hash_href --ignore_files breadcrumbs.html
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+          verbose: true
       - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
-      #- name: Ping Sitemap for Google and Bing
-      #  run: |
-      #    echo "Google"
-      #    wget -O- http://www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
 
   # Deployment job
   deploy:
