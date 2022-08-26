@@ -47,7 +47,7 @@ jobs:
         env:
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
         run: |
-          bundle exec htmlproofer --disable-external --allow_hash_href
+          bundle exec htmlproofer --disable-external --allow_hash_href --ignore_files breadcrumbs.html
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
