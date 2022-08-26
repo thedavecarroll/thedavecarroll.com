@@ -4,12 +4,22 @@ on:
   push
 
 jobs:
-  jekyll:
+  build-jekyll-site:
     runs-on: ubuntu-latest
     steps:
-      - name: Testing PowerShell
+      - name: Checkout Repo
+        uses: actions/cache@v2
+
+      - name: Gem Download and Caching
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Get File List
         shell: pwsh
-        env:
-          TEST_VAR: Testing
         run: |
-          $env:TEST_VAR
+          Set-Location -Path /thedavecarroll.com
+          Get-ChildItem
