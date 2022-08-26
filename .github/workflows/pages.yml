@@ -1,15 +1,9 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+name: Publish Dave's Technical Journal
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  #push:
+  #  branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,20 +43,18 @@ jobs:
         run: |
           bundle exec jekyll build --config _config.yml --source .
         # --destination ./docs
-      # - name: Run HTML Proofer
-      #   env:
-      #     NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+      - name: Run HTML Proofer
+        env:
+          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+        run: |
+          bundle exec htmlproofer --disable-external --allow_hash_href
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
-      - name: Ping Sitemap for Google and Bing
-        run: |
-          echo "--------------------------------------------------------------------------------"
-          echo "Google"
-          wget -O- http://www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
-          echo "--------------------------------------------------------------------------------"
-          echo "Bing"
-          wget -O- http://www.bing.com/ping?siteMap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
+      #- name: Ping Sitemap for Google and Bing
+      #  run: |
+      #    echo "Google"
+      #    wget -O- http://www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fthedavecarroll.com%2Fsitemap.xml
 
   # Deployment job
   # deploy:
