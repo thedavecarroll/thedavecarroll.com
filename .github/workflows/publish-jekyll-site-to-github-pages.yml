@@ -1,12 +1,12 @@
 name: Publish Dave's Technical Journal
 
 on:
-  # Runs on completed pull requests targeting the default branch
-  pull_request:
-    types:
-      - closed
-    branches:
-      - main
+  # # Runs on completed pull requests targeting the default branch
+  # pull_request:
+  #   types:
+  #     - closed
+  #   branches:
+  #     - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
