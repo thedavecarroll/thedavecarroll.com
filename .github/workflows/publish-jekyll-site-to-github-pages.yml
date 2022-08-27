@@ -40,6 +40,16 @@ jobs:
           source: ./
           destination: ./_site
 
+      - name: Checking Internal Links
+        uses: athackst/htmlproofer-action@main
+        with:
+          check_external_hash: false
+
+      - name: Ping Sitemap to Google
+        uses: atymic/sitemap-ping-action@master
+        with:
+          sitemap-url: https://thedavecarroll.com/sitemap.xml
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
