@@ -1,4 +1,4 @@
-name: Delete Old Workflow Run
+name: Purge Workflow Runs
 on:
   workflow_dispatch:
     inputs:
