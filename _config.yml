@@ -28,20 +28,20 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 words_per_minute         : 200
 
 # staticman v3
-comments:
-  provider               : "staticman_v2"
-  staticman:
-    branch               : "comments"
-    endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/"
+# comments:
+#   provider               : "staticman_v2"
+#   staticman:
+#     branch               : "comments"
+#     endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/"
 
-reCaptcha:
-  # v2 checkbox
-  # siteKey                : "6Lc8i18dAAAAAOYnO-hByiyvka10gKoFEeOPj9ew"
-  # secret                 : "q2MsqZKSh7DoUy2KST/6SQtVpSw5woNLx44Npe+JTzgnsfeMMADdpC5fYRDHxAXPshBVUspkY6cenpDtWpUPJKeRhJI/khLXZ64+/n0G99CnEmPLhkv06EytFlfabDqnaR+5KSRGXXnFbUCDZa4a7tuLJKK1gZ7AwU593CLGy1c5HF6T6K9afLQGULf2UG7U40V1dZ//tUcnOikL9KwYfqD8tIJO33blDrSgyP/9QNZEYQltBErrRLnmobuWttIbaheEFcjc4oSrN5/zu9dY2R6tytXgex6HkiY5UMkNwU+9p7vELyz/DRvP8QfuPT2TQxzcFC1Qalywt3ax2a5xOGlHL5Xmv14eLInQ1nM2xqxhqMnhXnPlSED5RqxCqfBVX9p/+U6vXjLRbKpA3R8H0MqFI+2fF1jV+niMd8T+eFZUxsu0GteqrLcUHBelE7e2Qnw9PFPllHT/sk/YTwa3MBKE4m1Jd7Vw4sb8s76LjLhd2Ge82DF7HM5qEwQbD1J5V4SsHHusqDWcer9rYQoXPu1RklCcmSJZQooju1appMcavQx43HwzPWYK7QL36Ole5cgsBeXSgNqo3Hq+vVqCZSqL7MX9BxkcFqN04LzI2GFTI0oWA+DHk4ICgPLSYprS+tgoK99t1Q95Vht3B+J081sPGV6C6mVWpO1eBAUdeFc="
+# reCaptcha:
+#   # v2 checkbox
+#   # siteKey                : "6Lc8i18dAAAAAOYnO-hByiyvka10gKoFEeOPj9ew"
+#   # secret                 : "q2MsqZKSh7DoUy2KST/6SQtVpSw5woNLx44Npe+JTzgnsfeMMADdpC5fYRDHxAXPshBVUspkY6cenpDtWpUPJKeRhJI/khLXZ64+/n0G99CnEmPLhkv06EytFlfabDqnaR+5KSRGXXnFbUCDZa4a7tuLJKK1gZ7AwU593CLGy1c5HF6T6K9afLQGULf2UG7U40V1dZ//tUcnOikL9KwYfqD8tIJO33blDrSgyP/9QNZEYQltBErrRLnmobuWttIbaheEFcjc4oSrN5/zu9dY2R6tytXgex6HkiY5UMkNwU+9p7vELyz/DRvP8QfuPT2TQxzcFC1Qalywt3ax2a5xOGlHL5Xmv14eLInQ1nM2xqxhqMnhXnPlSED5RqxCqfBVX9p/+U6vXjLRbKpA3R8H0MqFI+2fF1jV+niMd8T+eFZUxsu0GteqrLcUHBelE7e2Qnw9PFPllHT/sk/YTwa3MBKE4m1Jd7Vw4sb8s76LjLhd2Ge82DF7HM5qEwQbD1J5V4SsHHusqDWcer9rYQoXPu1RklCcmSJZQooju1appMcavQx43HwzPWYK7QL36Ole5cgsBeXSgNqo3Hq+vVqCZSqL7MX9BxkcFqN04LzI2GFTI0oWA+DHk4ICgPLSYprS+tgoK99t1Q95Vht3B+J081sPGV6C6mVWpO1eBAUdeFc="
 
-  # v2 hidden
-  siteKey                : "6LcMjLEhAAAAAPq2ot8VlvYXYMk6gWyVacIOO9mz"
-  secret                 : "T0iOegG5TFUIz0B2V2bsWYrgGMFhOvbTagqbp+mT1+hXwr4I5q1wiRRJfIfdrlnC19tPX/jBKw7LfPSZginpTWr8df1G/sKm49Qv7PycoBFhgkmHFWda/04wzdJHrG0HufmNGtM4jmLvKC7ijdkvCBPNLbvK6lSUhprlzp05dV5Dg+aKOb8uUFEZjc78SKZjr65oWrKxk0/cwVH8MMtZBbXWdh6jig3L34Tv8dGxUFdnlKe/THrMNSHYkxX0cqlQh0Yf6Gr8wLRTkGCkVLu/Og+GRQE0fTJ+rDsINYAzw9dBeWtBB77LUFK47hGeFMw6fUMMRqAM27+pekQis272W6AgBlBpybU25GAMDfGXWAKAQd94ZJoM8/j8L1EBwZ//1Dnue+pq9C00+Snzag+B3kIUU4votddQIyas+vSLvsP1trN/Zi8Z9uvMt911Pr/xgkLcxXcldMdj28khsgFHyq13LexskHZnxgaf9LMlF38uDkSPe23yytylYzvO46wYmX9osLAHWMV5zeTzKO0VzcluDMuVz46SiUEIEn5+B483zNRAsbItDOLY6TrQfjBbaTJ9XOHZsN98d5/8QkpceM9YqHfgqeqNc/4NG0AO9iq7fqvmlLN/15HKBbiBn/9ySz4kbVxQ5SOUdA3JnGFAvqBof9Yf6MHn1Ic5RbIkMGY="
+#   # v2 hidden
+#   siteKey                : "6LcMjLEhAAAAAPq2ot8VlvYXYMk6gWyVacIOO9mz"
+#   secret                 : "T0iOegG5TFUIz0B2V2bsWYrgGMFhOvbTagqbp+mT1+hXwr4I5q1wiRRJfIfdrlnC19tPX/jBKw7LfPSZginpTWr8df1G/sKm49Qv7PycoBFhgkmHFWda/04wzdJHrG0HufmNGtM4jmLvKC7ijdkvCBPNLbvK6lSUhprlzp05dV5Dg+aKOb8uUFEZjc78SKZjr65oWrKxk0/cwVH8MMtZBbXWdh6jig3L34Tv8dGxUFdnlKe/THrMNSHYkxX0cqlQh0Yf6Gr8wLRTkGCkVLu/Og+GRQE0fTJ+rDsINYAzw9dBeWtBB77LUFK47hGeFMw6fUMMRqAM27+pekQis272W6AgBlBpybU25GAMDfGXWAKAQd94ZJoM8/j8L1EBwZ//1Dnue+pq9C00+Snzag+B3kIUU4votddQIyas+vSLvsP1trN/Zi8Z9uvMt911Pr/xgkLcxXcldMdj28khsgFHyq13LexskHZnxgaf9LMlF38uDkSPe23yytylYzvO46wYmX9osLAHWMV5zeTzKO0VzcluDMuVz46SiUEIEn5+B483zNRAsbItDOLY6TrQfjBbaTJ9XOHZsN98d5/8QkpceM9YqHfgqeqNc/4NG0AO9iq7fqvmlLN/15HKBbiBn/9ySz4kbVxQ5SOUdA3JnGFAvqBof9Yf6MHn1Ic5RbIkMGY="
 
 atom_feed:
   path                   : # blank (default) uses feed.xml
