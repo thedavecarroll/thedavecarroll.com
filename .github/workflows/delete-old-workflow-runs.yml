@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete Publish Draft Workflow Runs
-        if: ${{ inputs.purge_workflow == 'publish-drafts.yml'
+        if: ${{ inputs.purge_workflow == 'publish-drafts.yml' }}
         uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
