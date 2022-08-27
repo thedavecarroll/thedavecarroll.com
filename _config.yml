@@ -32,7 +32,7 @@ comments:
   provider               : "staticman_v2"
   staticman:
     branch               : "comments"
-    endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/" #thedavecarroll/thedavecarroll.com/"
+    endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/"
 
 reCaptcha:
   #siteKey                : "6Lc8i18dAAAAAOYnO-hByiyvka10gKoFEeOPj9ew"
