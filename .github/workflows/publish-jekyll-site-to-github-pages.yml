@@ -43,9 +43,9 @@ jobs:
       - name: Running html-proofer
         uses: athackst/htmlproofer-action@main
         with:
-          check_favicon: true
-          check_html: true
-          check_img_http: true
+          check_favicon: 'true'
+          check_html: 'true'
+          check_img_http: 'true'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
