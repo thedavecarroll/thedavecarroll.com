@@ -18,12 +18,12 @@ comments:
   # required properties
   allowedFields: ["name", "email", "url","message"]
   allowedOrigins: ["thedavecarroll.com"]
-  branch: "main"
+  branch: "comments"
   filename: "comment-{@timestamp}"
   path: "_data/comments/{options.slug}"
 
   # reCaptcha
   reCaptcha:
     enabled: true
-    siteKey: "6Lc8i18dAAAAAOYnO-hByiyvka10gKoFEeOPj9ew"
-    secret: "TziqEh04wif227oSMbOTngYQ4uVciE2p/nRkXx1jqtuLsCCsJKPWc0WKH1czZAV5xIJ3m/YBZgeoQvSnbUbOCjDOJrGREz/DQ3/i26Gc8cDsi06eciYlVB3JPZFYGazJftccRQoSljibPJe7PTG5r6d+TlVo/XqR7QHEIDWzIhA="
+    siteKey: "6LcMjLEhAAAAAPq2ot8VlvYXYMk6gWyVacIOO9mz"
+    secret: "T0iOegG5TFUIz0B2V2bsWYrgGMFhOvbTagqbp+mT1+hXwr4I5q1wiRRJfIfdrlnC19tPX/jBKw7LfPSZginpTWr8df1G/sKm49Qv7PycoBFhgkmHFWda/04wzdJHrG0HufmNGtM4jmLvKC7ijdkvCBPNLbvK6lSUhprlzp05dV5Dg+aKOb8uUFEZjc78SKZjr65oWrKxk0/cwVH8MMtZBbXWdh6jig3L34Tv8dGxUFdnlKe/THrMNSHYkxX0cqlQh0Yf6Gr8wLRTkGCkVLu/Og+GRQE0fTJ+rDsINYAzw9dBeWtBB77LUFK47hGeFMw6fUMMRqAM27+pekQis272W6AgBlBpybU25GAMDfGXWAKAQd94ZJoM8/j8L1EBwZ//1Dnue+pq9C00+Snzag+B3kIUU4votddQIyas+vSLvsP1trN/Zi8Z9uvMt911Pr/xgkLcxXcldMdj28khsgFHyq13LexskHZnxgaf9LMlF38uDkSPe23yytylYzvO46wYmX9osLAHWMV5zeTzKO0VzcluDMuVz46SiUEIEn5+B483zNRAsbItDOLY6TrQfjBbaTJ9XOHZsN98d5/8QkpceM9YqHfgqeqNc/4NG0AO9iq7fqvmlLN/15HKBbiBn/9ySz4kbVxQ5SOUdA3JnGFAvqBof9Yf6MHn1Ic5RbIkMGY="
