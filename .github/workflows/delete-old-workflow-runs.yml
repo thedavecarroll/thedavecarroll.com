@@ -11,10 +11,10 @@ on:
           - publish-drafts.yml
           - publish-jekyll-site-to-github-pages.yml
           - delete-old-workflow-runs.yml
-      # dry_run:
-      #   description: 'DryRun: If true, only log actions, otherwise perform purge.'
-      #   required: true
-      #   default: 'true'
+      dry_run:
+        description: 'DryRun:<br/>If true, only log actions, otherwise perform purge.'
+        required: false
+        default: 'true'
 
 jobs:
   purge_workflow_runs:
@@ -30,4 +30,14 @@ jobs:
           keep_minimum_runs: 10
           delete_workflow_pattern: publish-drafts.yml
           delete_workflow_by_state_pattern: All
-          dry_run: false
+          # dry_run: false
+      - name: Delete Workflow Runs for Self
+        if: ${{ inputs.purge_workflow == 'delete-old-workflow-runs.yml' }}
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 5
+          delete_workflow_pattern: delete-old-workflow-runs.yml
+          delete_workflow_by_state_pattern: All
