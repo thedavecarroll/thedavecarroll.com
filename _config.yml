@@ -31,7 +31,7 @@ words_per_minute         : 200
 comments:
   provider               : "staticman_v2"
   staticman:
-    branch               : "main"
+    branch               : "comments"
     endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/" #thedavecarroll/thedavecarroll.com/"
 
 reCaptcha:
