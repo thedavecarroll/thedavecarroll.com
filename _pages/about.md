@@ -5,7 +5,7 @@ permalink: /about/
 search: true
 ---
 
-I started my career nearly 30 years ago at a small Mom-and-Pop computer store building and repairing home computer systems and peripherals.
+I started my career nearly 30 years ago at a small Mom-and-Pop computer store, building and repairing home computer systems and peripherals.
 To put the timing into perspective, we rented parallel CD-ROM drives and CD-ROM based games because the drives were cost prohibitive to the average gamer.
 Since then, I've worked in the public and private sectors with 17 years in higher education.
 Currently, I am a DevOps engineer for a finance company and use PowerShell and Python daily.
@@ -18,9 +18,12 @@ I definitely honed my skill in VBScript while working in my next position at the
 Around 2009, the college adopted [Microsoft's Live@EDU][Live@EDU]{:target="_blank"}, a predecessor to Exchange Online, to provide students with "free" email and document storage.
 The easiest management of this service happened in a PowerShell (version 2) session with a snap-in.
 Once I saw the power of PowerShell, I knew that I had to learn more.
-And so, I began converting my homegrown identity management system consisting of more than 10,000 lines of VBScript and interfacing with Active Directory, SunOne LDAP, Oracle DB, MySQL, and more.
-I enjoyed wowing coworkers (and myself) with the data I could collect and collate using just a few commands of PowerShell.
-It has allowed me to control the systems I manage and interface with various others.
+And so, I converted my homegrown identity management system consisting of more than 10,000 lines of VBScript and interfacing with Active Directory, SunOne LDAP, Oracle DB, MySQL, and more.
+Each section of code offered new learning opportunities on how to convert VBScript to PowerShell, but ultimately they provided hands-on experience at writing PowerShell scripts and functions.
+
+I have enjoyed wowing coworkers (and myself) with the data I could collect, collate, and control using just a few commands of PowerShell.
+It has allowed me to automate the management of systems and interface with many others.
+But I posit that it has also allowed me to control my own career, or at least provided some modicum of control.
 
 I attempt to promote and evangelize PowerShell, helping new learners with the basics and participating in the online community as often as I can.
 I am most active on Twitter [@thedavecarroll][MyTwitter]{:target="_blank"}, but you can also find me on [LinkedIn][MyLinkedIn]{:target="_blank"}, in the [PowerShell Forums][PowerShellForums]{:target="_blank"}, and (less occasionally now) in the [r/PowerShell subreddit][PowerShellReddit]{:target="_blank"}.
