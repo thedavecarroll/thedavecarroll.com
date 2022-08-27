@@ -28,8 +28,8 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 words_per_minute         : 200
 
 # staticman v3
-# comments:
-#   provider               : "staticman_v2"
+comments:
+  provider               : "staticman_v2"
 #   staticman:
 #     branch               : "comments"
 #     endpoint             : "https://thedavecarroll.herokuapp.com/v2/entry/"
