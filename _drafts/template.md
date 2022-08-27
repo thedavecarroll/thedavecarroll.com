@@ -16,6 +16,33 @@ category:
 ![Image Text]({{ site.url }}{{ site.baseurl }}/assets/images/image.png)
 {: .full}
 
+## Utility Class
+
+```text
+Left aligned text
+{: .text-left}
+
+Center aligned text.
+{: .text-center}
+
+Right aligned text.
+{: .text-right}
+
+Justified text.
+{: .text-justify}
+
+No wrap text.
+{: .text-nowrap}
+
+{: .notice}
+{: .notice--primary}
+{: .notice--info}
+{: .notice--warning}
+{: .notice--success}
+{: .notice--danger}
+
+```
+
 ## Preface/Intro
 
 Dolor in id anim velit ad anim adipisicing aliquip exercitation et sint duis velit eu.\\
