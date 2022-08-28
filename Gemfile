@@ -7,6 +7,7 @@ gem "tzinfo-data"
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 gem "faraday", "0.17.5"
+gem "webrick"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
