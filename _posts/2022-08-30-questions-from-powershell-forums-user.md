@@ -77,7 +77,7 @@ But they are not where I've learned most what I know of PowerShell.
 
 The majority of my knowledge has come from sources on the internet.
 Microsoft is the primary resource (really they should be) and community blogs like this one are a close second.
-I know that I've read more words by [Jeff Hicks][JeffHicks]{:target="_blank"} at his site than his books (sorry Jeff).
+I know that I've read more words by [Jeff Hicks][JeffHicks]{:target="_blank"} at [his site][jdhitsolutions]{:target="_blank"} than his books (sorry Jeff).
 
 I've gotten some quick answers on StackOverflow and ServerFault, but I don't immediately gravitate to those sites.
 There have been a few co-workers that taught me a few things that I must have overlooked previously, like [Filter][Filter]{:target="_blank"}.
@@ -226,6 +226,7 @@ If you have any comments or questions, please post them below.
 [PSTemperature]: https://github.com/thedavecarroll/PSTemperature
 [ModuleVariables]: https://thedavecarroll.com/powershell/how-i-implement-module-variables/
 [JeffHicks]: https://jdhitsolutions.com/blog/
+[jdhitsolutions]: https://jdhitsolutions.com/blog/
 [Filter]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions?view=powershell-7.2#filters
 [LearnByAction]: https://english.stackexchange.com/questions/226886/origin-of-i-hear-and-i-forget-i-see-and-i-remember-i-do-and-i-understand
 [AboutMe]: https://thedavecarroll.com/about/
