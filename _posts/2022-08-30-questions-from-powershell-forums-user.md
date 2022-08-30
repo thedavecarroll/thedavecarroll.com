@@ -24,10 +24,10 @@ category:
 
 About a week ago, I commented on a PowerShell forum post and the poster struck up a conversation in my DMs.
 
-He is starting his own PowerShell blog and wanted to ask me some questions.
+He is starting his own PowerShell blog and wanted to ask me a few questions.
 *(Insert self-deprecating comment here.)*
 
-I thought that the questions and my responses may help pass some time for the reader, maybe even conveying something useful.
+I thought that the questions and my responses may help provide some insight for others.
 
 ## Question 1
 
@@ -37,14 +37,14 @@ Sometimes the writing is the easy part. \
 Sometimes, like when I started writing these answers, it's a struggle.
 {: .notice--info}
 
-Most of my articles relate to teaching one or more PowerShell concepts, like my walk-throughs for some IronScripter Challenges,
+Most of my articles relate to teaching one or more PowerShell concepts, like my walk-throughs for some of the IronScripter Challenges,
 pulling back the curtain to show the reader my process on how I designed solutions or code that I've written, or
 showcasing my modules via introductions or deep-dives.
 
 When Jeff Hicks asked me to participate in the [PS7Now][PS7Now]{:target="_blank"} week event to announce the general availability of PowerShell 7,
 I was flabbergasted and quite flattered.
 I was assigned two topics which I needed to either showcase the difference between Windows PowerShell and PowerShell 7 JSON cmdlets or,
-in the case of PowerShell 7's Experimental Features, essentially be one of the first to introduce to the community.
+in the case of PowerShell 7's Experimental Features, be one of the first community bloggers to introduce the concept to the community.
 The former article has received more visitors and page views that any of my other articles.
 
 During my writing for those two articles, I learned a lot, especially about Experimental Features.
@@ -60,12 +60,16 @@ A standard internet search returned the article, my DemoModule gist, but again n
 In the next [highly popular article][ModuleVariables]{:target="_blank"}, I focus on variable scope, specifically the script scoped variable.
 When you use script scoped in your module, it's available to all commands within that module.
 Also, when you `Remove-Module`, the variable is removed from your session.
-My Tweet announcing my article was retweeted by Don Jones and, based on the page views,
-many people read it and hopefully walk away knowing how handle module variables for their own modules.
+My article announcement Tweet was retweeted by Don Jones and, based on the page views,
+many people continue to read it and hopefully walk away knowing how handle module variables for their own modules.
 
 Those are two examples on why I wrote those articles, with a bit of time (more for me) going down a rabbit hole.
 I'm not sure if others get distracted like I did, or shift focus to an adjacent topic.
 For me, it's part of my process, one over which I have varying levels of control.
+
+Most often, I solve the problem/challenge, write the module, or master the commands before I start writing an article.
+For a few articles, I began writing the article when I began the challenge.
+This allowed me to capture my thought process on how to tackle the challenge.
 
 ## Question 2
 
@@ -80,7 +84,7 @@ Microsoft is the primary resource (really they should be) and community blogs li
 I know that I've read more words by [Jeff Hicks][JeffHicks]{:target="_blank"} at [his site][jdhitsolutions]{:target="_blank"} than his books (sorry Jeff).
 
 I've gotten some quick answers on StackOverflow and ServerFault, but I don't immediately gravitate to those sites.
-There have been a few co-workers that taught me a few things that I must have overlooked previously, like [Filter][Filter]{:target="_blank"}.
+And there have been a few co-workers that taught me a few things that I must have overlooked previously, like [Filter][Filter]{:target="_blank"}.
 
 Let's examine a quote most often attributed to Confucius.
 
@@ -88,26 +92,29 @@ Let's examine a quote most often attributed to Confucius.
 > I see and I remember.\
 > I do and I learn.
 
-This simple adage shared since third century BCE was likely a derivative of a quote from Xunzi.
+This simple adage shared since third century BCE was likely a derivative of a quote from Xunzi, a follower of Confucius.
 Here's a [rough translation][LearnByAction]{:target="_blank"} of the original.
 
 >"Not hearing is not as good as hearing, hearing is not as good as seeing, seeing is not as good as knowing, knowing is not as good as acting; true learning continues until it is put into action."
 
 Both quotes, and other similar ones, point to action as the best learning tool.
 I wholeheartedly agree.
-I've often said that I am a taskmaster and what I mean by that is that I learn by doing a task.
+I've often said that I am a taskmaster and by that I mean I learn by doing a task.
 
-As mentioned in my updated [About Me][AboutMe]{:target="_blank"} page, I learned PowerShell because I forced upon myself the task (obviously many sub-tasks) of converting my existing code.
+As mentioned in my updated [About Me][AboutMe]{:target="_blank"} page, I learned PowerShell by forcing upon myself the task (obviously many sub-tasks) of converting my existing VBScript code.
 I had a concrete thing to do and a concrete outcome—did the new code work?
 
 Beyond daily tasks, you can be "assigned" tasks via code challenges.
-The [IronScripter][IronScripter]{:target="_blank"} site, created by the Chairman, aka Jeff Hicks, provides frequent challenges most of which target beginner, intermediate, and advanced PowerShell concepts and techniques.
+The [IronScripter][IronScripter]{:target="_blank"} site, created by The Chairman, aka Jeff Hicks, provides frequent challenges most of which target beginner, intermediate, and advanced PowerShell concepts and techniques.
 I've taken many of the challenges and documented some of my processes and [solutions][IronScripterSolutions]{:target="_blank"} while expounding on the lessons of the challenge.
 
-Similarly, the yearly scripting/programming agnostic [Advent of Code][AdventOfCode]{:target="_blank"} is another site that I've participated in the challenges and learned quite a lot. In 2021, I used the challenge to help me learn more about Python.
+Similarly, the yearly scripting/programming language agnostic [Advent of Code][AdventOfCode]{:target="_blank"} is another site/event that I've participated in the challenges and learned quite a lot. In 2021, I used the challenge to help me learn more about Python.
 
 It's okay to say Python. It's far better to know many languages and when to use each for a given task.
 {: .notice--success}
+
+The past years' challenges from IronScripter and Advent of Code are still available.
+Assign yourself the task of checking them out.
 
 ## Question 3
 
@@ -131,7 +138,7 @@ His guidance helped me keep focus which ultimately resulted, I hope, in a more e
 ### Modules
 
 When I first started with PowerShell, I dot-sourced like I was communicating in Morse code.
-Writing modules to combine several service or functional commands have made things much simpler.
+Writing modules to combine several service or functional commands would have made things much simpler.
 I should have adopted the habit of writing modules sooner and saved the dots.
 
 ### Performance Tuning
@@ -139,13 +146,13 @@ I should have adopted the habit of writing modules sooner and saved the dots.
 Background jobs, runspaces, and threads have specific benefits for performance when you're dealing with 1K, 10K, 100K iterations.
 
 When I send a command to all the domain controllers, I typically use background jobs (`Start-Job`) created for each DC and wait for them all to complete.
-It's much faster than doing each sequentially, like using `foreach` or `ForEach-Object` to iterate through the list.
+It's much faster than processing them sequentially, like using `foreach` or `ForEach-Object` to iterate through the list.
 Each background job is executed in a separate process on the local machine, so even this performance tuning technique can have performance issues.
 
 Several years ago, I used PoshRSJobs when I was harvesting data from a couple thousand workstations; it's based on [PowerShell runspace][PSRunspace]{:target="_blank"}.
-I don't have the need to use runspaces often.
+In my current position, I don't have the need to use runspaces often.
 
-The PowerShell Team provided the module [ThreadJob][ThreadJob]{:target="_blank"} has a single cmdlet, `Start-ThreadJob`.
+The PowerShell Team provided the module [ThreadJob][ThreadJob]{:target="_blank"} which has a single cmdlet, `Start-ThreadJob`.
 I haven't used this command, but definitely would prefer it over the previous techniques in some situations.
 
 Another technique that would yield higher performance is simply to upgrade to the latest version of PowerShell.
@@ -159,11 +166,12 @@ Microsoft has provided guidance on Powershell [scripting performance][PSScriptin
 
 As I write my PowerShell code, inevitably I need to search the internet for help.
 *Disclosure: I still do.*
-Often I have wind up on [Kevin Marquette][KevinMarquette]{:target="_blank"}'s site, [PowerShellExplained][PowerShellExplained]{:target="_blank"} and many of the articles are now part of Microsoft's Learning [PowerShell - Deep Dives][DeepDives]{:target="_blank"}.
+Often I have wound up on [Kevin Marquette][KevinMarquette]{:target="_blank"}'s site, [PowerShellExplained][PowerShellExplained]{:target="_blank"}.
+Many of the articles are now part of Microsoft's Learning [PowerShell - Deep Dives][DeepDives]{:target="_blank"}.
 
 The game changer here is knowing where to go to find answers.
 It also includes knowing how to ask the questions (especially in a search engine).
-One search result which doesn't really answer your question, but perhaps is a tangential topic, may lead you to a better way to ask your question again.
+One search result which doesn't really answer your question, perhaps because it's a tangential topic, may lead you to a better way to ask your question again.
 
 Searching the internet, while seemingly easy, is a skill that can be developed.
 
@@ -179,13 +187,13 @@ Everyone's journey starts somewhere.
 And learning a new concept is a new journey regardless of your years of experience.
 
 If you have written in various scripting languages, the time it takes learning a new language should be reduced.
-How much it's reduced would be determined by how many different languages you can code and how similar the new language is to one of those.
+How much it's reduced would be determined by your fluency in the many different languages and how similar the new language is to one of those.
 
 Each new concept you understand makes learning similar concepts easier to learn.
 
 In fact, learning itself is a skill.
 
-Get comfortable learning how you learn and focus on improving that skill.
+Get comfortable learning how *you* learn and focus on improving that skill.
 
 ## Summary
 
@@ -194,13 +202,13 @@ On face value, these questions may seem easy to answer.
 Each of them requires a certain amount of self-awareness and, of course, recall.
 Self-awareness comes from introspection which should naturally happen over time.
 Unfortunately, time can be a hinderance to recall.
-These questions have forced me to rummage through old dusty memories.
-I'm sure some of them were damaged from the ravages of time.
+These questions have forced me to rummage through old, dusty memories and I'm sure some of them were damaged from the ravages of time.
 
 Nonetheless, I hope this glimpse into my process, experience, and outlook will help you on your journey with PowerShell (and other technologies).
+
 Consider it a map to a lost treasure.
 You may recognize some of the landmarks, but you know that your journey would yield a different experience.
-And you may even find a shorter, more direct path and create your own map to the treasure.
+You may even find a shorter, more direct path and create your own map to the treasure for someone else to find.
 
 ### Hiatus...Again
 
@@ -209,14 +217,14 @@ And I wanted you to know - it wasn't you, it was me.
 
 The last few years have been emotionally tumultuous, but I think I'm to the point where I can start publishing articles on PowerShell (and other topics) again.
 
-Over the last couple months, I've been dipping my toes back into [BluebirdPS][BluebirdPS]{:target="_blank"}.
-A new version will be released as soon as I can.
+Over the last couple months, I've been dipping my toes back into [BluebirdPS][BluebirdPS]{:target="_blank"} and a new version should be released soon.
 
-Being asked these questions, and realizing that the answers should be published on my blog, has led me to dust off the site and repair the broken build automation and comment system. In fact, I'll be publishing an update to how I blog, again as soon as I can.
+Being asked these questions, and realizing that the answers should be published on my blog, has led me to dust off the site and repair the broken build automation and comment system.
+In fact, I'll be publishing an update to how I blog, again as soon as I can.
 
 ## Thank you
 
-Thank you for staying with the article.
+Thank you for reading this article.
 I really would like to hear your thoughts on it.
 
 If you have any comments or questions, please post them below.
