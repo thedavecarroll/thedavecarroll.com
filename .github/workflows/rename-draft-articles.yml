@@ -1,4 +1,4 @@
-name: Publish Blog Drafts
+name: Rename Draft Articles
 
 on:
   # schedule:
