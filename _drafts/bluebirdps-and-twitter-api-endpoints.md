@@ -5,7 +5,12 @@ excerpt: "Learn how I provide BluebirdPS users a way to correlate Twitter API en
 header:
   overlay_image: /assets/images/bluebirdps/psfollowfriday-tweet.png
   overlay_filter: 0.9
+toc: true
+toc_label: On This Page
+toc_icon: list
+toc_sticky: true
 comments: true
+share: true
 tags:
   - bluebirdps
   - get-help

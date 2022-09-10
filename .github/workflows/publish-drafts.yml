@@ -1,23 +1,41 @@
 name: Publish Blog Drafts
 
 on:
-  schedule:
+  # schedule:
     # every 4 hours on the half hour
     # - cron: '30 */4 * * *'
     # every hour at 5 minutes past the hour
-    - cron: '05 * * * *'
+    # - cron: '05 * * * *'
   # on demand
   workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Jekyll Publish Drafts
-      uses: soywiz/github-action-jekyll-publish-drafts@v2
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: PowerShell Module Cache
+      uses: potatoqualitee/psmodulecache@v4.5
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        jekyll_path: ./
-        branch: main
+        modules-to-cache: powershell-yaml
+        #shell: pwsh
+
+    - name: Show that the Action works
+      #shell: pwsh
+      run: |
+          Get-Module -Name powershell-yaml -ListAvailable
+
+#    - name: Rename Draft Articles
+    # - name: Jekyll Publish Drafts
+    #   uses: soywiz/github-action-jekyll-publish-drafts@v2
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     jekyll_path: ./
+    #     branch: main

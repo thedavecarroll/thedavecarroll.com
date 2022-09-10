@@ -72,16 +72,16 @@ social:
 
 # Analytics
 analytics:
-  provider               : google-gtag #google # false (default), "google", "google-universal", "custom"
+  provider               : google-gtag
   google:
     tracking_id          : G-PM1EP6J9FE
-    anonymize_ip         : # true, false (default)
+    anonymize_ip         : false
 
 # Site Author
 author:
   name             : Dave Carroll
-  avatar           : /assets/images/thedavecarroll-avatar.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : PowerShell developer, enthusiast, and evangelist with a side of DevOps, infrastructure, and retrocomputing. #
+  avatar           : /assets/images/thedavecarroll-avatar.jpg
+  bio              : I'm a PowerShell developer and enthusiast with interests in DevOps, infrastructure, and retrocomputing.
   location         : Nashville, TN
   email            :
   uri              :
@@ -260,9 +260,10 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      #comments: # true
+      comments: true
       #share: true
       #related: true
+
   # _pages
   - scope:
       path: ""
@@ -270,5 +271,17 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+  # Module Help
+  - scope:
+      path: 'modulehelp/**'
+    values:
+      sitemap: false
+
+  # BluebirdPS Auth Testing
+  - scope:
+      path: 'response.html'
+    values:
+      sitemap: false
 
 github: [metadata]

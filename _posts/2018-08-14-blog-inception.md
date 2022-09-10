@@ -19,7 +19,7 @@ I began using PowerShell because I had no other choice. I needed to manage the L
 
 The more I needed to do with my environment, the more PowerShell quietly raised its hand.
 
-In the summer of 2010, I took on the challenge of forcing myself to learn PowerShell by way of converting a complex set of VBScript scripts into PowerShell. In a few short weeks, perhaps with a couple all-nighters, I had crafted a replacement solution that connected to Orcale, Microsoft SQL, and MySQL databases. It interfaced with Active Directory, Live@EDU, and Sun One LDAP. It used a .Net log4j logging and dot sourced modularized code (some of which were my own functions). It was an amazing homebrew identity management solution.
+In the summer of 2010, I took on the challenge of forcing myself to learn PowerShell by way of converting a complex set of VBScript scripts into PowerShell. In a few short weeks, perhaps with a couple all-nighters, I had crafted a replacement solution that connected to Oracle, Microsoft SQL, and MySQL databases. It interfaced with Active Directory, Live@EDU, and Sun One LDAP. It used a .Net log4j logging and dot sourced modularized code (some of which were my own functions). It was an amazing homebrew identity management solution.
 
 Each year after that, my PowerShell skills grew and grew. I had/have a PowerShell session open basically all of the time. As much as I could, I tried using PowerShell commands instead of the GUI.
 
