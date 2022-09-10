@@ -28,12 +28,11 @@ jobs:
 
     - name: Show that the Action works
       run: |
-          Get-Module -Name powershell-yaml -ListAvailable
+        Get-Module -Name powershell-yaml -ListAvailable
 
     - name: Rename Draft Articles
       run: |
-        Get-ChildItem -Path . -Recurse
-#        script/Rename-DraftArticle.ps1
+        script/Rename-DraftArticle.ps1
     # - name: Jekyll Publish Drafts
     #   uses: soywiz/github-action-jekyll-publish-drafts@v2
     #   with:
