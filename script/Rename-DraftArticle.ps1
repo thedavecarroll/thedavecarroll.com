@@ -1,10 +1,10 @@
 [CmdletBinding()]
 param(
-    [string]$DraftPath = '_drafts',
-    [string]$PostsPath = '_posts'
+    [string]$DraftPath = './_drafts',
+    [string]$PostsPath = './_posts'
 )
 
-$DraftArticles = Get-ChildItem -Path (Join-Path -Path '.' -ChildPath $DraftPath -AdditionalChildPath '*') -Include *.md -Exclude template.md
+$DraftArticles = Get-ChildItem -Path (Join-Path -Path $DraftPath -ChildPath '*') -Include *.md -Exclude template.md
 if ($DraftArticles.Count -gt 0) {
     if ($DraftArticles.Count -eq 1) {
         'Found 1 article in {0}' -f $DraftPath
