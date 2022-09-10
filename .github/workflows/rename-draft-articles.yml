@@ -32,6 +32,7 @@ jobs:
 
     - name: Rename Draft Articles
       run: |
+        Get-ChildItem -Path . -Recurse
         $GITHUB_WORKSPACE/script/Rename-DraftArticle.ps1
     # - name: Jekyll Publish Drafts
     #   uses: soywiz/github-action-jekyll-publish-drafts@v2
