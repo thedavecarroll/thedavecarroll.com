@@ -9,9 +9,12 @@ param(
 
 function OutputAction {
     if ($ShouldPublish) {
+        $FileList = ($AddFilesToCommit | Foreach-Object { '"{0}"' -f $_ } -join ',')
         '::set-output name=publish::true'
+        '::set-output name=files_to_commit::[{0}]' -f $FileList
     } else {
         '::set-output name=publish::false'
+        '::set-output name=files_to_commit::false'
     }
 }
 
@@ -21,6 +24,7 @@ $ResolvedDraftsPath = Join-Path -Path $BasePath -ChildPath $DraftsPath -Addition
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
 $ResolvedConfigPath = Join-Path -Path $BasePath -ChildPath $ConfigPath
 $RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
+$AddFilesToCommit = [System.Collections.Generic.List[String]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
 $ShouldPublish = $false
 #endregion
@@ -140,6 +144,7 @@ foreach ($Article in $RenameFileList) {
     $NewFullPath = Join-Path -Path $ResolvedPostsPath -ChildPath $NewFileName
     try {
         Move-Item -Path $Article.FullName -Destination $NewFullPath
+        $AddFilesToCommit.Add($NewFileName)
         $ShouldPublish = $true
     }
     catch {
