@@ -2,20 +2,40 @@
 param(
     [string]$DraftPath = '_drafts',
     [string]$PostsPath = '_posts',
+    [string]$ConfigPath = '_config.yml',
     [switch]$MultiplePosts,
-    [switch]$PreserveDateFileName,
-    [string]$TimeZoneName = 'Central Standard Time'
+    [switch]$PreserveDateFileName
 )
 
 #region Set Variables
 $BasePath = Split-Path -Path $PSScriptRoot -Parent
 $ResolvedDraftPath = Join-Path -Path $BasePath -ChildPath $DraftPath -AdditionalChildPath '*'
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
-$TimeZone = [System.TimeZoneInfo]::FindSystemTimeZoneById($TimeZoneName)
-$CurrentDate =(Get-Date).AddHours($TimeZone.BaseUtcOffset.TotalHours)
+$ResolvedConfigPath = Join-Path -Path $BasePath -ChildPath $ConfigPath
 $RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
+#endregion
+
+#region Set TimeZone
+'::group::Set TimeZone'
+try {
+    if (Test-Path -Path $ResolvedConfigPath) {
+        $TimeZone = (Get-Content -Path $ResolvedConfigPath | ConvertFrom-Yaml).timezone
+        if (-Not [string]::IsNullOrEmpty($TimeZone)) {
+            'Setting TimeZone from {0} to {1}' -f $ConfigPath,$TimeZone
+        } else {
+            $TimeZone = (Get-TimeZone).Id
+            'Setting TimeZone to default {0}.' -f $TimeZone
+        }
+    }
+}
+catch {
+    $TimeZone = (Get-TimeZone).Id
+    'Setting TimeZone to default {0}.' -f $TimeZone
+}
+$CurrentDate = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId((Get-Date),$TimeZone)
 $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
+'::endgroup::'
 #endregion
 
 #region Draft Article Discovery
@@ -23,12 +43,12 @@ $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
 $DraftArticles = Get-ChildItem -Path $ResolvedDraftPath -Include *.md -Exclude template.md
 if ($DraftArticles.Count -gt 0) {
     if ($DraftArticles.Count -eq 1) {
-        '::notice:: Found 1 article in {0}.' -f $DraftPath
+        'Found 1 article in {0}.' -f $DraftPath
     } else {
-        '::notice:: Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftPath
+        'Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftPath
     }
 } else {
-    '::notice:: No markdown files found in {0}.' -f $DraftPath
+    'No markdown files found in {0}.' -f $DraftPath
 }
 '::endgroup::'
 #endregion
@@ -38,20 +58,20 @@ if ($DraftArticles.Count -gt 0) {
 foreach ($Article in $DraftArticles) {
     $FrontMatter = Get-Content -Path $Article.FullName -Raw | ConvertFrom-Yaml -ErrorAction Ignore
     if ($FrontMatter.ContainsKey('date')) {
-        '::notice:: {0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
+        '{0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
         if ($FrontMatter['date'].ToShortDateString() -lt $CurrentDate.ToShortDateString()) {
             '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
             '::warning:: {0}: SKIPPED' -f $FrontMatter['title']
         } elseif ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
             $RenameFileList.Add($Article)
-            '::notice:: {0}: Including article to rename.' -f $FrontMatter['title']
+            '{0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            '::notice:: {0}: Article is scheduled for a future date.' -f $FrontMatter['title']
-            '::notice:: {0}: SKIPPED.' -f $FrontMatter['title']
+            '{0}: Article is scheduled for a future date.' -f $FrontMatter['title']
+            '{0}: SKIPPED.' -f $FrontMatter['title']
         }
     } else {
-        '::notice:: {0}: Article does not contain a date value.' -f $FrontMatter['title']
-        '::notice:: {0}: SKIPPED.' -f $FrontMatter['title']
+        '{0}: Article does not contain a date value.' -f $FrontMatter['title']
+        '{0}: SKIPPED.' -f $FrontMatter['title']
     }
 }
 '::endgroup::'
@@ -85,7 +105,7 @@ foreach ($Article in $RenameFileList) {
             $NewFileName = '{0}{1}' -f $FormattedDate,$Article.Name.Replace($Matches[0],'')
         }
     }
-    '::notice::Article new filename will be {0}.' -f $NewFileName
+    'Article new filename will be {0}.' -f $NewFileName
 }
 '::endgroup::'
 #endregion
