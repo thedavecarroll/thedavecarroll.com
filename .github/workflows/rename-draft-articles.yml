@@ -28,7 +28,8 @@ jobs:
 
     - name: Rename Draft Articles
       run: |
-        $env:GITHUB_WORKSPACE/script/Rename-DraftArticle.ps1
+        Set-Location -Path $env:GITHUB_WORKSPACE
+        ./script/Rename-DraftArticle.ps1
 
     # - name: Jekyll Publish Drafts
     #   uses: soywiz/github-action-jekyll-publish-drafts@v2
