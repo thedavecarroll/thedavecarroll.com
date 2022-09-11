@@ -87,17 +87,24 @@ foreach ($Article in $DraftArticles) {
 
 #region Handling Multiple Draft Articles with Current Date
 '::group::Handling Multiple Draft Articles with Current Date'
-if ($RenameFileList.Count -gt 1) {
-    '::warning::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
-    $RenameFileList = $RenameFileList | Sort-Object -Property LastWriteTimeUtc
-    if ($AllowMultiplePostsPerDay.IsPresent) {
-        '::warning::Multiple draft articles will be published per day chronologically.'
-    } else {
-        '::warning::Multiple draft article with today''s date and ''AllowMultiplePostsPerDay'' is not enabled. The last edited file will be published.'
-        $RenameFileList = $RenameFileList | Select-Object -Last 1
+switch ($RenameFileList.Count) {
+    0 {
+        'No articles discovered will be renamed.'
+        return
     }
-} else {
-    'Found 1 article to rename.'
+    1 {
+        'Found 1 article to rename.'
+    }
+    default {
+        '::warning::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
+        $RenameFileList = $RenameFileList | Sort-Object -Property LastWriteTimeUtc
+        if ($AllowMultiplePostsPerDay.IsPresent) {
+            '::warning::Multiple draft articles will be published per day chronologically.'
+        } else {
+            '::warning::Multiple draft article with today''s date and ''AllowMultiplePostsPerDay'' is not enabled. The last edited file will be published.'
+            $RenameFileList = $RenameFileList | Select-Object -Last 1
+        }
+    }
 }
 '::endgroup::'
 #endregion
