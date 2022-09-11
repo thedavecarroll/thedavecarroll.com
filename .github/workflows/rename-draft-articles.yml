@@ -28,9 +28,6 @@ jobs:
 
     - name: Rename Draft Articles
       run: |
-        sudo timedatectl set-timezone 'America/Chicago'
-        Get-Date
-        (Get-Date).ToLocalTime()
         Set-Location -Path $env:GITHUB_WORKSPACE
         ./script/Rename-DraftArticle.ps1
 

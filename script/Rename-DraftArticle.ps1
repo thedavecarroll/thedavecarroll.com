@@ -3,14 +3,16 @@ param(
     [string]$DraftPath = '_drafts',
     [string]$PostsPath = '_posts',
     [switch]$MultiplePosts,
-    [switch]$PreserveDateFileName
+    [switch]$PreserveDateFileName,
+    [string]$TimeZoneName = 'Central Standard Time'
 )
 
 #region Set Variables
 $BasePath = Split-Path -Path $PSScriptRoot -Parent
 $ResolvedDraftPath = Join-Path -Path $BasePath -ChildPath $DraftPath -AdditionalChildPath '*'
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
-$CurrentDate = (Get-Date).ToLocalTime()
+$TimeZone = [System.TimeZoneInfo]::FindSystemTimeZoneById($TimeZoneName)
+$CurrentDate =(Get-Date).AddHours($TimeZone.BaseUtcOffset.TotalHours)
 $RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
 $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
