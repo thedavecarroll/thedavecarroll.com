@@ -55,7 +55,7 @@ jobs:
         $Parameters = @{
           DraftsPath = '${{ inputs.drafts_path }}'
           PostsPath =  '${{ inputs.posts_path }}'
-          ConfigPath =  '${{ inputs.config_path }}''
+          ConfigPath =  '${{ inputs.config_path }}'
         }
         if ([System.Convert]::ToBoolean('${{ inputs.allow_multiple_posts }}')) {
           $Parameters.AllowMultiplePostsPerDay = $true
