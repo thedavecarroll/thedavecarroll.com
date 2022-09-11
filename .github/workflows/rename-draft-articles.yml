@@ -51,6 +51,7 @@ jobs:
     - name: Rename Draft Articles
       id: rename_drafts
       run: |
+        '::group::Parameters for Script'
         Set-Location -Path $env:GITHUB_WORKSPACE
         $Parameters = @{
           DraftsPath = '${{ inputs.drafts_path }}'
@@ -64,7 +65,7 @@ jobs:
           $Parameters.PreserveDateFileName = $true
         }
         $Parameters
-        ''
+        '::endgroup::'
         ./script/Rename-DraftArticle.ps1 @Parameters
 
     - name: Check Output
