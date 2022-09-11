@@ -38,8 +38,8 @@ foreach ($Article in $DraftArticles) {
     if ($FrontMatter.ContainsKey('date')) {
         '::notice:: {0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
         if ($FrontMatter['date'].ToShortDateString() -lt $CurrentDate.ToShortDateString()) {
-            '::warn:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
-            '::warn:: {0}: SKIPPED' -f $FrontMatter['title']
+            '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
+            '::warning:: {0}: SKIPPED' -f $FrontMatter['title']
         } elseif ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
             $RenameFileList.Add($Article)
             '::notice:: {0}: Including article to rename.' -f $FrontMatter['title']
@@ -58,12 +58,12 @@ foreach ($Article in $DraftArticles) {
 #region Handling Multiple Draft Articles with Current Date
 '::group::Handling Multiple Draft Articles with Current Date'
 if ($RenameFileList.Count -gt 1) {
-    '::warn::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
+    '::warning::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
     $RenameFileList = $RenameFileList | Sort-Object -Property LastWriteTimeUtc
     if ($MultiplePosts.IsPresent) {
-        '::warn::Multiple draft articles will be published per day chronologically.'
+        '::warning::Multiple draft articles will be published per day chronologically.'
     } else {
-        '::warn::Multiple draft article with today''s date and ''MultiplePosts'' is not enabled. The last edited file will be published.'
+        '::warning::Multiple draft article with today''s date and ''MultiplePosts'' is not enabled. The last edited file will be published.'
         $RenameFileList = $RenameFileList | Select-Object -Last 1
     }
 }
@@ -75,11 +75,11 @@ if ($RenameFileList.Count -gt 1) {
 foreach ($Article in $RenameFileList) {
     $NewFileName = '{0}-{1}' -f $FormattedDate,$Article.Name
     if ($Article.BaseName -match $DateRegex) {
-        '::warn::Article filename {0} appears to start with a date format, YYYY-MM-dd.' -f $Article.Name
+        '::warning::Article filename {0} appears to start with a date format, YYYY-MM-dd.' -f $Article.Name
         if ($PreserveDateFileName.IsPresent) {
-            '::warn::''PreserveDateFileName'' is enabled. The existing filename will be prepended with {}.' -f $FormattedDate
+            '::warning::''PreserveDateFileName'' is enabled. The existing filename will be prepended with {}.' -f $FormattedDate
         } else {
-            '::warn::''PreserveDateFileName'' is not enabled. The exiting date {0} will be removed from the filename and it will be prepended with {1}.' -f $Matches[0],$FormattedDate
+            '::warning::''PreserveDateFileName'' is not enabled. The exiting date {0} will be removed from the filename and it will be prepended with {1}.' -f $Matches[0],$FormattedDate
             $NewFileName = '{0}{1}' -f $FormattedDate,$Article.Name.Replace($Matches[0],'')
         }
     }
