@@ -2,7 +2,7 @@
 layout: pages
 title: "Refreshing the Blog"
 excerpt: "In this article, I'll go into detail on how I rejuvenated this site, focusing on key technical aspects along the way."
-date: 2022-09-10
+date: 2022-09-11
 header:
   overlay_image: /assets/images/refresh-blog-tech-stack/under-construction.jpg
   overlay_filter: 0.8
