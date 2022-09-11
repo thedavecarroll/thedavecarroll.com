@@ -18,20 +18,22 @@ $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
 
 #region Set TimeZone
 '::group::Set TimeZone'
+$TimeZone = (Get-TimeZone).StandardName
+$DefaultTimeZoneMessage = 'Setting TimeZone to default ''{0}''.' -f $TimeZone
 try {
     if (Test-Path -Path $ResolvedConfigPath) {
         $TimeZone = (Get-Content -Path $ResolvedConfigPath | ConvertFrom-Yaml).timezone
         if (-Not [string]::IsNullOrEmpty($TimeZone)) {
-            'Setting TimeZone from {0} to {1}' -f $ConfigPath,$TimeZone
+            'Setting TimeZone from {0} to ''{1}''.' -f $ConfigPath,$TimeZone
         } else {
-            $TimeZone = (Get-TimeZone).Id
-            'Setting TimeZone to default {0}.' -f $TimeZone
+            $DefaultTimeZoneMessage
         }
+    } else {
+        $DefaultTimeZoneMessage
     }
 }
 catch {
-    $TimeZone = (Get-TimeZone).Id
-    'Setting TimeZone to default {0}.' -f $TimeZone
+    $DefaultTimeZoneMessage
 }
 $CurrentDate = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId((Get-Date),$TimeZone)
 $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
@@ -46,6 +48,9 @@ if ($DraftArticles.Count -gt 0) {
         'Found 1 article in {0}.' -f $DraftPath
     } else {
         'Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftPath
+    }
+    $DraftArticles.Name | ForEach-Object {
+        '- {0}' -f $_
     }
 } else {
     'No markdown files found in {0}.' -f $DraftPath
