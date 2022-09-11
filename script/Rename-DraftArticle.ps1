@@ -54,6 +54,7 @@ if ($DraftArticles.Count -gt 0) {
     }
 } else {
     'No markdown files found in {0}.' -f $DraftPath
+    return
 }
 '::endgroup::'
 #endregion
@@ -65,18 +66,15 @@ foreach ($Article in $DraftArticles) {
     if ($FrontMatter.ContainsKey('date')) {
         '{0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
         if ($FrontMatter['date'].ToShortDateString() -lt $CurrentDate.ToShortDateString()) {
-            '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
-            '::warning:: {0}: SKIPPED' -f $FrontMatter['title']
+            '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date. SKIPPED' -f $FrontMatter['title']
         } elseif ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
             $RenameFileList.Add($Article)
             '{0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            '{0}: Article is scheduled for a future date.' -f $FrontMatter['title']
-            '{0}: SKIPPED.' -f $FrontMatter['title']
+            '{0}: Article is scheduled for a future date. SKIPPED' -f $FrontMatter['title']
         }
     } else {
-        '{0}: Article does not contain a date value.' -f $FrontMatter['title']
-        '{0}: SKIPPED.' -f $FrontMatter['title']
+        '{0}: Article does not contain a date value. SKIPPED' -f $FrontMatter['title']
     }
 }
 '::endgroup::'
@@ -93,6 +91,8 @@ if ($RenameFileList.Count -gt 1) {
         '::warning::Multiple draft article with today''s date and ''MultiplePosts'' is not enabled. The last edited file will be published.'
         $RenameFileList = $RenameFileList | Select-Object -Last 1
     }
+} else {
+    'Found 1 article to rename.'
 }
 '::endgroup::'
 #endregion
