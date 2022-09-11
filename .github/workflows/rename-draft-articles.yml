@@ -28,6 +28,7 @@ jobs:
 
     - name: Rename Draft Articles
       run: |
+        Get-TimeZone
         Set-Location -Path $env:GITHUB_WORKSPACE
         ./script/Rename-DraftArticle.ps1
 
