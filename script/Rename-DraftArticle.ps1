@@ -3,7 +3,7 @@ param(
     [string]$DraftsPath = '_drafts',
     [string]$PostsPath = '_posts',
     [string]$ConfigPath = '_config.yml',
-    [switch]$MultiplePosts,
+    [switch]$AllowMultiplePostsPerDay,
     [switch]$PreserveDateFileName
 )
 
@@ -90,10 +90,10 @@ foreach ($Article in $DraftArticles) {
 if ($RenameFileList.Count -gt 1) {
     '::warning::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
     $RenameFileList = $RenameFileList | Sort-Object -Property LastWriteTimeUtc
-    if ($MultiplePosts.IsPresent) {
+    if ($AllowMultiplePostsPerDay.IsPresent) {
         '::warning::Multiple draft articles will be published per day chronologically.'
     } else {
-        '::warning::Multiple draft article with today''s date and ''MultiplePosts'' is not enabled. The last edited file will be published.'
+        '::warning::Multiple draft article with today''s date and ''AllowMultiplePostsPerDay'' is not enabled. The last edited file will be published.'
         $RenameFileList = $RenameFileList | Select-Object -Last 1
     }
 } else {
