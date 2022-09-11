@@ -35,3 +35,6 @@ npm-debug.log*
 docs/
 test/
 vendor/bundle
+
+# other
+pending
