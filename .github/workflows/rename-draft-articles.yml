@@ -65,6 +65,7 @@ jobs:
           $Parameters.PreserveDateFileName = $true
         }
         $Parameters
+        ''
         '::endgroup::'
         ./script/Rename-DraftArticle.ps1 @Parameters
 
