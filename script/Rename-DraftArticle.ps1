@@ -21,12 +21,12 @@ $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
 $DraftArticles = Get-ChildItem -Path $ResolvedDraftPath -Include *.md -Exclude template.md
 if ($DraftArticles.Count -gt 0) {
     if ($DraftArticles.Count -eq 1) {
-        '::notice::Found 1 article in {0}' -f $DraftPath
+        '::notice:: Found 1 article in {0}.' -f $DraftPath
     } else {
-        '::notice::Found {0} articles in {1}' -f $DraftArticles.Count,$DraftPath
+        '::notice:: Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftPath
     }
 } else {
-    '::notice::No markdown files found in {0}' -f $DraftPath
+    '::notice:: No markdown files found in {0}.' -f $DraftPath
 }
 '::endgroup::'
 #endregion
@@ -36,20 +36,20 @@ if ($DraftArticles.Count -gt 0) {
 foreach ($Article in $DraftArticles) {
     $FrontMatter = Get-Content -Path $Article.FullName -Raw | ConvertFrom-Yaml -ErrorAction Ignore
     if ($FrontMatter.ContainsKey('date')) {
-        '::notice::{0}: CHECK DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
+        '::notice:: {0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
         if ($FrontMatter['date'].ToShortDateString() -lt $CurrentDate.ToShortDateString()) {
-            '::warn::{0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
-            '::warn::{0}: SKIPPED' -f $FrontMatter['title']
+            '::warn:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date.' -f $FrontMatter['title']
+            '::warn:: {0}: SKIPPED' -f $FrontMatter['title']
         } elseif ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
             $RenameFileList.Add($Article)
-            '::notice::{0}: Including article to rename.' -f $FrontMatter['title']
+            '::notice:: {0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            '::notice::{0}: Article is scheduled for a future date.' -f $FrontMatter['title']
-            '::notice::{0}: SKIPPED.' -f $FrontMatter['title']
+            '::notice:: {0}: Article is scheduled for a future date.' -f $FrontMatter['title']
+            '::notice:: {0}: SKIPPED.' -f $FrontMatter['title']
         }
     } else {
-        '::warn::{0}: Article does not contain a date value.' -f $FrontMatter['title']
-        '::warn::{0}: SKIPPED.' -f $FrontMatter['title']
+        '::notice:: {0}: Article does not contain a date value.' -f $FrontMatter['title']
+        '::notice:: {0}: SKIPPED.' -f $FrontMatter['title']
     }
 }
 '::endgroup::'
