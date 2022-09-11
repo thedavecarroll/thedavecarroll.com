@@ -10,7 +10,7 @@ param(
 $BasePath = Split-Path -Path $PSScriptRoot -Parent
 $ResolvedDraftPath = Join-Path -Path $BasePath -ChildPath $DraftPath -AdditionalChildPath '*'
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
-$CurrentDate = Get-Date
+$CurrentDate = (Get-Date).ToLocalTime()
 $RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
 $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
