@@ -7,6 +7,14 @@ param(
     [switch]$PreserveDateFileName
 )
 
+function OutputAction {
+    if ($ShouldPublish) {
+        '::set-output name=publish::true'
+    } else {
+        '::set-output name=publish::false'
+    }
+}
+
 #region Set Variables
 $BasePath = Split-Path -Path $PSScriptRoot -Parent
 $ResolvedDraftsPath = Join-Path -Path $BasePath -ChildPath $DraftsPath -AdditionalChildPath '*'
@@ -59,7 +67,7 @@ if ($DraftArticles.Count -gt 0) {
     }
 } else {
     'No markdown files found in {0}.' -f $DraftsPath
-    return
+    OutputAction
 }
 '::endgroup::'
 #endregion
@@ -90,6 +98,7 @@ foreach ($Article in $DraftArticles) {
 switch ($RenameFileList.Count) {
     0 {
         'No articles discovered will be renamed.'
+        OutputAction
         return
     }
     1 {
@@ -112,6 +121,7 @@ switch ($RenameFileList.Count) {
 #region Renaming Draft Articles with Valid Date
 if (-Not (Test-Path -Path $ResolvedPostsPath)) {
     '::error::The posts path ''{0}'' could not be found' -f $PostsPath
+    OutputAction
     exit 1
 }
 '::group::Renaming Draft Articles with Valid Date'
@@ -132,13 +142,11 @@ foreach ($Article in $RenameFileList) {
         Move-Item -Path $Article.FullName -Destination $NewFullPath
         $ShouldPublish = $true
     }
-    catch {}
+    catch {
+        OutputAction
+    }
 }
 '::endgroup::'
 #endregion
 
-if ($ShouldPublish) {
-    '::set-output name=publish::true'
-} else {
-    '::set-output name=publish::false'
-}
+OutputAction
