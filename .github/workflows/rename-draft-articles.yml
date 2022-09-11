@@ -34,7 +34,7 @@ jobs:
 
     - name: Check Output
       run: |
-        if ([bool]${{ steps.rename_drafts.outputs.publish }}) {
+        if ([System.Convert]::ToBoolean(${{ steps.rename_drafts.outputs.publish }})) {
           'publish renamed drafts'
         } else {
           'no action required'
