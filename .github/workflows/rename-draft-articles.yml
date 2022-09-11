@@ -70,8 +70,8 @@ jobs:
     - name: Check Output
       run: |
         if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.publish }}')) {
-          'publish renamed drafts'
+          'Drafts to be published were found and successfully renamed.'
         } else {
-          'no action required'
+          'No drafts met the criteria to be renamed and published.'
         }
 
