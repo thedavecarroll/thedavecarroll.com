@@ -58,10 +58,10 @@ jobs:
           ConfigPath =  '${{ inputs.config_path }}''
         }
         if ([System.Convert]::ToBoolean('${{ inputs.allow_multiple_posts }}')) {
-          $Parameters.Add('AllowMultiplePostsPerDay',$true)
+          $Parameters.Add('AllowMultiplePostsPerDay')
         }
         if ([System.Convert]::ToBoolean('${{ inputs.preserve_date_filename }}')) {
-          $Parameters.Add('PreserveDateFileName',$true)
+          $Parameters.Add('PreserveDateFileName')
         }
         $Parameters
         #./script/Rename-DraftArticle.ps1 @Parameters
