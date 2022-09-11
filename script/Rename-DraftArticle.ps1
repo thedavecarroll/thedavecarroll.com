@@ -134,7 +134,7 @@ foreach ($Article in $RenameFileList) {
     if ($Article.BaseName -match $DateRegex) {
         '::warning::Article filename {0} appears to start with a date format, YYYY-MM-dd.' -f $Article.Name
         if ($PreserveDateFileName.IsPresent) {
-            '::warning::''PreserveDateFileName'' is enabled. The existing filename will be prepended with {}.' -f $FormattedDate
+            '::warning::''PreserveDateFileName'' is enabled. The existing filename will be prepended with {0}.' -f $FormattedDate
         } else {
             '::warning::''PreserveDateFileName'' is not enabled. The exiting date {0} will be removed from the filename and it will be prepended with {1}.' -f $Matches[0],$FormattedDate
             $NewFileName = '{0}{1}' -f $FormattedDate,$Article.Name.Replace($Matches[0],'')
