@@ -64,6 +64,7 @@ jobs:
           $Parameters.PreserveDateFileName = $true
         }
         $Parameters
+        ''
         ./script/Rename-DraftArticle.ps1 @Parameters
 
     - name: Check Output
