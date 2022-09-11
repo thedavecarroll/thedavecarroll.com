@@ -69,11 +69,12 @@ jobs:
         '::endgroup::'
         ./script/Rename-DraftArticle.ps1 @Parameters
 
-    - name: Check Output
+    - name: Commit
       run: |
         if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.publish }}')) {
           'Found and renamed at least one draft article requiring the site to be published.'
         } else {
           'No articles matched the criteria to be renamed and published.'
         }
+        ${{ steps.rename_drafts.outputs.files_to_commit }} | Foreach-Object { $_ }
 
