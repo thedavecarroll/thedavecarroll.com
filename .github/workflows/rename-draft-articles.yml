@@ -28,6 +28,7 @@ jobs:
 
     - name: Rename Draft Articles
       run: |
+        Set-TimeZone -Id 'Central Standard Time'
         Set-Location -Path $env:GITHUB_WORKSPACE
         ./script/Rename-DraftArticle.ps1
 
