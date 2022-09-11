@@ -53,9 +53,9 @@ jobs:
       run: |
         Set-Location -Path $env:GITHUB_WORKSPACE
         $Parameters = @{
-          DraftsPath = ${{ inputs.drafts_path }}
-          PostsPath =  ${{ inputs.posts_path }}
-          ConfigPath =  ${{ inputs.config_path }}
+          DraftsPath = '${{ inputs.drafts_path }}'
+          PostsPath =  '${{ inputs.posts_path }}'
+          ConfigPath =  '${{ inputs.config_path }}''
         }
         if ([System.Convert]::ToBoolean('${{ inputs.allow_multiple_posts }}')) {
           $Parameters.Add('AllowMultiplePostsPerDay',$true)
