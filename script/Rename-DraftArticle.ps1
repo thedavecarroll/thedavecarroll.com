@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$DraftPath = '_drafts',
+    [string]$DraftsPath = '_drafts',
     [string]$PostsPath = '_posts',
     [string]$ConfigPath = '_config.yml',
     [switch]$MultiplePosts,
@@ -9,11 +9,12 @@ param(
 
 #region Set Variables
 $BasePath = Split-Path -Path $PSScriptRoot -Parent
-$ResolvedDraftPath = Join-Path -Path $BasePath -ChildPath $DraftPath -AdditionalChildPath '*'
+$ResolvedDraftsPath = Join-Path -Path $BasePath -ChildPath $DraftsPath -AdditionalChildPath '*'
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
 $ResolvedConfigPath = Join-Path -Path $BasePath -ChildPath $ConfigPath
 $RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
+$ShouldPublish = $false
 #endregion
 
 #region Set TimeZone
@@ -42,18 +43,22 @@ $FormattedDate = $CurrentDate.ToString('yyyy-MM-dd')
 
 #region Draft Article Discovery
 '::group::Draft Article Discovery'
-$DraftArticles = Get-ChildItem -Path $ResolvedDraftPath -Include *.md -Exclude template.md
+if (-Not (Test-Path -Path $ResolvedDraftsPath)) {
+    '::error::The draft path ''{0}'' could not be found' -f $DraftsPath
+    exit 1
+}
+$DraftArticles = Get-ChildItem -Path $ResolvedDraftsPath -Include *.md -Exclude template.md
 if ($DraftArticles.Count -gt 0) {
     if ($DraftArticles.Count -eq 1) {
-        'Found 1 article in {0}.' -f $DraftPath
+        'Found 1 article in {0}.' -f $DraftsPath
     } else {
-        'Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftPath
+        'Found {0} articles in {1}.' -f $DraftArticles.Count,$DraftsPath
     }
     $DraftArticles.Name | ForEach-Object {
         '- {0}' -f $_
     }
 } else {
-    'No markdown files found in {0}.' -f $DraftPath
+    'No markdown files found in {0}.' -f $DraftsPath
     return
 }
 '::endgroup::'
@@ -98,6 +103,10 @@ if ($RenameFileList.Count -gt 1) {
 #endregion
 
 #region Renaming Draft Articles with Valid Date
+if (-Not (Test-Path -Path $ResolvedPostsPath)) {
+    '::error::The posts path ''{0}'' could not be found' -f $PostsPath
+    exit 1
+}
 '::group::Renaming Draft Articles with Valid Date'
 foreach ($Article in $RenameFileList) {
     $NewFileName = '{0}-{1}' -f $FormattedDate,$Article.Name
@@ -110,7 +119,19 @@ foreach ($Article in $RenameFileList) {
             $NewFileName = '{0}{1}' -f $FormattedDate,$Article.Name.Replace($Matches[0],'')
         }
     }
-    'Article new filename will be {0}.' -f $NewFileName
+    'Renaming {0} to {1}' -f $Article.Name,$NewFileName
+    $NewFullPath = Join-Path -Path $ResolvedPostsPath -ChildPath $NewFileName
+    try {
+        Move-Item -Path $Article.FullName -Destination $NewFullPath
+        $ShouldPublish = $true
+    }
+    catch {}
 }
 '::endgroup::'
 #endregion
+
+if ($ShouldPublish) {
+    '::set-output name=publish::true'
+} else {
+    '::set-output name=publish::false'
+}

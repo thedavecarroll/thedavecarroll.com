@@ -27,13 +27,16 @@ jobs:
         modules-to-cache: powershell-yaml
 
     - name: Rename Draft Articles
+      id: rename_drafts
       run: |
         Set-Location -Path $env:GITHUB_WORKSPACE
         ./script/Rename-DraftArticle.ps1
 
-    # - name: Jekyll Publish Drafts
-    #   uses: soywiz/github-action-jekyll-publish-drafts@v2
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     jekyll_path: ./
-    #     branch: main
+    - name: Check Output
+      run: |
+        if ( ${{steps.rename_drafts.outputs.publish }} -eq $true) {
+          'publish renamed drafts'
+        } else {
+          'no action required'
+        }
+
