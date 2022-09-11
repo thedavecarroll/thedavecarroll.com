@@ -74,6 +74,6 @@ jobs:
         if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.publish }}')) {
           'Found and renamed at least one draft article requiring the site to be published.'
         } else {
-          'No articles discovered match the criteria to be renamed.'
+          'No articles matched the criteria to be renamed and published.'
         }
 
