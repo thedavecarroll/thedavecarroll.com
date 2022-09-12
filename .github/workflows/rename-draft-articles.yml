@@ -74,7 +74,7 @@ jobs:
       run: |
         if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.articles_renamed }}')) {
           'Found and renamed at least one draft article requiring the site to be published.'
-          '::set-output name=publish_articles::false'
+          '::set-output name=publish_articles::true'
         } else {
           'No articles matched the criteria to be renamed and published.'
           '::set-output name=publish_articles::false'

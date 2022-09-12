@@ -101,7 +101,7 @@ foreach ($Article in $DraftArticles) {
 '::group::Handling Multiple Draft Articles with Current Date'
 switch ($RenameFileList.Count) {
     0 {
-        'No articles discovered match the criteria to be renamed.'
+        'No articles matched the criteria to be renamed and published.'
         OutputAction
         return
     }
