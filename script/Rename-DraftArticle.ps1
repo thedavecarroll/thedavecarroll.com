@@ -10,10 +10,10 @@ param(
 function OutputAction {
     if ($ShouldPublish) {
         $FileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
-        '::set-output name=publish::true'
+        '::set-output name=articles_renamed::true'
         '::set-output name=files_to_commit::{0}' -f $FileList
     } else {
-        '::set-output name=publish::false'
+        '::set-output name=articles_renamed::false'
         '::set-output name=files_to_commit::false'
     }
 }

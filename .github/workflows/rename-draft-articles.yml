@@ -69,18 +69,31 @@ jobs:
         '::endgroup::'
         ./script/Rename-DraftArticle.ps1 @Parameters
 
-    - name: Commit
+    - name: Check for New Articles to Publish
+      id: check_new_article
       run: |
-        if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.publish }}')) {
+        if ([System.Convert]::ToBoolean('${{ steps.rename_drafts.outputs.articles_renamed }}')) {
           'Found and renamed at least one draft article requiring the site to be published.'
+          '::set-output name=publish_articles::false'
         } else {
           'No articles matched the criteria to be renamed and published.'
+          '::set-output name=publish_articles::false'
         }
+
+    - name: Commit New Article to Feature Branch
+      if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
+      run: |
         # ${{ steps.rename_drafts.outputs.files_to_commit }}
+        #'::group::Checkout New Branch'
         git checkout -b test-branch
+
         # list untracked files, which will be files that have been renamed
         git ls-files --others --exclude-standard | Foreach-Object {
-          git add $_
+          if ($_ -matches ${{ steps.rename_drafts.outputs.files_to_commit }}) {
+            'New file matches renamed files'
+            git add $_
+          } else {
+            'New file ''{0}'' does not match any renamed file.' -f $_
+          }
         }
         git status
-
