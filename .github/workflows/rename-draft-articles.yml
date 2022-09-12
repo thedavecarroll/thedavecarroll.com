@@ -81,17 +81,15 @@ jobs:
         }
 
     - name: Configure Git
-      #if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
+      if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
       run: |
-        git config --global --list
-        git config --local --list
-        # git config remote.origin.url 'https://${{secrets.PAT}}@github.com/thedavecarroll/thedavecarroll.com.git'
-        # git config user.name Dave Carroll
-        # git config user.email powershell@anovelidea.org
+        git config user.name Dave Carroll
+        git config user.email powershell@anovelidea.org
 
     - name: Commit New Articles to Feature Branch
       if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
       run: |
+        ''
         # ${{ steps.rename_drafts.outputs.files_to_commit }}
         '::group::Checkout New Branch'
         git checkout -b draft-articles
@@ -110,9 +108,6 @@ jobs:
         'The following files have been staged.'
         git diff --staged --name-only
         '::endgroup::'
-        # '::group::Configure Git'
-
-        # '::endgroup::'
-        # '::group::Configure Git'
-        # 'stuff'
-        # '::endgroup::'
+        '::group::Push Commit to Repo'
+        git push
+        '::endgroup::'
