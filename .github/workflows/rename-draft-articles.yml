@@ -80,12 +80,21 @@ jobs:
           '::set-output name=publish_articles::false'
         }
 
+    - name: Configure Git
+      #if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
+      run: |
+        git config --global --list
+        git config --local --list
+        # git config remote.origin.url 'https://${{secrets.PAT}}@github.com/thedavecarroll/thedavecarroll.com.git'
+        # git config user.name Dave Carroll
+        # git config user.email powershell@anovelidea.org
+
     - name: Commit New Articles to Feature Branch
       if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
       run: |
         # ${{ steps.rename_drafts.outputs.files_to_commit }}
         '::group::Checkout New Branch'
-        git checkout -b test-branch
+        git checkout -b draft-articles
         '::endgroup::'
         '::group::Stage New Articles'
         # list untracked files, which will be files that have been renamed
@@ -98,8 +107,12 @@ jobs:
             '::warning::New file ''{0}'' does not match any renamed file.' -f $_
           }
         }
-        '::endgroup::'
-        '::group::Commit Files'
-        'The following file has been staged.'
+        'The following files have been staged.'
         git diff --staged --name-only
         '::endgroup::'
+        # '::group::Configure Git'
+
+        # '::endgroup::'
+        # '::group::Configure Git'
+        # 'stuff'
+        # '::endgroup::'
