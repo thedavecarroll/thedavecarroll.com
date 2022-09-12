@@ -84,11 +84,12 @@ jobs:
       if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
       run: |
         # ${{ steps.rename_drafts.outputs.files_to_commit }}
-        #'::group::Checkout New Branch'
+        '::group::Checkout New Branch'
         git checkout -b test-branch
+        '::endgroup::'
+        '::group::Stage New Articles'
         # list untracked files, which will be files that have been renamed
         $RenamedArticles = ${{ steps.rename_drafts.outputs.files_to_commit }}
-        $RenamedArticles
         git ls-files --others --exclude-standard | ForEach-Object {
           if ($_ -match $RenamedArticles) {
             'New file matches a renamed file.'
@@ -97,4 +98,8 @@ jobs:
             '::warning::New file ''{0}'' does not match any renamed file.' -f $_
           }
         }
-        git status
+        '::endgroup::'
+        '::group::Commit Files'
+        'The following file has been staged.'
+        git diff --staged --name-only
+        '::endgroup::'
