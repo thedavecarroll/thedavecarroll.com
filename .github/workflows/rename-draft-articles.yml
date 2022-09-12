@@ -76,9 +76,11 @@ jobs:
         } else {
           'No articles matched the criteria to be renamed and published.'
         }
-        git checkout test-branch
-        git status
-        ${{ steps.rename_drafts.outputs.files_to_commit }} | Foreach-Object {
+        # ${{ steps.rename_drafts.outputs.files_to_commit }}
+        git checkout -b test-branch
+        # list untracked files, which will be files that have been renamed
+        git ls-files --others --exclude-standard | Foreach-Object {
           git add $_
         }
+        git status
 
