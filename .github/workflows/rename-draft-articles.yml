@@ -80,20 +80,22 @@ jobs:
           '::set-output name=publish_articles::false'
         }
 
-    - name: Commit New Article to Feature Branch
+    - name: Commit New Articles to Feature Branch
       if: ${{ steps.check_new_article.outputs.publish_articles }} == 'true'
       run: |
         # ${{ steps.rename_drafts.outputs.files_to_commit }}
         #'::group::Checkout New Branch'
         git checkout -b test-branch
-
         # list untracked files, which will be files that have been renamed
-        git ls-files --others --exclude-standard | Foreach-Object {
-          if ($_ -matches ${{ steps.rename_drafts.outputs.files_to_commit }}) {
-            'New file matches renamed files'
-            git add $_
-          } else {
-            'New file ''{0}'' does not match any renamed file.' -f $_
-          }
-        }
+        $RenamedArticles = ${{ steps.rename_drafts.outputs.files_to_commit }}
+        $RenamedArticles
+        git ls-files --others --exclude-standard
+        #| ForEach-Object {
+        #   if ($_ -matches $RenamedArticles) {
+        #     'New file matches renamed files'
+        #     git add $_
+        #   } else {
+        #     'New file ''{0}'' does not match any renamed file.' -f $_
+        #   }
+        # }
         git status
