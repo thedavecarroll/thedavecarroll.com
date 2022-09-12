@@ -76,5 +76,9 @@ jobs:
         } else {
           'No articles matched the criteria to be renamed and published.'
         }
-        ${{ steps.rename_drafts.outputs.files_to_commit }} | Foreach-Object { $_ }
+        git checkout test-branch
+        git status
+        ${{ steps.rename_drafts.outputs.files_to_commit }} | Foreach-Object {
+          git add $_
+        }
 
