@@ -108,6 +108,9 @@ jobs:
         'The following files have been staged.'
         git diff --staged --name-only
         '::endgroup::'
-        '::group::Push Commit to Repo'
-        git push
+        '::group::Commit Staged Articles'
+        git commit -m 'Testing commit'
+        '::endgroup::'
+        '::group::Push to Repo'
+        git push --set-upstream origin draft-articles
         '::endgroup::'
