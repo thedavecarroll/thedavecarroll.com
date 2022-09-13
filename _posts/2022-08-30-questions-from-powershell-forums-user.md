@@ -4,9 +4,14 @@ title: "Questions from a PowerShell.org Forums User"
 excerpt: "A PowerShell.org Forums user asked me a few questions about my PowerShell journey and here are my answers."
 date: 2022-08-30
 published: true
+last_modified_at: 2022-09-12
 header:
   overlay_image: /assets/images/powershellforums.png
-  overlay_filter: 0.7
+  overlay_filter: 0.9
+toc: true
+toc_label: On This Page
+toc_icon: list
+toc_sticky: true
 comments: true
 tags:
   - blog
@@ -20,6 +25,9 @@ category:
   - powershell
 ---
 
+![PowerShell.org Forums](/assets/images/powershellforums.png "PowerShell.org Forums")
+{: .full}
+
 ## Introduction
 
 About a week ago, I commented on a PowerShell forum post and the poster struck up a conversation in my DMs.
@@ -29,9 +37,7 @@ He is starting his own PowerShell blog and wanted to ask me a few questions.
 
 I thought that the questions and my responses may help provide some insight for others.
 
-## Question 1
-
-*What is your writing process? Do you write on subjects you are currently learning about or want to research more?*
+## 1. What is your writing process? Do you write on subjects you are currently learning about or want to research more?
 
 Sometimes the writing is the easy part. \
 Sometimes, like when I started writing these answers, it's a struggle.
@@ -50,7 +56,7 @@ The former article has received more visitors and page views that any of my othe
 During my writing for those two articles, I learned a lot, especially about Experimental Features.
 It seems that, even now, there's not much adoption of them for community modules.
 
-Since this is about my writing process, I must divulge that I've just spent at least an hour trying find GitHub repos with PowerShell 7 Experimental Features.
+Since this is about my writing process, I must divulge that I've just spent at least an hour trying to find GitHub repos with PowerShell 7 Experimental Features.
 After I was able to filter out all of the Microsoft references, it resulted in [one result][ExperimentalFeatures]{:target="_blank"}.
 My DemoModule script module is returned, not my binary module [PSTemperature][PSTemperature]{:target="_blank"} despite being declared in a `psd1` file (a requirement for Experimental Features).
 This tells me that the indexing or searching in GitHub isn't 100% accurate (at least based on the time I spent with it tonight).
@@ -71,9 +77,7 @@ Most often, I solve the problem/challenge, write the module, or master the comma
 For a few articles, I began writing the article when I began the challenge.
 This allowed me to capture my thought process on how to tackle the challenge.
 
-## Question 2
-
-*Do you have a favorite resource for Powershell that has helped you learn?*
+## 2. Do you have a favorite resource for Powershell that has helped you learn?
 
 I have read parts of the de facto books on learning PowerShell.
 Some, I've read much more than others.
@@ -116,9 +120,7 @@ It's okay to say Python. It's far better to know many languages and when to use 
 The past years' challenges from IronScripter and Advent of Code are still available.
 Assign yourself the task of checking them out.
 
-## Question 3
-
-*Did you have a mentor in your process of learning Powershell?*
+## 3. Did you have a mentor in your process of learning Powershell?
 
 No, I don't think so.
 At least not a single individual.
@@ -131,17 +133,15 @@ I would like to thank Jeff Hicks on coaching me on my first Summit presentation.
 His guidance helped me keep focus which ultimately resulted, I hope, in a more engaging presentation.
 {: .notice--info}
 
-## Question 4
+## 4. Are there any concepts you wish you would have known earlier in your career with Powershell that ended up being a game-changer?
 
-*Are there any concepts you wish you would have known earlier in your career with Powershell that ended up being a game-changer?*
-
-### Modules
+**Modules**
 
 When I first started with PowerShell, I dot-sourced like I was communicating in Morse code.
 Writing modules to combine several service or functional commands would have made things much simpler.
 I should have adopted the habit of writing modules sooner and saved the dots.
 
-### Performance Tuning
+**Performance Tuning**
 
 Background jobs, runspaces, and threads have specific benefits for performance when you're dealing with 1K, 10K, 100K iterations.
 
@@ -162,7 +162,7 @@ Many other performance enhancements were made the engine level and built-in comm
 
 Microsoft has provided guidance on Powershell [scripting performance][PSScriptingPerformance]{:target="_blank"}.
 
-### Everything You Wanted to Know
+**Everything You Wanted to Know**
 
 As I write my PowerShell code, inevitably I need to search the internet for help.
 *Disclosure: I still do.*
@@ -175,9 +175,7 @@ One search result which doesn't really answer your question, perhaps because it'
 
 Searching the internet, while seemingly easy, is a skill that can be developed.
 
-## Question 5
-
-*Even with your 20+ years of experience do you still get overwhelmed with new concepts and tools?*
+## 5. Even with your 20+ years of experience do you still get overwhelmed with new concepts and tools?
 
 Overwhelmed? Absolutely.
 
@@ -210,7 +208,7 @@ Consider it a map to a lost treasure.
 You may recognize some of the landmarks, but you know that your journey would yield a different experience.
 You may even find a shorter, more direct path and create your own map to the treasure for someone else to find.
 
-### Hiatus...Again
+**Hiatus...Again**
 
 It's been over a year since I published an article.
 And I wanted you to know - it wasn't you, it was me.
@@ -222,12 +220,16 @@ Over the last couple months, I've been dipping my toes back into [BluebirdPS][Bl
 Being asked these questions, and realizing that the answers should be published on my blog, has led me to dust off the site and repair the broken build automation and comment system.
 In fact, I'll be publishing an update to how I blog, again as soon as I can.
 
-## Thank you
+**Thank you**
 
 Thank you for reading this article.
 I really would like to hear your thoughts on it.
 
 If you have any comments or questions, please post them below.
+
+**Update 2022-09-05**
+Minor changes to formatting.
+{: .notice--primary}
 
 [PS7Now]: https://jdhitsolutions.com/blog/powershell/7371/ps7now-ebook-available/
 [ExperimentalFeatures]: https://github.com/search?q=ExperimentalFeatures+extension%3Apsd1+NOT+2113633+NOT+PSManageBreakpointsInRunspace+NOT+ExpTest+NOT+855960+NOT+PSDesiredStateConfiguration&type=code

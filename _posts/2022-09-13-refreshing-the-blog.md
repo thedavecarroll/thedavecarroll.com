@@ -2,7 +2,7 @@
 layout: pages
 title: "Refreshing the Blog"
 excerpt: "In this article, I'll go into detail on how I rejuvenated this site, focusing on key technical aspects along the way."
-date: 2022-09-11
+date: 2022-09-13
 header:
   overlay_image: /assets/images/refresh-blog-tech-stack/under-construction.jpg
   overlay_filter: 0.8
@@ -436,7 +436,9 @@ Even with all of this work, I still have more to do.
 I want to create the following workflows.
 
 + Publish Blog Drafts
-  + Even though I already have a workflow for this, it doesn't work as smooth as I would like (the filename had an incorrect date prefix). And I would like to use PowerShell as the scripting language.
+  + Even though I already have a workflow for this, it doesn't work as smooth as I would like (the filename had an incorrect date prefix). And I would like to use PowerShell as the scripting language.\
+  \
+  *Note: I've already made some significant progress on this. Checkout out the [Rename Draft Articles][RenameDraftArticles]{:target="_blank"} workflow in my site's repo.*
 + Announce New Article
   + I want to use [BluebirdPS][BluebirdPS]{:target="_blank"} to Tweet new articles after they are published.
 + Announce Archive Article
@@ -449,6 +451,7 @@ When I reached out to PowerShell Twitter, [Josh Rickard][JoshRickard]{:target="_
 Whether I use that or not, I'm sure it will be helpful for LinkedIn postings.
 {: .notice--primary}
 
+[RenameDraftArticles]: https://github.com/thedavecarroll/thedavecarroll.com/actions/workflows/rename-draft-articles.yml
 [BluebirdPS]: https://www.powershellgallery.com/packages/BluebirdPS
 [JoshRickard]: https://twitter.com/MSAdministrator
 [ReviveSocialMedia]: https://github.com/MSAdministrator/revive-social-media
@@ -472,3 +475,18 @@ The more I look at my site, the less I'm pleased with the aesthetics.
 + The site's theme feel like it wastes a lot of screen real estate. The author profile is on each page and it takes a huge chunk. I'd like to use my avatar next to the site name in the title.
 
 ## Summary
+
+When I started writing this article, I had no idea that it would take well over a week to finish.
+I also had no idea that it would be over 3500 words.
+If you've made it this far, ***thank you for sticking with it!***
+I promise the next several articles will not be this long.
+
+I hope that this article does not dissuade you from considering Jekyll as your static site generator, that was not the intent.
+I wanted to reveal the struggles that I have had with it and how I overcame them.
+Some of them stemmed from the lack of the right *mind-space* which drained virtually any energy required  to work on this site.
+As mentioned, my energy levels are starting to climb again and each new article you see means they are sufficient.
+
+If you have any questions or comments, please leave them below (in the new giscus comment form!).
+And if you publish a blog using Jekyll, I'd like to hear how you have (or would) remediate any of the issues above.
+
+Thank you, again.
