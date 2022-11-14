@@ -2,6 +2,7 @@
 layout: pages
 title: "About Me"
 permalink: /about/
+author_profile: true
 search: true
 ---
 
@@ -27,7 +28,9 @@ Each section of code offered new learning opportunities on how to convert VBScri
 I attempt to promote and evangelize PowerShell as often as I can, helping new learners with the basics and participating in the online community.
 I am most active on Twitter [@thedavecarroll][MyTwitter]{:target="_blank"}, but you can also find me on [LinkedIn][MyLinkedIn]{:target="_blank"}, in the [PowerShell Forums][PowerShellForums]{:target="_blank"}, and (less occasionally now) in the [r/PowerShell subreddit][PowerShellReddit]{:target="_blank"}.
 
-Feel free to check out my [project repos](https://github.com/thedavecarroll){:target="_blank"} and my [gists][GitHubGists]{:target="_blank"} on GitHub.
+I've recently joined the [Fediverse][Fediverse]{:target="_blank"} and can be found on the [Mastodon][Mastodon]{:target="_blank"} instance [@fosstodon.org/@thedavecarroll][FosstodonMe]{:target="_blank"}.
+
+Feel free to check out my [project repos][GitHub]{:target="_blank"} and my [gists][GitHubGists]{:target="_blank"} on GitHub.
 I hope that you find something useful or informative.
 
 Note:
@@ -41,5 +44,8 @@ My first IBM compatible laptop had an impressive 640K RAM, which I configured pa
 [MyLinkedIn]: https://www.linkedin.com/in/thedavecarroll/
 [PowerShellForums]: https://forums.powershell.org/
 [PowerShellReddit]: https://www.reddit.com/r/PowerShell/
+[Fediverse]: https://en.wikipedia.org/wiki/Fediverse
+[Mastodon]: https://joinmastodon.org/
+[FosstodonMe]: https://fosstodon.org/@thedavecarroll
 [GitHub]: https://github.com/thedavecarroll
 [GitHubGists]: https://gist.github.com/thedavecarroll
