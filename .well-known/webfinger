@@ -1,0 +1,23 @@
+{
+    "subject": "acct:thedavecarroll@fosstodon.org",
+    "aliases": [
+        "https://fosstodon.org/@thedavecarroll",
+        "https://fosstodon.org/users/thedavecarroll"
+    ],
+    "links": [
+        {
+            "rel": "http://webfinger.net/rel/profile-page",
+            "type": "text/html",
+            "href": "https://fosstodon.org/@thedavecarroll"
+        },
+        {
+            "rel": "self",
+            "type": "application/activity+json",
+            "href": "https://fosstodon.org/users/thedavecarroll"
+        },
+        {
+            "rel": "http://ostatus.org/schema/1.0/subscribe",
+            "template": "https://fosstodon.org/authorize_interaction?uri={uri}"
+        }
+    ]
+}
