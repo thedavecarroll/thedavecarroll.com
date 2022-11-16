@@ -25,6 +25,7 @@ baseurl                  : / # the subpath of your site, e.g. "/blog"
 repository               : thedavecarroll/thedavecarroll.com # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 words_per_minute         : 200
+logo                     : /assets/images/thedavecarroll-avatar-transparent.png
 
 comments:
   provider: "giscus"
@@ -78,61 +79,46 @@ analytics:
     anonymize_ip         : false
 
 # Site Author
-author:
-  name             : Dave Carroll
-  avatar           : /assets/images/thedavecarroll-avatar.jpg
-  bio              : I'm a PowerShell developer and enthusiast with interests in DevOps, infrastructure, and retrocomputing.
-  location         : Nashville, TN
-  email            :
-  uri              :
-  home             : # null (default), "absolute or relative url to link to author home"
-  twitter          : thedavecarroll
-  github           : thedavecarroll
-  linkedin         : thedavecarroll
-  stackoverflow    : 10085389/thedavecarroll
-  youtube          : https://www.youtube.com/channel/UCo9AaXNGgezb6nB4pnVRZwQ
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+author: Dave Carroll
+  # name             : Dave Carroll
+  # avatar           : /assets/images/thedavecarroll-avatar.jpg
+  # bio              : I'm a PowerShell developer and enthusiast with interests in DevOps, infrastructure, and retrocomputing.
+  # location         : Nashville, TN
+  # email            :
+  # uri              :
+  # home             : # null (default), "absolute or relative url to link to author home"
+  # links:
+  #   - label: "GitHub"
+  #     icon: "fab fa-fw fa-github"
+  #     url: https://github.com/thedavecarroll
+  #   - label: "Mastodon"
+  #     icon: "fab fa-fw fa-mastodon"
+  #     url: "https://fosstodon.org/@thedavecarroll"
+  #   - label: "LinkedIn"
+  #     icon: "fab fa-fw fa-linkedin"
+  #     url: https://www.linkedin.com/in/thedavecarroll/
+  #   - label: "Twitter"
+  #     icon: "fab fa-fw fa-twitter-square"
+  #     url: https://twitter.com/thedavecarroll
+  #   - label: "YouTube"
+  #     icon: "fab fa-fw fa-youtube"
+  #     url: "https://youtube.com/@davecarroll"
+  #   - label: "Stack Overflow"
+  #     icon: "fab fa-fw fa-stack-overflow"
+  #     url: "https://stackoverflow.com/users/10085389/thedavecarroll"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: https://twitter.com/thedavecarroll
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: https://github.com/thedavecarroll
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
-
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://fosstodon.org/@thedavecarroll"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: https://twitter.com/thedavecarroll
 
 # Reading Files
 include:

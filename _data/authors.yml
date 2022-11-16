@@ -1,0 +1,24 @@
+Dave Carroll:
+  name        : "Dave Carroll"
+  bio         : "I'm a PowerShell developer and enthusiast with interests in DevOps, infrastructure, and retrocomputing."
+  avatar      : "/assets/images/thedavecarroll-avatar.jpg"
+  location    : Nashville, TN
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: https://github.com/thedavecarroll
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://fosstodon.org/@thedavecarroll"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: https://www.linkedin.com/in/thedavecarroll/
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: https://twitter.com/thedavecarroll
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://youtube.com/@davecarroll"
+    - label: "Stack Overflow"
+      icon: "fab fa-fw fa-stack-overflow"
+      url: "https://stackoverflow.com/users/10085389/thedavecarroll"
