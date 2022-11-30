@@ -25,5 +25,5 @@ toc_icon: list
 
 ## Microsoft Links
 
-* [Official PowerShell Core GitHub Repo](https://github.com/PowerShell/PowerShell){:target="_blank"}
+* [Official PowerShell GitHub Repo](https://github.com/PowerShell/PowerShell){:target="_blank"}
 * [Visual Studio Code](https://code.visualstudio.com/){:target="_blank"}
