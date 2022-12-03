@@ -26,12 +26,14 @@ Each section of code offered new learning opportunities on how to convert VBScri
 > But I posit that it has also allowed me to control my own career, or at least provided some modicum of control.
 
 I attempt to promote and evangelize PowerShell as often as I can, helping new learners with the basics and participating in the online community.
-I am most active on Twitter [@thedavecarroll][MyTwitter]{:target="_blank"}, but you can also find me on [LinkedIn][MyLinkedIn]{:target="_blank"}, in the [PowerShell Forums][PowerShellForums]{:target="_blank"}, and (less occasionally now) in the [r/PowerShell subreddit][PowerShellReddit]{:target="_blank"}.
-
 I've recently joined the [Fediverse][Fediverse]{:target="_blank"} and can be found on the [Mastodon][Mastodon]{:target="_blank"} instance [@fosstodon.org/@thedavecarroll][FosstodonMe]{:target="_blank"}.
+
+You can also find me on [LinkedIn][MyLinkedIn]{:target="_blank"}, in the [PowerShell Forums][PowerShellForums]{:target="_blank"}, and (less occasionally now) in the [r/PowerShell subreddit][PowerShellReddit]{:target="_blank"}.
 
 Feel free to check out my [project repos][GitHub]{:target="_blank"} and my [gists][GitHubGists]{:target="_blank"} on GitHub.
 I hope that you find something useful or informative.
+
+I am much less active on Twitter [@thedavecarroll][MyTwitter]{:target="_blank"}.
 
 Note:
 I have recently gotten into retrocomputing so you may see some content focused on that.
