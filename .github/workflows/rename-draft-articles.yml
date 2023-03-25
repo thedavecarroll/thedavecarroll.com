@@ -70,7 +70,6 @@ jobs:
         .github/scripts/RenameDraftArticles.ps1 @Parameters
 
     - name: Check for New Articles to Publish
-      id: check_new_article
       run: |
         if ([System.Convert]::ToBoolean($env:DRAFTS_ARTICLES_RENAMED)) {
           'Found and renamed at least one draft article requiring the site to be published.'
@@ -89,7 +88,6 @@ jobs:
         git_commit_gpgsign: true
 
     - name: Create Pull Request
-      id: create_pull_request
       uses: peter-evans/create-pull-request@v4.2.4
       with:
         commit-message: publish draft article
@@ -99,36 +97,16 @@ jobs:
         body: Create pull request to publish renamed article
         delete-branch: true
 
-    # - name: Commit New Articles to Feature Branch
-    #   run: |
-    #     if ([System.Convert]::ToBoolean($env:PUBLISH_ARTICLES)) {
-    #       ''
-    #       '::group::Checkout New Branch'
-    #       git checkout -b draft-articles
-    #       '::endgroup::'
+    - name: Find Pull Request
+      uses: juliangruber/find-pull-request-action@v1.8.0
+      id: find-pull-request
+      with:
+        branch: draft-articles
 
-    #       '::group::Stage Renamed Articles'
-    #       $RenamedArticles = $env:DRAFTS_COMMIT_RENAMED_FILES.Split(',')
-    #       $OriginalArticles = $env:DRAFTS_COMMIT_REMOVED_FILES.Split(',')
+    - name: Merge Pull Request
+      id: merge-pull-request
+      uses: juliangruber/merge-pull-request-action@v1.1.0
+      with:
+        number: ${{ steps.find-pull-request.outputs.number }}
+        method: merge
 
-    #       $RenamedArticles  | Foreach-Object {
-    #         $PostPath = Join-Path -Path '${{ inputs.posts_path }}' -ChildPath $_
-    #         git add $PostPath
-    #       }
-    #       $OriginalArticles | Foreach-Object {
-    #         $DraftPath = Join-Path -Path '${{ inputs.drafts_path }}' -ChildPath $_
-    #         git rm $DraftPath
-    #       }
-
-    #       'The following files have been staged.'
-    #       git diff --staged --name-only
-    #       '::endgroup::'
-
-    #       '::group::Commit Staged Articles'
-    #       git commit -S -m 'Testing commit'
-    #       '::endgroup::'
-
-    #       '::group::Push to Repo'
-    #       # git push --set-upstream origin draft-articles
-    #       '::endgroup::'
-    #     }
