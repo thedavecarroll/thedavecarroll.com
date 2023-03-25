@@ -2,7 +2,7 @@
 layout: single
 title: "Soft Skills - Part 1 - Communication"
 excerpt: "On the Road to DevOps, Don't Forget the Soft Skills"
-date: 2023-03-27
+date: 2023-03-25
 header:
   overlay_image: /assets/images/soft-skills/psconfbookv2.png
   overlay_filter: 0.9
