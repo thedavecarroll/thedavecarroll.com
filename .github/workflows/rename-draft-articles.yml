@@ -96,29 +96,32 @@ jobs:
     #     git config user.email $env:GIT_USER_EMAIL
 
     - name: Commit New Articles to Feature Branch
-      if: ${{ env.PUBLISH_ARTICLES }} == true
       run: |
-        ''
-        '::group::Checkout New Branch'
-        git checkout -b draft-articles
-        '::endgroup::'
-        '::group::Stage New Articles'
-        # list untracked files, which will be files that have been renamed
-        $RenamedArticles = $env:DRAFTS_FILES_TO_COMMIT
-        git ls-files --others --exclude-standard | ForEach-Object {
-          if ($_ -match $RenamedArticles) {
-            'New file matches a renamed file.'
-            git add $_
-          } else {
-            '::warning::New file ''{0}'' does not match any renamed file.' -f $_
+        '::group::Checking for Articles to be Committed'
+        if ([System.Convert]::ToBoolean($env:PUBLISH_ARTICLES)) {
+          ''
+          '::group::Checkout New Branch'
+          git checkout -b draft-articles
+          '::endgroup::'
+          '::group::Stage New Articles'
+          # list untracked files, which will be files that have been renamed
+          $RenamedArticles = $env:DRAFTS_FILES_TO_COMMIT
+          git ls-files --others --exclude-standard | ForEach-Object {
+            if ($_ -match $RenamedArticles) {
+              'New file matches a renamed file.'
+              git add $_
+            } else {
+              '::warning::New file ''{0}'' does not match any renamed file.' -f $_
+            }
           }
+          'The following files have been staged.'
+          git diff --staged --name-only
+          '::endgroup::'
+          '::group::Commit Staged Articles'
+          git commit -S -m 'Testing commit'
+          '::endgroup::'
+          '::group::Push to Repo'
+          # git push --set-upstream origin draft-articles
+          '::endgroup::'
         }
-        'The following files have been staged.'
-        git diff --staged --name-only
-        '::endgroup::'
-        '::group::Commit Staged Articles'
-        git commit -S -m 'Testing commit'
-        '::endgroup::'
-        '::group::Push to Repo'
-        # git push --set-upstream origin draft-articles
-        '::endgroup::'
+        '::endegroup::'
