@@ -107,6 +107,7 @@ jobs:
       id: merge-pull-request
       uses: juliangruber/merge-pull-request-action@v1.1.0
       with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         number: ${{ steps.find-pull-request.outputs.number }}
         method: merge
 
