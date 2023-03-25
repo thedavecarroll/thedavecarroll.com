@@ -10,10 +10,10 @@ param(
 function OutputAction {
     if ($ShouldPublish) {
         $FileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
-        'DRAFTS_ARTICLE_RENAMED=true' >> $env:GITHUB_ENV
+        'DRAFTS_ARTICLES_RENAMED=true' >> $env:GITHUB_ENV
         'DRAFTS_FILES_TO_COMMIT={0}' -f $FileList >> $env:GITHUB_ENV
     } else {
-        'DRAFTS_ARTICLE_RENAMED=false' >> $env:GITHUB_ENV
+        'DRAFTS_ARTICLES_RENAMED=false' >> $env:GITHUB_ENV
         'DRAFTS_FILES_TO_COMMIT=false' >> $env:GITHUB_ENV
     }
 }
