@@ -72,12 +72,13 @@ jobs:
     - name: Check Environment Variables
       id: check_env_vars
       run: |
-        echo "articles_renamed: ${{ env.articles_renamed }}"
-        echo "files_to_commit: ${{ env.files_to_commit }}"
+        echo "articles_renamed: $env:DRAFTS_ARTICLE_RENAMED"
+        echo "files_to_commit: $env:DRAFTS_FILES_TO_COMMIT"
+
     - name: Check for New Articles to Publish
       id: check_new_article
       run: |
-        if ([System.Convert]::ToBoolean('${{ env.articles_renamed }}')) {
+        if ([System.Convert]::ToBoolean($env:DRAFTS_ARTICLE_RENAMED)) {
           'Found and renamed at least one draft article requiring the site to be published.'
           echo "publish_articles=true" >> $GITHUB_OUTPUT
         } else {
@@ -104,13 +105,13 @@ jobs:
       if: ${{ steps.check_new_article.outputs.publish_articles }} == true
       run: |
         ''
-        # ${{ env.files_to_commit }}
+        # $env:DRAFTS_FILES_TO_COMMIT
         '::group::Checkout New Branch'
         git checkout -b draft-articles
         '::endgroup::'
         '::group::Stage New Articles'
         # list untracked files, which will be files that have been renamed
-        $RenamedArticles = ${{ env.files_to_commit }}
+        $RenamedArticles = $env:DRAFTS_FILES_TO_COMMIT
         git ls-files --others --exclude-standard | ForEach-Object {
           if ($_ -match $RenamedArticles) {
             'New file matches a renamed file.'
