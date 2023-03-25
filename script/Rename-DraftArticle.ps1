@@ -10,11 +10,11 @@ param(
 function OutputAction {
     if ($ShouldPublish) {
         $FileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
-        'articles_renamed=true' >> $GITHUB_OUTPUT
-        'files_to_commit={0}' -f $FileList >> $GITHUB_OUTPUT
+        'articles_renamed=true' >> $GITHUB_ENV
+        'files_to_commit={0}' -f $FileList >> $GITHUB_ENV
     } else {
-        'articles_renamed=false' >> $GITHUB_OUTPUT
-        'files_to_commit=false' >> $GITHUB_OUTPUT
+        'articles_renamed=false' >> $GITHUB_ENV
+        'files_to_commit=false' >> $GITHUB_ENV
     }
 }
 
