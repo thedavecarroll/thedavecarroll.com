@@ -93,6 +93,7 @@ jobs:
       uses: peter-evans/create-pull-request@v4.2.4
       with:
         commit-message: publish draft article
+        committer: ${{ vars.GIT_USER_NAME }} <${{ vars.GIT_USER_EMAIL }}>
         branch: draft-articles
         title: Create Pull Request
         body: Create pull request to publish renamed article
