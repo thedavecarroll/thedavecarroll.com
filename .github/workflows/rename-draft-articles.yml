@@ -77,7 +77,7 @@ jobs:
           'PUBLISH_ARTICLES=true' >> $env:GITHUB_ENV
         } else {
           'No articles matched the criteria to be renamed and published.'
-          'PUBLISH_ARTICLES=true' >> $env:GITHUB_ENV
+          'PUBLISH_ARTICLES=false' >> $env:GITHUB_ENV
         }
 
     - name: Import GPG
@@ -124,4 +124,4 @@ jobs:
           # git push --set-upstream origin draft-articles
           '::endgroup::'
         }
-        '::endegroup::'
+        '::endgroup::'
