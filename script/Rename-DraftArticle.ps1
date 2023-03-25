@@ -82,13 +82,15 @@ foreach ($Article in $DraftArticles) {
     $FrontMatter = Get-Content -Path $Article.FullName -Raw | ConvertFrom-Yaml -ErrorAction Ignore
     if ($FrontMatter.ContainsKey('date')) {
         '{0}: DATE : {1}' -f $FrontMatter['title'],$FrontMatter['date'].ToShortDateString()
-        if ($FrontMatter['date'].ToShortDateString() -lt $CurrentDate.ToShortDateString()) {
-            '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date. SKIPPED' -f $FrontMatter['title']
-        } elseif ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
+        if ($FrontMatter['date'].ToShortDateString() -eq $CurrentDate.ToShortDateString()) {
             $RenameFileList.Add($Article)
             '{0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            '{0}: Article is scheduled for a future date. SKIPPED' -f $FrontMatter['title']
+            if ($FrontMatter['date'] -gt $CurrentDate) {
+                '{0}: Article is scheduled for a future date. SKIPPED' -f $FrontMatter['title']
+            } else {
+                '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date. SKIPPED' -f $FrontMatter['title']
+            }
         }
     } else {
         '{0}: Article does not contain a date value. SKIPPED' -f $FrontMatter['title']
