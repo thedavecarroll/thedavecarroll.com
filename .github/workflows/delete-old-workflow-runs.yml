@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Delete Workflow Runs for Publish Draft Workflow
         if: ${{ inputs.purge_workflow == 'publish-drafts.yml' }}
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@v2.0.3
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
@@ -33,7 +33,7 @@ jobs:
           # dry_run: false
       - name: Delete Workflow Runs for Self
         if: ${{ inputs.purge_workflow == 'delete-old-workflow-runs.yml' }}
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@v2.0.3
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
