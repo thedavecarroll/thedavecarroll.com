@@ -69,6 +69,11 @@ jobs:
         '::endgroup::'
         ./script/Rename-DraftArticle.ps1 @Parameters
 
+    - name: Check Environment Variables
+      id: check_env_vars
+      run: |
+        echo "articles_renamed: ${{ env.articles_renamed }}"
+        echo "files_to_commit: ${{ env.files_to_commit }}"
     - name: Check for New Articles to Publish
       id: check_new_article
       run: |
