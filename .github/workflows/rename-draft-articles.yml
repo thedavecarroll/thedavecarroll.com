@@ -92,8 +92,8 @@ jobs:
     - name: Configure Git
       if: ${{ steps.check_new_article.outputs.publish_articles }} == true
       run: |
-        git config user.name Dave Carroll
-        git config user.email 112159751+thedavecarroll-bot@users.noreply.github.com
+        git config user.name $env:GIT_USER_NAME
+        git config user.email $env:GIT_USER_EMAIL
 
     - name: Commit New Articles to Feature Branch
       if: ${{ steps.check_new_article.outputs.publish_articles }} == true
