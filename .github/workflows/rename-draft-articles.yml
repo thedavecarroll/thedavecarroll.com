@@ -67,7 +67,7 @@ jobs:
         $Parameters
         ''
         '::endgroup::'
-        .github/scripts/Rename-DraftArticle.ps1 @Parameters
+        .github/scripts/RenameDraftArticles.ps1 @Parameters
 
     - name: Check for New Articles to Publish
       id: check_new_article
