@@ -100,8 +100,14 @@ jobs:
           $RenamedArticles = $env:DRAFTS_COMMIT_RENAMED_FILES.Split(',')
           $OriginalArticles = $env:DRAFTS_COMMIT_REMOVED_FILES.Split(',')
 
-          $RenamedArticles  | Foreach-Object { git add $_ }
-          $OriginalArticles | Foreach-Object { git rm $_ }
+          $RenamedArticles  | Foreach-Object {
+            $PostPath = Join-Path -Path '${{ inputs.posts_path }}' -ChildPath $_
+            git add $PostPath
+          }
+          $OriginalArticles | Foreach-Object {
+            $DraftPath = Join-Path -Path '${{ inputs.drafts_path }}' -ChildPath $_
+            git rm $DraftPath
+          }
 
           'The following files have been staged.'
           git diff --staged --name-only
