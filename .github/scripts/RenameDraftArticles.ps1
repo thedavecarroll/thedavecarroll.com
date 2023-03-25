@@ -9,8 +9,8 @@ param(
 
 function OutputAction {
     if ($ShouldPublish) {
-        $AddFileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
-        $RemoveFileList = ($RemoveFilesFromCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
+        $AddFileList = $AddFilesToCommit -join ','
+        $RemoveFileList = $RemoveFilesFromCommit -join ','
         'DRAFTS_ARTICLES_RENAMED=true' >> $env:GITHUB_ENV
         'DRAFTS_COMMIT_RENAMED_FILES={0}' -f $AddFileList >> $env:GITHUB_ENV
         'DRAFTS_COMMIT_REMOVED_FILES={0}' -f $RemoveFileList >> $env:GITHUB_ENV
