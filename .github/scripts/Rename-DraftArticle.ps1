@@ -10,7 +10,7 @@ param(
 function OutputAction {
     if ($ShouldPublish) {
         $AddFileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
-        $RemoveFileList = ($RenameFileList | Foreach-Object { "'{0}'" -f $_.FullName }) -join ','
+        $RemoveFileList = ($RemoveFilesFromCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
         'DRAFTS_ARTICLES_RENAMED=true' >> $env:GITHUB_ENV
         'DRAFTS_COMMIT_RENAMED_FILES={0}' -f $AddFileList >> $env:GITHUB_ENV
         'DRAFTS_COMMIT_REMOVED_FILES={0}' -f $RemoveFileList >> $env:GITHUB_ENV
@@ -22,12 +22,13 @@ function OutputAction {
 }
 
 #region Set Variables
-$BasePath = Split-Path -Path $PSScriptRoot -Parent
+$BasePath = ($PSScriptRoot.Split([System.IO.Path]::DirectorySeparatorChar) | Select-Object -SkipLast 2) -join [System.IO.Path]::DirectorySeparatorChar
 $ResolvedDraftsPath = Join-Path -Path $BasePath -ChildPath $DraftsPath -AdditionalChildPath '*'
 $ResolvedPostsPath = Join-Path -Path $BasePath -ChildPath $PostsPath
 $ResolvedConfigPath = Join-Path -Path $BasePath -ChildPath $ConfigPath
-$RenameFileList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
+$RenameArticleList = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
 $AddFilesToCommit = [System.Collections.Generic.List[String]]::new()
+$RemoveFilesFromCommit = [System.Collections.Generic.List[String]]::new()
 $DateRegex = '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])'
 $ShouldPublish = $false
 #endregion
@@ -87,10 +88,10 @@ foreach ($Article in $DraftArticles) {
         $ArticleDate = [datetime]::Parse($FrontMatter['date']).ToShortDateString()
         '{0}: DATE : {1}' -f $FrontMatter['title'],$ArticleDate
         if ($ArticleDate -eq $CurrentDate.ToShortDateString()) {
-            $RenameFileList.Add($Article)
+            $RenameArticleList.Add($Article)
             '{0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            if ($ArticleDate -gt $CurrentDate) {
+            if ($ArticleDate.Ticks -gt [datetime]::Now.Ticks) {
                 '{0}: Article is scheduled for a future date. SKIPPED' -f $FrontMatter['title']
             } else {
                 '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date. SKIPPED' -f $FrontMatter['title']
@@ -105,7 +106,7 @@ foreach ($Article in $DraftArticles) {
 
 #region Handling Multiple Draft Articles with Current Date
 '::group::Handling Multiple Draft Articles with Current Date'
-switch ($RenameFileList.Count) {
+switch ($RenameArticleList.Count) {
     0 {
         'No articles matched the criteria to be renamed and published.'
         OutputAction
@@ -116,12 +117,12 @@ switch ($RenameFileList.Count) {
     }
     default {
         '::warning::More than one draft article found with front matter date value of {0}.' -f $FormattedDate
-        $RenameFileList = $RenameFileList | Sort-Object -Property LastWriteTimeUtc
+        $RenameArticleList = $RenameArticleList | Sort-Object -Property LastWriteTimeUtc
         if ($AllowMultiplePostsPerDay.IsPresent) {
             '::warning::Multiple draft articles will be published per day chronologically.'
         } else {
             '::warning::Multiple draft article with today''s date and ''AllowMultiplePostsPerDay'' is not enabled. The last edited file will be published.'
-            $RenameFileList = $RenameFileList | Select-Object -Last 1
+            $RenameArticleList = $RenameArticleList | Select-Object -Last 1
         }
     }
 }
@@ -135,7 +136,7 @@ if (-Not (Test-Path -Path $ResolvedPostsPath)) {
     exit 1
 }
 '::group::Renaming Draft Articles with Valid Date'
-foreach ($Article in $RenameFileList) {
+foreach ($Article in $RenameArticleList) {
     $NewFileName = '{0}-{1}' -f $FormattedDate,$Article.Name
     if ($Article.BaseName -match $DateRegex) {
         '::warning::Article filename {0} appears to start with a date format, YYYY-MM-dd.' -f $Article.Name
@@ -151,7 +152,7 @@ foreach ($Article in $RenameFileList) {
     try {
         Move-Item -Path $Article.FullName -Destination $NewFullPath
         $AddFilesToCommit.Add($NewFileName)
-
+        $RemoveFilesFromCommit.Add($Article.Name)
         $ShouldPublish = $true
     }
     catch {
