@@ -9,12 +9,15 @@ param(
 
 function OutputAction {
     if ($ShouldPublish) {
-        $FileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
+        $AddFileList = ($AddFilesToCommit | Foreach-Object { "'{0}'" -f $_ }) -join ','
+        $RemoveFileList = ($RenameFileList | Foreach-Object { "'{0}'" -f $_.FullName }) -join ','
         'DRAFTS_ARTICLES_RENAMED=true' >> $env:GITHUB_ENV
-        'DRAFTS_FILES_TO_COMMIT={0}' -f $FileList >> $env:GITHUB_ENV
+        'DRAFTS_COMMIT_RENAMED_FILES={0}' -f $AddFileList >> $env:GITHUB_ENV
+        'DRAFTS_COMMIT_REMOVED_FILES={0}' -f $RemoveFileList >> $env:GITHUB_ENV
     } else {
         'DRAFTS_ARTICLES_RENAMED=false' >> $env:GITHUB_ENV
-        'DRAFTS_FILES_TO_COMMIT=false' >> $env:GITHUB_ENV
+        'DRAFTS_COMMIT_RENAMED_FILES=false' >> $env:GITHUB_ENV
+        'DRAFTS_COMMIT_REMOVED_FILES=false' >> $env:GITHUB_ENV
     }
 }
 
@@ -148,6 +151,7 @@ foreach ($Article in $RenameFileList) {
     try {
         Move-Item -Path $Article.FullName -Destination $NewFullPath
         $AddFilesToCommit.Add($NewFileName)
+
         $ShouldPublish = $true
     }
     catch {
