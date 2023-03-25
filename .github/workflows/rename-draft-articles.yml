@@ -88,36 +88,46 @@ jobs:
         git_user_signingkey: true
         git_commit_gpgsign: true
 
-    - name: Commit New Articles to Feature Branch
-      run: |
-        if ([System.Convert]::ToBoolean($env:PUBLISH_ARTICLES)) {
-          ''
-          '::group::Checkout New Branch'
-          git checkout -b draft-articles
-          '::endgroup::'
+    - name: Create Pull Request
+      id: create_pull_request
+      uses: peter-evans/create-pull-request@v4.2.4
+      with:
+        commit-message: publish draft article
+        branch: draft-articles
+        title: Create Pull Request
+        body: Create pull request to publish renamed article
+        delete-branch: true
 
-          '::group::Stage Renamed Articles'
-          $RenamedArticles = $env:DRAFTS_COMMIT_RENAMED_FILES.Split(',')
-          $OriginalArticles = $env:DRAFTS_COMMIT_REMOVED_FILES.Split(',')
+    # - name: Commit New Articles to Feature Branch
+    #   run: |
+    #     if ([System.Convert]::ToBoolean($env:PUBLISH_ARTICLES)) {
+    #       ''
+    #       '::group::Checkout New Branch'
+    #       git checkout -b draft-articles
+    #       '::endgroup::'
 
-          $RenamedArticles  | Foreach-Object {
-            $PostPath = Join-Path -Path '${{ inputs.posts_path }}' -ChildPath $_
-            git add $PostPath
-          }
-          $OriginalArticles | Foreach-Object {
-            $DraftPath = Join-Path -Path '${{ inputs.drafts_path }}' -ChildPath $_
-            git rm $DraftPath
-          }
+    #       '::group::Stage Renamed Articles'
+    #       $RenamedArticles = $env:DRAFTS_COMMIT_RENAMED_FILES.Split(',')
+    #       $OriginalArticles = $env:DRAFTS_COMMIT_REMOVED_FILES.Split(',')
 
-          'The following files have been staged.'
-          git diff --staged --name-only
-          '::endgroup::'
+    #       $RenamedArticles  | Foreach-Object {
+    #         $PostPath = Join-Path -Path '${{ inputs.posts_path }}' -ChildPath $_
+    #         git add $PostPath
+    #       }
+    #       $OriginalArticles | Foreach-Object {
+    #         $DraftPath = Join-Path -Path '${{ inputs.drafts_path }}' -ChildPath $_
+    #         git rm $DraftPath
+    #       }
 
-          '::group::Commit Staged Articles'
-          git commit -S -m 'Testing commit'
-          '::endgroup::'
+    #       'The following files have been staged.'
+    #       git diff --staged --name-only
+    #       '::endgroup::'
 
-          '::group::Push to Repo'
-          # git push --set-upstream origin draft-articles
-          '::endgroup::'
-        }
+    #       '::group::Commit Staged Articles'
+    #       git commit -S -m 'Testing commit'
+    #       '::endgroup::'
+
+    #       '::group::Push to Repo'
+    #       # git push --set-upstream origin draft-articles
+    #       '::endgroup::'
+    #     }
