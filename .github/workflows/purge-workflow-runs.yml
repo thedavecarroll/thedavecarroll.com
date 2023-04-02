@@ -17,8 +17,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 14
           keep_minimum_runs: 10
-          delete_workflow_pattern: Rename Draft Articles
-          delete_workflow_by_state_pattern: All
+          delete_workflow_pattern: rename
 
       - name: Purge Workflow Runs for Publish Jekyll Site to GH Pages
         uses: Mattraks/delete-workflow-runs@v2.0.3
@@ -27,8 +26,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 60
           keep_minimum_runs: 15
-          delete_workflow_pattern: Publish Dave's Technical Journal
-          delete_workflow_by_state_pattern: All
+          delete_workflow_pattern: publish
 
       - name: Purge Workflow Runs for Self
         uses: Mattraks/delete-workflow-runs@v2.0.3
@@ -37,5 +35,4 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 1
           keep_minimum_runs: 5
-          delete_workflow_pattern: Purge Workflow Runs
-          delete_workflow_by_state_pattern: All
+          delete_workflow_pattern: purge
