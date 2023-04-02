@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Purge Workflow Runs for Rename Draft Articles Workflow
-        uses: Mattraks/delete-workflow-runs@v2.0.3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
@@ -20,7 +20,7 @@ jobs:
           delete_workflow_pattern: draft
 
       - name: Purge Workflow Runs for Publish Jekyll Site to GH Pages
-        uses: Mattraks/delete-workflow-runs@v2.0.3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
@@ -29,7 +29,7 @@ jobs:
           delete_workflow_pattern: publish
 
       - name: Purge Workflow Runs for Skipped Workflows
-        uses: Mattraks/delete-workflow-runs@v2.0.3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
@@ -37,8 +37,17 @@ jobs:
           keep_minimum_runs: 5
           delete_run_by_conclusion_pattern: skipped
 
+      - name: Purge Workflow Runs for Failed Workflows
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 5
+          delete_run_by_conclusion_pattern: failure
+
       - name: Purge Workflow Runs for Self
-        uses: Mattraks/delete-workflow-runs@v2.0.3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
