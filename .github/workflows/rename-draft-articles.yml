@@ -1,35 +1,10 @@
 name: Rename Draft Articles
 
 on:
-  # schedule:
-    # every 4 hours on the half hour
-    # - cron: '30 */4 * * *'
-    # every hour at 5 minutes past the hour
-    # - cron: '05 * * * *'
-  # on demand
+  schedule:
+    - cron: '0 9 * * *'
+
   workflow_dispatch:
-    inputs:
-      drafts_path:
-        description: 'Drafts folder. This folder will be scanned for possible draft articles.'
-        required: true
-        default: '_drafts'
-        type: string
-      posts_path:
-        description: 'Posts folder. The renamed article will be stored here.'
-        required: true
-        default: '_posts'
-        type: string
-      config_path:
-        description: 'Jekyll config.yml path. This is used to set the TimeZone if file exists and contains a yaml key timezone.'
-        required: true
-        default: '_config.yml'
-        type: string
-      allow_multiple_posts:
-        description: 'Allow multiple posts per day. If true, draft articles will be published chronologically, otherwise the last edited file will be published.'
-        type: boolean
-      preserve_date_filename:
-        description: 'Preserve an existing filename with date format. If true, the filename will be prepended with YYYY-MM-dd, otherwise the old date will be replaced before YYYY-MM-dd is prepended to the filename.'
-        type: boolean
 
 defaults:
   run:
@@ -51,23 +26,8 @@ jobs:
     - name: Rename Draft Articles
       id: rename_drafts
       run: |
-        '::group::Parameters for Script'
         Set-Location -Path $env:GITHUB_WORKSPACE
-        $Parameters = @{
-          DraftsPath = '${{ inputs.drafts_path }}'
-          PostsPath =  '${{ inputs.posts_path }}'
-          ConfigPath =  '${{ inputs.config_path }}'
-        }
-        if ([System.Convert]::ToBoolean('${{ inputs.allow_multiple_posts }}')) {
-          $Parameters.AllowMultiplePostsPerDay = $true
-        }
-        if ([System.Convert]::ToBoolean('${{ inputs.preserve_date_filename }}')) {
-          $Parameters.PreserveDateFileName = $true
-        }
-        $Parameters
-        ''
-        '::endgroup::'
-        .github/scripts/RenameDraftArticles.ps1 @Parameters
+        .github/scripts/RenameDraftArticles.ps1
 
     - name: Check for New Articles to Publish
       run: |
