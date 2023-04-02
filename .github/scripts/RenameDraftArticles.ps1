@@ -91,7 +91,7 @@ foreach ($Article in $DraftArticles) {
             $RenameArticleList.Add($Article)
             '{0}: Including article to rename.' -f $FrontMatter['title']
         } else {
-            if ($ArticleDate.Ticks -gt [datetime]::Now.Ticks) {
+            if ($ArticleDate.Ticks -lt [datetime]::Now.Ticks) {
                 '{0}: Article is scheduled for a future date. SKIPPED' -f $FrontMatter['title']
             } else {
                 '::warning:: {0}: Article ''date'' is set in the past. Please update the ''date'' value to a future date. SKIPPED' -f $FrontMatter['title']
