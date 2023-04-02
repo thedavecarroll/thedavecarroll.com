@@ -1,0 +1,41 @@
+name: Purge Workflow Runs
+
+on:
+  schedule:
+    - cron: '0 10 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  purge_workflow_runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge Workflow Runs for Rename Draft Articles Workflow
+        uses: Mattraks/delete-workflow-runs@v2.0.3
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 14
+          keep_minimum_runs: 10
+          delete_workflow_pattern: rename-draft-articles.yml
+          delete_workflow_by_state_pattern: All
+
+      - name: Purge Workflow Runs for Publish Jekyll Site to GH Pages
+        uses: Mattraks/delete-workflow-runs@v2.0.3
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 60
+          keep_minimum_runs: 15
+          delete_workflow_pattern: publish-jekyll-site-to-github-pages.yml
+          delete_workflow_by_state_pattern: All
+
+      - name: Purge Workflow Runs for Self
+        uses: Mattraks/delete-workflow-runs@v2.0.3
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 5
+          delete_workflow_pattern: delete-old-workflow-runs.yml
+          delete_workflow_by_state_pattern: All

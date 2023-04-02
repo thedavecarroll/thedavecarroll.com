@@ -1,12 +1,25 @@
 name: Publish Dave's Technical Journal
 
 on:
-  # Runs on push commits
+  # run when a commit is pushed to main, typically when a post is published
   push:
     branches:
       - main
+    paths:
+      - '_posts/**'
+      - 'assets/images/**'
 
-  # Allows you to run this workflow manually from the Actions tab
+  # run when a pull request is merged, typically when a post is published or a draft is renamed
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - '_posts/**'
+      - 'assets/images/**'
+
+  # run on demand
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -22,7 +35,11 @@ concurrency:
 
 jobs:
   build:
-    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, 'publish')
+    if: |
+      (github.event.push && contains(github.event.head_commit.message, 'publish')) ||
+      github.event.pull_request.merged == true ||
+      github.event_name == 'workflow_dispatch'
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
