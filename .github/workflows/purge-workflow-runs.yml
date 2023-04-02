@@ -17,7 +17,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 14
           keep_minimum_runs: 10
-          delete_workflow_pattern: rename-draft-articles.yml
+          delete_workflow_pattern: Rename Draft Articles
           delete_workflow_by_state_pattern: All
 
       - name: Purge Workflow Runs for Publish Jekyll Site to GH Pages
@@ -27,7 +27,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 60
           keep_minimum_runs: 15
-          delete_workflow_pattern: publish-jekyll-site-to-github-pages.yml
+          delete_workflow_pattern: Publish Dave's Technical Journal
           delete_workflow_by_state_pattern: All
 
       - name: Purge Workflow Runs for Self
@@ -37,5 +37,5 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 1
           keep_minimum_runs: 5
-          delete_workflow_pattern: delete-old-workflow-runs.yml
+          delete_workflow_pattern: Purge Workflow Runs
           delete_workflow_by_state_pattern: All
