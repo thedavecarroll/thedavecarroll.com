@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Validate output
         id: validate_output
-        run: echo ${{ jobs.check_draft_articles.outputs.publish-required }}
+        run: echo ${{ job.check_draft_articles.outputs.publish-required }}
 
   publish_draft_articles:
     runs-on: ubuntu-latest
