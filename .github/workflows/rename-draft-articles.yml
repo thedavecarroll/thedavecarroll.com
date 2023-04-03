@@ -13,7 +13,8 @@ defaults:
 jobs:
   check_draft_articles:
     runs-on: ubuntu-latest
-
+    outputs:
+      publish-required: ${{ steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -39,14 +40,13 @@ jobs:
           'No articles matched the criteria to be renamed and published.'
           'PUBLISH_ARTICLES=false' >> "$GITHUB_OUTPUT"
         }
-    outputs:
-      publish-required: ${{ steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES }}
+    - name: Validate output
+      id: validate_output
+      run: echo ${{ steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES }}
 
   publish_draft_articles:
     runs-on: ubuntu-latest
-    needs: check_draft_articles
-
-    if: needs.check_draft_articles.outputs.publish-required == 'true'
+    if: needs.check_draft_articles.outputs.publish-required
     steps:
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v5.2.0
