@@ -2,7 +2,7 @@ name: Rename Draft Articles
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 14 * * *'
 
   workflow_dispatch:
 
