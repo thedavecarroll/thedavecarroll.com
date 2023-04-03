@@ -14,7 +14,7 @@ jobs:
   check_draft_articles:
     runs-on: ubuntu-latest
     outputs:
-      publish-required: ${{ steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES }}
+      publish_required: ${{ steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -47,10 +47,11 @@ jobs:
     steps:
       - name: Validate output
         id: validate_output
-        run: echo ${{ job.check_draft_articles.outputs.publish-required }}
+        run: echo ${{ needs.check_draft_articles.outputs.publish_required }}
 
   publish_draft_articles:
     runs-on: ubuntu-latest
+    needs: check_draft_articles
     if: needs.check_draft_articles.outputs.publish-required
     steps:
     - name: Import GPG
