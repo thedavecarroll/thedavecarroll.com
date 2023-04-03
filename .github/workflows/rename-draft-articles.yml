@@ -35,10 +35,10 @@ jobs:
       run: |
         if ([System.Convert]::ToBoolean($env:DRAFTS_ARTICLES_RENAMED)) {
           'Found and renamed at least one draft article requiring the site to be published.'
-          'PUBLISH_ARTICLES=true' >> "$GITHUB_OUTPUT"
+          'PUBLISH_ARTICLES=true' >> $env:GITHUB_OUTPUT
         } else {
           'No articles matched the criteria to be renamed and published.'
-          'PUBLISH_ARTICLES=false' >> "$GITHUB_OUTPUT"
+          'PUBLISH_ARTICLES=false' >> $env:GITHUB_OUTPUT
         }
 
   validate_job_output:
