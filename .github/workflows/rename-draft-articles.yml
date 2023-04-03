@@ -46,6 +46,9 @@ jobs:
     needs: check_draft_articles
     if: needs.check_draft_articles.outputs.publish_required
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v5.2.0
       with:
