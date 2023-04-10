@@ -24,7 +24,7 @@ category:
 This article is the last in a series of three which is a republishing of my chapter on soft skills from the [PowerShell Conference Book Volume 2][PSConfBook2]{:target="_blank"}.
 
 If you haven't read the article on [communication]({{ site.url }}{% link _posts/2023-03-25-soft-skills-part-1.md %}){:target="_blank"}
-or article on [collaboration]({{ site.url }}{% link _posts/2023-03-25-soft-skills-part-2.md %}){:target="_blank"},
+or article on [collaboration]({{ site.url }}{% link _posts/2023-04-03-soft-skills-part-2.md %}){:target="_blank"},
 that's okay, as each article has it's own topics.
 I would suggest to read them though, as it will help round out your general knowledge of soft skills.
 
