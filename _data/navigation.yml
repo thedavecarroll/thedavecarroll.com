@@ -15,3 +15,6 @@ main:
   - title: "Resources"
     url: /resources/
     description: "Resources"
+  - title: "Links"
+    url: /links/
+    description: "Links"
