@@ -1,0 +1,132 @@
+{{ define "main" }}
+<article class="page single">
+   <header class="header">
+       <h1 class="single-title">{{ .Title }}</h1>
+   </header>
+
+   <div class="post-content">
+       {{ .Content }}
+       
+       <!-- Active Modules -->
+       <div class="modules-grid">
+           {{ range sort (where .Site.Data.modules.modules "status" "ne" "inactive") "order" "asc" }}
+           {{ $module := . }}
+           <div class="module-card">
+               <div class="module-header">
+                    <h2 class="module-title">{{ .name }}</h2>
+                    {{ if eq .status "active" }}
+                        <span class="status-badge status-active">Active</span>
+                    {{ end }}
+                </div>
+               
+               <p class="module-description">{{ .description }}</p>
+
+               <div class="module-meta">
+                   {{ if .psgallery }}
+                   <img src="https://img.shields.io/powershellgallery/v/{{ .name }}.svg?style=flat-square" 
+                        alt="PowerShell Gallery version for {{ .name }}"
+                        aria-label="PowerShell Gallery version badge">
+                   {{ end }}
+               </div>
+
+               <div class="module-links">
+                   {{ if .psgallery }}
+                   <a href="https://www.powershellgallery.com/packages/{{ .name }}/" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View {{ .name }} on PowerShell Gallery">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><path d="M7 11l5 5 5-5"></path><path d="M12 4v12"></path></svg>
+                       PSGallery
+                   </a>
+                   {{ end }}
+                   <a href="https://github.com/{{ site.Params.githubUsername }}/{{ .name }}" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View {{ .name }} on GitHub">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                       GitHub
+                   </a>
+                   {{ with .online_help }}
+                   <a href="{{ . }}" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View documentation for {{ $module.name }}">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                       Docs
+                   </a>
+                   {{ end }}
+               </div>
+           </div>
+           {{ end }}
+       </div>
+
+       <!-- Inactive Modules -->
+       {{ if where .Site.Data.modules.modules "status" "eq" "inactive" }}
+       <h2 class="inactive-heading">Inactive Modules</h2>
+       <div class="modules-grid">
+           {{ range sort (where .Site.Data.modules.modules "status" "eq" "inactive") "order" "asc" }}
+           {{ $module := . }}
+           <div class="module-card inactive">
+               <div class="module-header">
+                   <h2 class="module-title">{{ .name }}</h2>
+                   <span class="status-badge status-inactive">Inactive</span>
+               </div>
+               
+               <p class="module-description">{{ .description }}</p>
+
+               <div class="module-meta">
+                   {{ if .psgallery }}
+                   <img src="https://img.shields.io/powershellgallery/v/{{ .name }}.svg?style=flat-square" 
+                        alt="PowerShell Gallery version for {{ .name }}"
+                        aria-label="PowerShell Gallery version badge">
+                   {{ end }}
+               </div>
+
+               <div class="module-links">
+                   {{ if .psgallery }}
+                   <a href="https://www.powershellgallery.com/packages/{{ .name }}/" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View {{ .name }} on PowerShell Gallery">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><path d="M7 11l5 5 5-5"></path><path d="M12 4v12"></path></svg>
+                       PSGallery
+                   </a>
+                   {{ end }}
+                   <a href="https://github.com/{{ site.Params.githubUsername }}/{{ .name }}" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View {{ .name }} on GitHub">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                       GitHub
+                   </a>
+                   {{ with .online_help }}
+                   <a href="{{ . }}" 
+                      class="button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="View documentation for {{ $module.name }}">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                       Docs
+                   </a>
+                   {{ end }}
+               </div>
+           </div>
+           {{ end }}
+       </div>
+       {{ end }}
+   </div>
+   
+   {{ partial "footer/footer" . }}
+</article>
+
+<style>
+.page.single .single-title {
+    color: var(--card-text-color-secondary);
+}
+</style>
+{{ end }}

@@ -1,0 +1,31 @@
+modules:
+  - name: PoShEvents
+    status: active
+    order: 1
+    description: PowerShell module to query Windows Event Logs.
+    psgallery: true
+    online_help: https://poshevents.anovelidea.org/en/latest/
+  - name: PoShGroupPolicy
+    status: active
+    order: 2
+    description: PowerShell module to assist with Group Policy.
+    psgallery: true
+    online_help: https://poshgrouppolicy.anovelidea.org/en/latest/
+  - name: PSTemperature
+    status: active
+    order: 3
+    description: Binary module written in C# with PowerShell 7 experimental feature. Converts temperature between Celsius, Fahrenheit, Kelvin, and Rankine.
+    psgallery: false
+    online_help: null
+  - name: BluebirdPS
+    order: 1
+    status: inactive
+    description: A Twitter Automation Client for PowerShell 7. Tweet, retweet, send direct messages, manage lists, and more.
+    psgallery: false
+    online_help: null
+  - name: PoShDynDnsApi
+    status: inactive
+    order: 2
+    description: PowerShell module used to interact with Dyn Managed DNS REST API.
+    psgallery: false
+    online_help: null

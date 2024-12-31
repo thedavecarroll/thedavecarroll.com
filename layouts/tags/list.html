@@ -1,0 +1,138 @@
+{{ define "main" }}
+<div class="tag-cloud-container" id="top">
+    <h1 class="page-title">{{ .Title }}</h1>
+    
+    {{ with .Description }}
+    <div class="page-description">{{ . }}</div>
+    {{ end }}
+
+    <!-- Tag Cloud Section -->
+    <div class="tag-cloud-header">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+            {{ $dict := $.Site.Data.dictionary.terms }}
+            {{ $term := .Page.Title | lower }}
+            {{ $result := $term }}
+            {{ range $key, $value := $dict }}
+                {{ if in $term $key }}
+                    {{ $result = replace $result $key $value }}
+                {{ end }}
+            {{ end }}
+
+            {{ $size := "extra-large" }}
+            {{ if lt .Count 5 }}
+                {{ $size = "small" }}
+            {{ else if lt .Count 10 }}
+                {{ $size = "medium-small" }}
+            {{ else if lt .Count 20 }}
+                {{ $size = "medium" }}
+            {{ else if lt .Count 50 }}
+                {{ $size = "medium-large" }}
+            {{ else if lt .Count 100 }}
+                {{ $size = "large" }}
+            {{ end }}
+            <a href="#{{ .Page.Title | urlize }}" 
+                class="tag-link font_size_{{ $size }}">
+                {{ $result | title }}
+            </a>
+        {{ end }}
+    </div>
+
+    <!-- Alphabetical List Section -->
+    <div class="tag-list">
+        {{ range .Site.Taxonomies.tags.Alphabetical }}
+            {{ $dict := $.Site.Data.dictionary.terms }}
+            {{ $term := .Page.Title | lower }}
+            {{ $result := $term }}
+            {{ range $key, $value := $dict }}
+                {{ if in $term $key }}
+                    {{ $result = replace $result $key $value }}
+                {{ end }}
+            {{ end }}
+            <div class="tag-section" id="{{ .Page.Title | urlize }}">
+                <h2 class="tag-title">{{ $result | title }}</h2>
+                <span class="tag-count">{{ .Count }} articles</span>
+                <div class="tag-posts">
+                    {{ range .Pages }}
+                    <a href="{{ .RelPermalink }}" class="tag-post">
+                        {{ .Title }}
+                        <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+                <a href="#top" class="back-to-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 15-6-6-6 6"/>
+                    </svg>
+                    Back to top
+                </a>
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+{{/*  {{ define "main" }}
+<div class="tag-cloud-container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    
+    {{ with .Description }}
+    <div class="page-description">{{ . }}</div>
+    {{ end }}
+
+    <!-- Tag Cloud Section -->
+    <div class="tag-cloud-header">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+            {{ $dict := $.Site.Data.dictionary.terms }}
+            {{ $term := .Page.Title | lower }}
+            {{ $result := $term }}
+            {{ range $key, $value := $dict }}
+                {{ if in $term $key }}
+                    {{ $result = replace $result $key $value }}
+                {{ end }}
+            {{ end }}
+
+            {{ $size := "extra-large" }}
+                {{ if lt .Count 5 }}
+                    {{ $size = "small" }}
+                {{ else if lt .Count 10 }}
+                    {{ $size = "medium-small" }}
+                {{ else if lt .Count 20 }}
+                    {{ $size = "medium" }}
+                {{ else if lt .Count 50 }}
+                    {{ $size = "medium-large" }}
+                {{ else if lt .Count 100 }}
+                    {{ $size = "large" }}
+            {{ end }}
+            <a href="#{{ .Page.Title | urlize }}" 
+                class="tag-link font_size_{{ $size }}">
+                {{ $result | title }}
+            </a>
+        {{ end }}
+    </div>
+
+    <!-- Alphabetical List Section -->
+    <div class="tag-list">
+        {{ range .Site.Taxonomies.tags.Alphabetical }}
+            {{ $dict := $.Site.Data.dictionary.terms }}
+            {{ $term := .Page.Title | lower }}
+            {{ $result := $term }}
+            {{ range $key, $value := $dict }}
+                {{ if in $term $key }}
+                    {{ $result = replace $result $key $value }}
+                {{ end }}
+            {{ end }}
+            <div class="tag-section" id="{{ .Page.Title | urlize }}">
+                <h2 class="tag-title">{{ $result | title }}</h2>
+                <span class="tag-count">{{ .Count }} articles</span>
+                <div class="tag-posts">
+                    {{ range .Pages }}
+                    <a href="{{ .RelPermalink }}" class="tag-post">
+                        {{ .Title }}
+                        <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}  */}}

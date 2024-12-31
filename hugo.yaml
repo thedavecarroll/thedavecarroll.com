@@ -1,0 +1,195 @@
+baseurl: https://hugotest.thedavecarroll.com/
+languageCode: en-us
+theme: hugo-theme-stack
+title: Dave's Technical Journal
+copyright: Dave Carroll
+
+DefaultContentLanguage: en
+hasCJKLanguage: false
+
+services:
+    googleAnalytics:
+        id: G-PM1EP6J9FE
+
+pagination:
+    pagerSize: 10
+
+params:
+    githubUsername: thedavecarroll
+
+    mainSections:
+        - powershell
+        - blog
+        - retro
+        - personal
+    featuredImageField: image
+    rssFullContent: true
+    favicon: /icons/favicon.ico
+
+    footer:
+        since: 2018
+        customText: |
+            This site uses <a href="https://policies.google.com/technologies/partner-sites">Google Analytics</a> with privacy-focused settings:
+            <span style="display:inline-flex;gap:1rem;margin:0.5rem 0;">
+                • IP addresses are anonymized
+                • Do Not Track signals are honored
+                • Cookies are used to track sessions
+            </span>
+            <p xmlns:cc="http://creativecommons.org/ns#">
+                This work is licensed under 
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">
+                    CC BY-NC-SA 4.0
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC">
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY">
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC">
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                        src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA">
+                </a>
+            </p>
+
+    dateFormat:
+        published: January 02, 2006
+        lastUpdated: January 03, 2006
+
+    sidebar:
+        #emoji: 🍥
+        compact: false
+        subtitle: Articles on PowerShell, general IT, and retrocomputing
+        avatar:
+            enabled: true
+            local: true
+            src: images/thedavecarroll-avatar-transparent.png
+
+    article:
+        math: false
+        toc: true
+        readingTime: true
+        license:
+            enabled: false
+            default: Licensed under CC BY-NC-SA 4.0
+
+    comments:
+        enabled: enabled
+        provider: giscus
+
+        giscus:
+            repo: thedavecarroll/thedavecarroll.com
+            repoID: R_kgDOGcQm8w
+            category: Site Comments
+            categoryID: DIC_kwDOGcQm884CRFma
+            mapping: pathname
+            # lightTheme:
+            # darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+
+    widgets:
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 8
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+
+    # opengraph:
+    #     twitter:
+    #         # Your Twitter username
+    #         site:
+
+    #         # Available values: summary, summary_large_image
+    #         card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+    main: []
+
+    social:
+        - identifier: bluesky
+          name: Bluesky
+          url: https://bsky.app/profile/thedavecarroll.com
+          params:
+              icon: brand-bluesky
+
+        - identifier: github
+          name: GitHub
+          url: https://github.com/thedavecarroll/
+          params:
+              icon: brand-github
+
+        - identifier: linkedin
+          name: LinkedIn
+          url: https://www.linkedin.com/in/thedavecarroll/
+          params:
+              icon: brand-linkedin
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: true
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
+    highlight:
+        noClasses: false
+        codeFences: true
+        guessSyntax: true
+        lineNoStart: 1
+        lineNos: true
+        lineNumbersInTable: true
+        tabWidth: 4

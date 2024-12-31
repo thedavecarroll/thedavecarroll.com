@@ -1,0 +1,10 @@
+<!-- layouts/shortcodes/gist.html -->
+{{- $owner := .Get "owner" | default "thedavecarroll" -}}
+{{- $gistId := .Get "id" -}}
+{{- $file := .Get "file" -}}
+
+{{ if $file }}
+    <script src="https://gist.github.com/{{ $owner }}/{{ $gistId }}.js?file={{ $file }}"></script>
+{{ else }}
+    <script src="https://gist.github.com/{{ $owner }}/{{ $gistId }}.js"></script>
+{{ end }}

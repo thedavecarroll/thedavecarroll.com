@@ -1,5 +1,12 @@
-# Dave's Technical Journal
+# Testing Hugo
 
-[![Publish Dave's Technical Journal](https://github.com/thedavecarroll/thedavecarroll.com/actions/workflows/publish-jekyll-site-to-github-pages.yml/badge.svg?branch=main)](https://github.com/thedavecarroll/thedavecarroll.com/actions/workflows/publish-jekyll-site-to-github-pages.yml)
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-This repo contains the raw content and framework for my blog, [Dave's Technical Journal](https://thedavecarroll.com).
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg

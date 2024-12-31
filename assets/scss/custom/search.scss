@@ -1,0 +1,18 @@
+.search-container {
+    max-width: var(--main-width);
+    margin: 0 auto;
+}
+
+.search-header {
+    margin-bottom: 2rem;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.search-banner {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+}

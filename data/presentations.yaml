@@ -1,0 +1,40 @@
+- date: 2020-12-01
+  title: 'BluebirdPS: A Twitter Automation Client for PowerShell 7'
+  event: Southern California PowerShell User Group - December Remote Meeting
+  abstract: |
+    In this discussion, we will take a look at BluebirdPS, a new PowerShell module for Twitter.
+    We will examine some of the functions, including live tweeting, and then dive into use cases
+    and an overview of the module design.
+    If time permits, we will deep dive into the helper (private) functions that interact
+    with the Twitter API directly and provide output including tailored errors.
+  url: https://github.com/thedavecarroll/Presentations/tree/main/2020/SoCalPSUG-December
+
+- date: 2020-10-07
+  title: 'Automating Twitter: Using PowerShell to Call the Twitter API'
+  event: Research Triangle PowerShell User Group - October Presentation
+  abstract: |
+    Dave Carroll is a DevOps engineer who blogs regularly about how to use PowerShell to get your job done easier.
+    Over the last 20+ years, he has focused on automation with half of that time spent honing his PowerShell skills,
+    from the first command to his open source modules.
+    Dave has created a Twitter module for PowerShell that allows him to automate his tweets from his cmd prompt.
+    Join Dave for a look at how he figured out how to use the Twitter API, handle the authentication requirements
+    and deal with errors while tweeting. We'll wrap this all up with some live tweeting!
+  url: https://github.com/thedavecarroll/Presentations/blob/main/2020/RTPSUG-October
+  video: https://www.youtube.com/watch?v=ttQC6Zo4ovA
+
+- date: 2019-09-21
+  title: Crossing the Divide - A System Administrator's Path to DevOps
+  event: Research Triangle PowerShell User Group - PowerShell Saturday
+  abstract: |
+    Sysadmins and programmers have been divided for years, not just in job duties, but also organizationally, culturally,
+    and philosophically. We will examine one systems administrator's journey to see how they acquired some of the
+    prerequisite skill sets and changed their mindset on the path to DevOps.
+  url: https://github.com/thedavecarroll/Presentations/blob/main/2019/RTPSUG-PSSaturday
+  video: https://www.youtube.com/watch?v=1flNsscG5zU
+
+- date: null
+  title: null
+  event: null
+  abstract: null
+  url: null
+  video: null
