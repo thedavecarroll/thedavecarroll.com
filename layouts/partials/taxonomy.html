@@ -1,0 +1,12 @@
+{{ $dict := .Site.Data.dictionary.terms }}
+{{ $term := . }}
+{{ $lowered := $term | lower }}
+
+{{ $result := $lowered }}
+{{ range $key, $value := $dict }}
+    {{ if in $lowered $key }}
+        {{ $result = replace $result $key $value }}
+    {{ end }}
+{{ end }}
+
+{{ $result | title }}

@@ -1,0 +1,38 @@
+blockquote {
+    background-color: #{rgba($dark-secondary-bg, 0.8)}; // Bluer, semi-transparent background
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-l1);
+
+    p {
+        font-style: italic;
+        color: var(--color-text);
+        margin: 0;
+        font-size: var(--article-font-size); // Use theme's article font size
+        line-height: var(--article-line-height); // Use theme's line height
+
+        em {
+            font-weight: lighter;
+            color: var(--color-text);
+        }
+    }
+
+    .cite {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.9em;
+        color: var(--color-text-secondary);
+        text-align: right;
+
+        a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
+    }
+}

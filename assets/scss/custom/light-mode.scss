@@ -1,0 +1,38 @@
+:root[data-scheme="light"] {
+    // Base theme colors
+    --body-background: #{$light-primary-bg};
+    --color-background: #{$light-primary-bg};
+    --color-background-soft: #{$light-secondary-bg};
+    
+    --color-primary: #{$light-primary-accent};
+    --color-secondary: #{$light-secondary-accent};
+    
+    // Text colors
+    --body-text-color: #{$light-primary-text};
+    --color-text: #{$light-primary-text};
+    --color-text-secondary: #{$light-secondary-text};
+    
+    // Card colors
+    --card-background: #{$light-secondary-bg};
+    --card-text-color-main: #{$light-primary-text};
+    --card-text-color-secondary: #{$light-secondary-text};
+    --card-border-color: #{$light-border};
+    
+    // Other elements
+    --accent-color: #{$light-primary-accent};
+    --accent-color-darker: #{$light-secondary-accent};
+    --error-color: #{$light-error};
+    --warning-color: #{$light-highlight};
+    
+    // Shadows
+    --shadow-l1: 0px 1px 4px #{rgba($light-shadow, 0.1)};
+    --shadow-l2: 0px 2px 8px #{rgba($light-shadow, 0.1)};
+
+    // Inline code colors
+    --inline-code-background: #{$light-secondary-bg};
+    --inline-code-color: #{$light-primary-accent};
+
+    // Update link colors
+    --accent-color: #{$light-primary-accent};        // Color for links
+    --accent-color-darker: #{$light-secondary-accent}; // Color for link hover
+}

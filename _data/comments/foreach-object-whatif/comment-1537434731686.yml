@@ -1,7 +1,0 @@
-_id: 419c87c0-bcb5-11e8-991b-3742b088b0b8
-message: "I also had no idea that `ForEach-Object` supported `-WhatIf` this way. I do have one scenario where this would be very handy. \r\n\r\nOne lesser known feature of `ForEach-Object` is that it has an alternate parameter set that takes just a string. If that maps to a property name on the object, you will get the value. If it maps to a method on the object, it will get executed. So, you can use `-WhatIf` in this way:\r\n\r\n    Get-Process slack | % Close -WhatIf\r\n\r\nI would never use this magic in a script, but I use it all the time when on the console. I can now see myself using `-WhatIf` like this quite often. \r\n\r\nThank you for pointing this out."
-name: Kevin Marquette
-email: d7d29e9573b5da44d9886df24fcc6142
-url: 'https://kevinmarquette.github.io'
-hidden: ''
-date: '2018-09-20T09:12:11.685Z'

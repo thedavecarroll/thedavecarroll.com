@@ -1,9 +1,0 @@
-_id: 665d6300-d0be-11e8-bff0-e3788f229b2b
-message: >-
-  I am curious why you added the New-Variable command after defining the module
-  variable. Seems like leaving that out would make no difference?
-name: Arnoud Jansveld
-email: 311f264ecda82f30cd203bf8f93d71e4
-url: ''
-hidden: ''
-date: '2018-10-15T21:08:02.026Z'

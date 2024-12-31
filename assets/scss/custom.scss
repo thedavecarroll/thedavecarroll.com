@@ -1,0 +1,19 @@
+// Import color palette first
+@import "custom/color-palette";
+
+// Import mode-specific settings
+@import "custom/dark-mode";
+@import "custom/light-mode";
+
+// Import components
+@import "custom/links";         // Links and buttons
+@import "custom/blockquote";    // blockquote styling
+@import "custom/influencer";    // Influencer styling
+@import "custom/module";        // Modules page styling
+@import "custom/notice";        // Notice shortcode styling
+@import "custom/updated";       // Updated shortcode styling
+@import "custom/tags";          // Tag cloud and tag list styling
+@import "custom/presentations"; // Presentation shortcode styling
+@import "custom/search";        // Search page styling
+
+@import "custom/homepage";

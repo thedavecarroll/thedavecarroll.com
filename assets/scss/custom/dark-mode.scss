@@ -1,0 +1,43 @@
+:root[data-scheme="dark"] {
+    // Base theme colors
+    --body-background: #{$dark-primary-bg};
+    --color-background: #{$dark-primary-bg};
+    --color-background-soft: #{$dark-secondary-bg};
+    
+    --color-primary: #{$dark-primary-accent};
+    --color-secondary: #{$dark-secondary-accent};
+    
+    // Text colors
+    --body-text-color: #{$dark-primary-text};
+    --color-text: #{$dark-primary-text};
+    --color-text-secondary: #{$dark-secondary-text};
+    
+    // Navigation colors
+    --nav-text-color: #{$dark-primary-accent};
+    --nav-text-hover: #{$dark-secondary-accent};
+    
+    // Card colors
+    --card-background: #{$dark-secondary-bg};
+    --card-text-color-main: #{$dark-primary-text};
+    --card-text-color-secondary: #{$dark-secondary-text};
+    --card-border-color: #{$dark-border};
+    --card-link-color: #{$dark-primary-accent}; 
+
+    // Other elements
+    --accent-color: #{$dark-primary-accent};
+    --accent-color-darker: #{$dark-secondary-accent};
+    --error-color: #{$dark-error};
+    --warning-color: #{$dark-highlight};
+    
+    // Shadows
+    --shadow-l1: 0px 1px 4px #{rgba($dark-shadow, 0.3)};
+    --shadow-l2: 0px 2px 8px #{rgba($dark-shadow, 0.3)};
+
+    // Inline code colors
+    --inline-code-background: #{$dark-secondary-bg};
+    --inline-code-color: #{$dark-primary-accent};
+
+    // Update link colors
+    --accent-color: #{$dark-primary-accent};        // Color for links
+    --accent-color-darker: #{$dark-secondary-accent}; // Color for link hover
+}

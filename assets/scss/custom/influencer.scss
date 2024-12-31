@@ -1,0 +1,29 @@
+.influencer-link {
+    a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--accent-color-darker);
+        }
+    }
+
+    .icon-link {
+        margin-left: 0.5rem;
+    }
+
+    .social-icon {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        margin-left: 0.25rem;
+        vertical-align: -0.125rem;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+        }
+    }
+}

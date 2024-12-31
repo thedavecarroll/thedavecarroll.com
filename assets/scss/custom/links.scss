@@ -1,0 +1,19 @@
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--accent-color-darker);
+    }
+}
+
+a.link {
+    box-shadow: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        box-shadow: none;
+        color: var(--accent-color-darker);
+    }
+}

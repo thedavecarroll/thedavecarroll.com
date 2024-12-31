@@ -1,0 +1,31 @@
+.updated {
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    color: var(--card-text-color-main);
+    background: var(--card-background);
+    border-left: 5px solid var(--color-secondary);
+    box-shadow: var(--shadow-l1);
+ 
+    .updated-content {
+        p {
+            display: inline;
+            margin: 0;
+            color: var(--color-text);
+        }
+    }
+ 
+    .updated-icon {
+        color: var(--color-secondary);
+        margin-right: 0.25rem;
+        vertical-align: -0.125rem;
+        display: inline-flex;
+        align-items: center;
+    }
+ 
+    .updated-header {
+        color: var(--color-secondary);
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+}

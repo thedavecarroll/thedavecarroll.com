@@ -1,0 +1,24 @@
+{{- $context := .Context -}}
+{{- $limit := default 10 .Params.limit -}}
+<section class="widget tagCloud">
+   <div class="widget-icon">
+       {{ partial "helper/icon" "tag" }}
+   </div>
+   <h2 class="widget-title section-title">{{ T "widget.tagCloud.title" }}</h2>
+
+   <div class="tagCloud-tags">
+       {{ range first $limit $context.Site.Taxonomies.tags.ByCount }}
+           {{ $dict := $context.Site.Data.dictionary.terms }}
+           {{ $term := .Page.Title | lower }}
+           {{ $result := $term }}
+           {{ range $key, $value := $dict }}
+               {{ if in $term $key }}
+                   {{ $result = replace $result $key $value }}
+               {{ end }}
+           {{ end }}
+           <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
+               {{ $result | title }}
+           </a>
+       {{ end }}
+   </div>
+</section>

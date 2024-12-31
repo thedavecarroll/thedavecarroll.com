@@ -1,0 +1,10 @@
+<!-- layouts/shortcodes/update.html -->
+<div class="updated">
+    <div class="updated-content">
+        <span class="updated-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+        </span>
+        <span class="updated-header">{{ with .Get "date" }}{{ . }}{{ else }}Update{{ end }}:</span>
+        {{ .Inner | markdownify }}
+    </div>
+</div>
