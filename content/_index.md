@@ -1,7 +1,7 @@
 ---
 title: Dave's Technical Journal
 description: Welcome to Dave's Technical Journal
-image: /image/grid.png
+image: /images/grid.png
 toc: false
 readingTime: false
 comments: false
