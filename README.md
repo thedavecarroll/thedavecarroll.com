@@ -1,4 +1,8 @@
-# Testing Hugo
+# Dave's Technical Journal
+
+This repo contains the raw content and framework for my blog, [Dave's Technical Journal](https://thedavecarroll.com).
+
+## License
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
