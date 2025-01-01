@@ -111,9 +111,9 @@ params:
 
     defaultImage:
         opengraph:
-            enabled: false
-            local: false
-            src:
+            enabled: true
+            local: true
+            src: images/grid.png
 
     colorScheme:
         # Display toggle
