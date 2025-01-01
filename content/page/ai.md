@@ -5,6 +5,7 @@ image: /images/ai-manifesto.png
 layout: page
 toc: false
 readingTime: false
+comments: false
 menu: 
     main:
         name: AI

@@ -5,6 +5,7 @@ image: /images/header.jpeg
 layout: page
 toc: false
 readingTime: false
+comments: false
 menu: 
     main:
         name: About
