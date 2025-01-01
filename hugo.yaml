@@ -113,7 +113,7 @@ params:
         opengraph:
             enabled: true
             local: true
-            src: images/grid.png
+            src: /images/grid.png
 
     colorScheme:
         # Display toggle

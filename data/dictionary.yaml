@@ -17,6 +17,7 @@ terms:
   restapi: REST API
   rest api: REST API
   cicd: CI/CD
+  ci: CI
   devops: DevOps
   dns: DNS
   tls: TLS
@@ -33,9 +34,12 @@ terms:
   psgsuite: PSGSuite
   psobject: PSObject
   travis ci: Travis CI
-  gui: gui
+  gui: GUI
   commands.historyinfo: Commands.HistoryInfo
   linkedin: LinkedIn
   mastodon: Mastodon
   bluesky: Bluesky
   github: GitHub
+  datagridview: DataGridView
+  gh-actions: GH Actions
+  github-actions: GitHub Actions
