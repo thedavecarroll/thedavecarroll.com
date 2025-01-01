@@ -5,6 +5,7 @@ image: /images/broken-links.jpeg
 layout: page
 toc: false
 readingTime: false
+comments: false
 ---
 
 I have retired the following links site wide.

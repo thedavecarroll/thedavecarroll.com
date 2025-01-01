@@ -5,6 +5,7 @@ image: /images/chain-links.jpg
 layout: page
 toc: false
 readingTime: false
+comments: false
 menu: 
     main:
         name: Links

@@ -5,6 +5,7 @@ image: /images/resources.png
 layout: page
 toc: false
 readingTime: false
+comments: false
 menu: 
     main:
         name: Resources
