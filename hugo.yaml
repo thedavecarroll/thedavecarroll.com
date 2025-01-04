@@ -72,7 +72,7 @@ params:
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: enabled
+        enabled: true
         provider: giscus
 
         giscus:
@@ -81,10 +81,11 @@ params:
             category: Site Comments
             categoryID: DIC_kwDOGcQm884CRFma
             mapping: pathname
-            # lightTheme:
-            # darkTheme:
+            strict: 1
             reactionsEnabled: 1
             emitMetadata: 0
+            inputPosition: "bottom"
+            lang: "en"
 
     widgets:
         homepage:
@@ -100,14 +101,6 @@ params:
                   limit: 10
         page:
             - type: toc
-
-    # opengraph:
-    #     twitter:
-    #         # Your Twitter username
-    #         site:
-
-    #         # Available values: summary, summary_large_image
-    #         card: summary_large_image
 
     defaultImage:
         opengraph:
