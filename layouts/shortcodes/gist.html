@@ -2,9 +2,23 @@
 {{- $owner := .Get "owner" | default "thedavecarroll" -}}
 {{- $gistId := .Get "id" -}}
 {{- $file := .Get "file" -}}
+{{- $modifiedFile := "" -}}
+{{- $noscript_link := "" -}}
+{{- $link := "" -}}
 
 {{ if $file }}
-    <script src="https://gist.github.com/{{ $owner }}/{{ $gistId }}.js?file={{ $file }}"></script>
+    {{- $modifiedFile = replace $file "." "-" -}}
+    {{- $noscript_link = printf "https://gist.github.com/%s/%s#file-%s" $owner $gistId $modifiedFile | relLangURL | absURL -}}
+    {{- $link = printf "https://gist.github.com/%s/%s.js?file=%s" $owner $gistId $file -}}
 {{ else }}
-    <script src="https://gist.github.com/{{ $owner }}/{{ $gistId }}.js"></script>
+    {{- $noscript_link = printf "https://gist.github.com/%s/%s" $owner $gistId -}}
+    {{- $link = printf "https://gist.github.com/%s/%s.js" $owner $gistId -}}
 {{ end }}
+
+<noscript>
+    <div class="noscript-notice">Scripts are disabled. Unable to display gist inline.</div>
+    <div class="noscript-action">Click to view gist:</div>
+    <a href="{{ $noscript_link }}" target="_blank" rel="noopener noreferrer">{{ $noscript_link }}</a>
+</noscript>
+
+<script src="{{ $link }}"></script>

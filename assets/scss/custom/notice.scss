@@ -64,4 +64,10 @@
         .notice-icon { color: var(--warning-color); }
         .notice-type { color: var(--warning-color); }
     }
+
+    &.ai {
+        border-left: 5px solid var(--color-primary);
+        .notice-icon { color: var(--color-primary); }
+        .notice-type { color: var(--color-primary); }
+    }
 }

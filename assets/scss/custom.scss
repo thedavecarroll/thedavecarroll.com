@@ -1,19 +1,23 @@
 // Import color palette first
 @import "custom/color-palette";
+@import "custom/breakpoints";   // Breakpoints for responsive design
 
-// Import mode-specific settings
-@import "custom/dark-mode";
+// Import base styles
 @import "custom/light-mode";
+@import "custom/dark-mode";
 
-// Import components
-@import "custom/links";         // Links and buttons
-@import "custom/blockquote";    // blockquote styling
-@import "custom/influencer";    // Influencer styling
-@import "custom/module";        // Modules page styling
-@import "custom/notice";        // Notice shortcode styling
-@import "custom/updated";       // Updated shortcode styling
-@import "custom/tags";          // Tag cloud and tag list styling
-@import "custom/presentations"; // Presentation shortcode styling
-@import "custom/search";        // Search page styling
-
+// Then import component styles
+@import "custom/links";
+@import "custom/blockquote";
+@import "custom/influencer";
+@import "custom/module";
+@import "custom/notice";
+@import "custom/updated";
+@import "custom/tags";
+@import "custom/presentations";
+@import "custom/search";
+@import "custom/image";
 @import "custom/homepage";
+
+// Noscript must be last to override all other styles
+@import "custom/noscript";
