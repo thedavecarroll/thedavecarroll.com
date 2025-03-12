@@ -7,7 +7,6 @@ description: |-
 published: 2025-03-11
 tags: [ "mentorship", "SQLSaturday", "T-SQL Tuesday", "tech community", "career development", "diversity", "professional growth", "tech mentoring", "SQL community", "personal reflection" ]
 categories: ["PowerShell"]
-draft: true
 ---
 
 ## Introduction
