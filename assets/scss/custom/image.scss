@@ -1,0 +1,98 @@
+.custom-image-container {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%; /* Prevent overflow */
+  }
+  
+  .custom-figcaption {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    text-align: center;
+    margin-top: var(--spacing-small);
+    color: var(--text-secondary);
+    //max-width: 12.5rem; /* Default constraint for desktop */
+    margin-left: auto;
+    margin-right: auto;
+  
+    /* XL screens */
+    @media (min-width: $breakpoint-xl) {
+      max-width: 15rem; /* Slightly larger on extra-large screens */
+    }
+  
+    /* LG screens */
+    @media (max-width: $breakpoint-lg) {
+      max-width: 12.5rem; /* Keep consistent at large breakpoint */
+    }
+  
+    /* MD screens */
+    @media (max-width: $breakpoint-md) {
+      max-width: 90%; /* Full width for medium screens */
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    /* SM screens */
+    @media (max-width: $breakpoint-sm) {
+      max-width: 100%; /* Edge to edge on small screens */
+      padding: 0 var(--spacing-small);
+    }
+  
+    /* XS screens */
+    @media (max-width: $breakpoint-xs) {
+      max-width: 100%; /* Edge to edge on extra-small screens */
+      font-size: var(--font-size-xsmall);
+      padding: 0;
+    }
+  }
+  
+  .custom-credit {
+    font-size: var(--font-size-xsmall);
+    color: var(--text-muted);
+    margin-top: var(--spacing-xsmall);
+    text-align: center;
+    max-width: 12.5rem; /* Default for desktop */
+    margin-left: auto;
+    margin-right: auto;
+  
+    /* XL screens */
+    @media (min-width: $breakpoint-xl) {
+      max-width: 15rem;
+    }
+  
+    /* LG screens */
+    @media (max-width: $breakpoint-lg) {
+      max-width: 12.5rem;
+    }
+  
+    /* MD screens */
+    @media (max-width: $breakpoint-md) {
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    /* SM screens */
+    @media (max-width: $breakpoint-sm) {
+      max-width: 100%;
+      padding: 0 var(--spacing-small);
+    }
+  
+    /* XS screens */
+    @media (max-width: $breakpoint-xs) {
+      max-width: 100%;
+      font-size: var(--font-size-xsmall);
+      padding: 0;
+    }
+  }
+  
+  .custom-credit a {
+    color: var(--link-color);
+    text-decoration: none;
+  
+    &:hover {
+      color: var(--link-hover-color);
+      text-decoration: underline;
+    }
+  }
+  

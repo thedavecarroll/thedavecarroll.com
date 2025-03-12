@@ -33,6 +33,7 @@ Currently, I am a DevOps engineer for a finance company and use PowerShell and P
 I began scripting early on, first playing with batch files in DOS, then DCL (heavily modding the `login.com` for my VMS account) during the few semesters I attended university.
 I'm not sure when I began writing VBScript, whether it was at that computer store or my next job at an engineering firm as their systems administrator.
 I definitely honed my skill in VBScript while working in my next position at the community college when I started managing login scripts for the Windows NT 3.51 domains.
+I also learned other scripting languages, like PHP and Perl.
 
 Around 2009, the college adopted [Microsoft's Live@EDU](https://en.wikipedia.org/wiki/Microsoft_365#Office_365_Education), a predecessor to Exchange Online, to provide students with "free" email and document storage.
 The easiest management of this service happened in a PowerShell (version 2) session with a snap-in.

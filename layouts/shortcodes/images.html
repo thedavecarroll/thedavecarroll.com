@@ -1,0 +1,63 @@
+{{/* Shortcode for referencing an image with required alt and title attributes */}}
+
+{{ $key := .Get "key" }}
+{{ $data := dict }}
+
+{{/* Fetch the YAML file dynamically based on the key */}}
+{{ if $key }}
+  {{ $data = index site.Data.images $key | default dict }}
+{{ end }}
+
+{{/* Inline parameters take precedence over data file values */}}
+{{ $src := (or (.Get "src") (index $data "src")) }}
+{{ $alt := (or (.Get "alt") (index $data "alt")) }}
+{{ $title := (or (.Get "title") (index $data "title")) }}
+{{ $caption := (or (.Get "caption") (index $data "caption") $title) }}
+{{ $credit := (or (.Get "credit") (index $data "credit")) }}
+{{ $width := (or (.Get "width") (index $data "width") "auto") }}
+{{ $height := (or (.Get "height") (index $data "height") "auto") }}
+{{ $padding := (or (.Get "padding") (index $data "padding") "0") }}
+{{ $margin := (or (.Get "margin") (index $data "margin") "0 auto") }}
+{{ $alignment := (or (.Get "align") (index $data "align") "center") }}
+
+{{/* Validate required parameters */}}
+{{ if not $alt }}
+  {{ errorf "Missing required 'alt' attribute for image: %s" $src }}
+{{ end }}
+{{ if not $title }}
+  {{ errorf "Missing required 'title' attribute for image: %s" $src }}
+{{ end }}
+
+{{/* Determine image paths */}}
+{{ $assetPath := printf "images/%s" $src }}
+{{ $image := resources.Get $assetPath }}
+{{ $processedImage := $image }}
+{{ $staticPath := printf "/images/%s" $src }}
+
+{{/* Process the image if found in assets/ */}}
+{{ if $image }}
+  {{ if and (ne $width "auto") (ne $height "auto") $width $height }}
+    {{ $processedImage = $image.Fit (printf "%sx%s" $width $height) }}
+  {{ else if and (ne $width "auto") $width }}
+    {{ $processedImage = $image.Resize (printf "%sx" $width) }}
+  {{ else if and (ne $height "auto") $height }}
+    {{ $processedImage = $image.Resize (printf "x%s" $height) }}
+  {{ end }}
+{{ end }}
+
+{{/* Render the image */}}
+<div style="text-align: {{ $alignment }}; margin: {{ $margin }}; padding: {{ $padding }};">
+  <figure class="custom-image-container">
+    {{ if $processedImage }}
+      <img src="{{ $processedImage.RelPermalink }}" alt="{{ $alt }}" title="{{ $title }}" style="width: {{ $width }}; height: {{ $height }};" />
+    {{ else }}
+      <img src="{{ $staticPath }}" alt="{{ $alt }}" title="{{ $title }}" style="width: {{ $width }}; height: {{ $height }};" />
+    {{ end }}
+    <figcaption class="custom-figcaption">
+      {{ $caption }}
+      {{ if $credit }}
+        <div class="custom-credit">{{ $credit | markdownify }}</div>
+      {{ end }}
+    </figcaption>
+  </figure>
+</div>
