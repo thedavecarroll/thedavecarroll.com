@@ -5,6 +5,7 @@ description: |-
     One of the lightning talks was on The Benefits of Mentoring, and the speaker invited bloggers
     to write about their own experience with mentorship.
 published: 2025-03-11
+image: /images/tsqltuesday/tsql2sday-150x150.png
 tags: [ "mentorship", "SQLSaturday", "T-SQL Tuesday", "tech community", "career development", "diversity", "professional growth", "tech mentoring", "SQL community", "personal reflection" ]
 categories: ["PowerShell"]
 ---
