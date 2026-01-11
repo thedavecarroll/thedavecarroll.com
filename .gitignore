@@ -23,3 +23,4 @@ node_modules/
 # hugo-validator
 .validation-reports/
 test-results/
+hugo-validator/.validation-cache.json
