@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "sass": "^1.83.0"
+    "sass-embedded": "^1.83.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
