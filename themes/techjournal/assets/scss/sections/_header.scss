@@ -24,6 +24,12 @@
     }
   }
 
+  &__brand-heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
   &__brand {
     display: flex;
     align-items: center;

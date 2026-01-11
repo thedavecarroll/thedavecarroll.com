@@ -1,11 +1,22 @@
 <header class="tj-header">
   <div class="tj-header__container">
+    {{- if .IsHome }}
+    <h1 class="tj-header__brand-heading">
+      <a href="{{ "/" | relLangURL }}" class="tj-header__brand">
+        {{- if site.Params.logo }}
+        <img src="{{ site.Params.logo }}" alt="" class="tj-header__logo">
+        {{- end }}
+        <span>{{ site.Title }}</span>
+      </a>
+    </h1>
+    {{- else }}
     <a href="{{ "/" | relLangURL }}" class="tj-header__brand">
       {{- if site.Params.logo }}
-      <img src="{{ site.Params.logo }}" alt="{{ site.Title }}" class="tj-header__logo">
+      <img src="{{ site.Params.logo }}" alt="" class="tj-header__logo">
       {{- end }}
       <span>{{ site.Title }}</span>
     </a>
+    {{- end }}
 
     <nav class="tj-header__nav" aria-label="Main navigation">
       {{- range site.Menus.main }}
@@ -22,6 +33,7 @@
           {{ partial "icons/search.html" }}
         </button>
         <form class="tj-header__search-form" action="{{ "/search/" | relLangURL }}" method="get">
+          <label for="header-search-input" class="visually-hidden">Search</label>
           <input type="text" name="q" class="tj-header__search-input" id="header-search-input" placeholder="Search..." autocomplete="off">
           <button type="submit" class="visually-hidden">Search</button>
         </form>
