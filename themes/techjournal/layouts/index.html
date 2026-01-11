@@ -1,0 +1,74 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    {{- $featured := where .Site.RegularPages "Params.featured" true | first 1 }}
+    {{- range $featured }}
+    <section class="tj-featured">
+      <a href="{{ .RelPermalink }}" class="tj-card tj-card--featured">
+        {{- if .Params.image }}
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="tj-card__image" loading="lazy">
+        {{- end }}
+        <div class="tj-card__body">
+          <span class="tj-category">Featured</span>
+          <h2 class="tj-card__title">{{ .Title }}</h2>
+          {{- if .Description }}
+          <p class="tj-card__text">{{ .Description }}</p>
+          {{- else if .Summary }}
+          <p class="tj-card__text">{{ .Summary | plainify | truncate 200 }}</p>
+          {{- end }}
+          <div class="tj-card__meta">
+            <span class="tj-card__meta-item">
+              {{ partial "icons/calendar.html" }}
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </span>
+            <span class="tj-card__meta-item">
+              {{ partial "icons/clock.html" }}
+              {{ .ReadingTime }} min read
+            </span>
+          </div>
+        </div>
+      </a>
+    </section>
+    {{- end }}
+
+    <section class="tj-recent">
+      <h2 class="tj-section-title">Recent Articles</h2>
+
+      <div class="tj-article-list">
+        {{- $paginator := .Paginate (where .Site.RegularPages "Type" "in" (slice "powershell" "blog" "retro" "personal")) }}
+        {{- range $paginator.Pages }}
+        <a href="{{ .RelPermalink }}" class="tj-card">
+          <div class="tj-card__body">
+            {{- if .Section }}
+            <span class="tj-category">{{ .Section | title }}</span>
+            {{- end }}
+            <h3 class="tj-card__title">{{ .Title }}</h3>
+            {{- if .Description }}
+            <p class="tj-card__excerpt">{{ .Description }}</p>
+            {{- else if .Summary }}
+            <p class="tj-card__excerpt">{{ .Summary | plainify | truncate 150 }}</p>
+            {{- end }}
+            <div class="tj-card__meta">
+              <span class="tj-card__meta-item">
+                {{ partial "icons/calendar.html" }}
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+              </span>
+              <span class="tj-card__meta-item">
+                {{ partial "icons/clock.html" }}
+                {{ .ReadingTime }} min read
+              </span>
+            </div>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+
+      {{- partial "pagination.html" $paginator -}}
+    </section>
+  </div>
+</div>
+{{ end }}

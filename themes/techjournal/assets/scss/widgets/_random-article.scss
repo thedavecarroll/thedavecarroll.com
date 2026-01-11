@@ -1,0 +1,89 @@
+@use "../variables" as *;
+
+// Random Article widget
+.tj-random-article {
+  padding: 0.75rem;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__heading {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  &__footer {
+    margin-top: $spacing-sm;
+    display: flex;
+    justify-content: center;
+    padding: 2px 0;
+  }
+
+  &__icon {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__refresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: var(--accent-primary);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__content {
+    background: var(--bg-secondary);
+    border-radius: $border-radius-sm;
+    padding: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-sm;
+    line-height: $line-height-tight;
+  }
+
+  &__summary {
+    font-size: $font-size-xs;
+    color: var(--text-secondary);
+    margin: 0 0 $spacing-sm;
+    line-height: 1.4;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: var(--accent-primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

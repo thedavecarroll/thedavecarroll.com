@@ -1,0 +1,120 @@
+// TechJournal Theme Variables
+// PowerShell-inspired color scheme
+
+// Breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Light Mode (PowerShell 5.1 inspired)
+$light-bg-primary: #F6F8FB;
+$light-bg-secondary: #E9EDF5;
+$light-bg-tertiary: #FFFFFF;
+$light-text-primary: #1A2833;
+$light-text-secondary: #4A5568;  // Darker for WCAG AA contrast (was #5A6C7F)
+$light-accent-primary: #0969B3;  // Darker blue for better contrast (was #007ACC)
+$light-accent-secondary: #005A9E; // Darker for WCAG AA (was #3EA8FF)
+$light-border: #D0D8E5;
+$light-shadow: rgba(0, 0, 0, 0.08);
+
+// Dark Mode (PowerShell 7 inspired)
+$dark-bg-primary: #121417;
+$dark-bg-secondary: #1A1E22;
+$dark-bg-tertiary: #242930;
+$dark-text-primary: #D6DEE7;
+$dark-text-secondary: #A5B3C3;
+$dark-accent-primary: #3EA8FF;
+$dark-accent-secondary: #007ACC;
+$dark-border: #30383E;
+$dark-shadow: rgba(0, 0, 0, 0.3);
+
+// Typography
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-mono: "SF Mono", "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+
+$font-size-base: 1rem;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
+
+$line-height-base: 1.6;
+$line-height-tight: 1.25;
+$line-height-loose: 1.8;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+
+// Layout
+$container-max-width: 1200px;
+$sidebar-width: 300px;
+$content-max-width: 800px;
+$header-height: 60px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 350ms ease;
+
+// Z-index
+$z-header: 100;
+$z-sidebar: 90;
+$z-modal: 1000;
+$z-tooltip: 1100;
+
+// CSS Custom Properties (for runtime theming)
+:root {
+  // Light mode defaults
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --accent-primary: #{$light-accent-primary};
+  --accent-secondary: #{$light-accent-secondary};
+  --border-color: #{$light-border};
+  --shadow-color: #{$light-shadow};
+  --font-base: #{$font-family-base};
+  --font-mono: #{$font-family-mono};
+}
+
+[data-theme="light"] {
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --accent-primary: #{$light-accent-primary};
+  --accent-secondary: #{$light-accent-secondary};
+  --border-color: #{$light-border};
+  --shadow-color: #{$light-shadow};
+}
+
+[data-theme="dark"] {
+  --bg-primary: #{$dark-bg-primary};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  --text-primary: #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --accent-primary: #{$dark-accent-primary};
+  --accent-secondary: #{$dark-accent-secondary};
+  --border-color: #{$dark-border};
+  --shadow-color: #{$dark-shadow};
+}

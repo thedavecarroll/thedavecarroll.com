@@ -1,0 +1,29 @@
+{{- /* Link render hook - handles dead external links automatically */ -}}
+{{- $url := .Destination -}}
+{{- $text := .PlainText -}}
+{{- $title := .Title -}}
+{{- $deadLink := false -}}
+{{- $archiveUrl := "" -}}
+
+{{- /* Check if this URL is in our dead links list */ -}}
+{{- range site.Data.dead_links -}}
+  {{- if eq $url .original -}}
+    {{- $deadLink = true -}}
+    {{- if .archive -}}
+      {{- $archiveUrl = .archive -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $deadLink -}}
+  {{- if $archiveUrl -}}
+    {{- /* Dead link with archive.org snapshot available */ -}}
+    <a href="{{ $archiveUrl }}" {{ with $title }}title="{{ . }}"{{ end }} class="archived-link" rel="noopener" target="_blank">{{ $text }}</a><sup class="archive-indicator" title="Original link unavailable - archive.org snapshot">[archive]</sup>
+  {{- else -}}
+    {{- /* Dead link with no archive available */ -}}
+    <span class="dead-link" title="Link no longer available">{{ $text }}</span>
+  {{- end -}}
+{{- else -}}
+  {{- /* Normal link */ -}}
+  <a href="{{ $url }}"{{ with $title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix $url "http" }} rel="noopener" target="_blank"{{ end }}>{{ $text }}</a>
+{{- end -}}

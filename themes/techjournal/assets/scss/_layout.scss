@@ -1,0 +1,160 @@
+@use "variables" as *;
+
+// Layout - Flexbox-based two-column layout
+
+.tj-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $spacing-xl;
+  }
+}
+
+.tj-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tj-main {
+  flex: 1;
+  padding: $spacing-md 0;
+}
+
+.tj-layout {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  @media (min-width: $breakpoint-lg) {
+    flex-direction: row;
+  }
+}
+
+.tj-content {
+  flex: 1;
+  min-width: 0; // Prevent flex item overflow
+  max-width: $content-max-width;
+
+  @media (min-width: $breakpoint-lg) {
+    margin-right: $spacing-xl;
+  }
+}
+
+.tj-sidebar {
+  width: 100%;
+
+  @media (min-width: $breakpoint-lg) {
+    width: $sidebar-width;
+    flex-shrink: 0;
+  }
+}
+
+// Three-column layout for articles
+.tj-layout--three-col {
+  @media (min-width: $breakpoint-lg) {
+    display: grid;
+    grid-template-columns: 200px 1fr 180px;
+    gap: $spacing-md;
+    align-items: start;
+
+    .tj-sidebar--left {
+      grid-column: 1;
+      width: 100%;
+      position: sticky;
+      top: calc($header-height + $spacing-md);
+    }
+
+    .tj-content {
+      grid-column: 2;
+      max-width: none;
+      margin: 0;
+      min-width: 0;
+    }
+
+    .tj-sidebar--right {
+      grid-column: 3;
+      width: 100%;
+      position: sticky;
+      top: calc($header-height + $spacing-md);
+    }
+  }
+}
+
+// Two-column layout for homepage (left sidebar + content)
+.tj-layout--two-col {
+  @media (min-width: $breakpoint-lg) {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: $spacing-md;
+    align-items: start;
+
+    .tj-sidebar--left {
+      grid-column: 1;
+      width: 100%;
+      position: sticky;
+      top: calc($header-height + $spacing-md);
+    }
+
+    .tj-content {
+      grid-column: 2;
+      max-width: none;
+      margin: 0;
+      min-width: 0;
+    }
+  }
+}
+
+// Full-width layout (no sidebar)
+.tj-layout--full {
+  .tj-content {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
+// Centered content layout
+.tj-layout--centered {
+  justify-content: center;
+
+  .tj-content {
+    margin: 0 auto;
+  }
+}
+
+// Error page (404, etc.)
+.tj-error-page {
+  text-align: center;
+  padding: $spacing-3xl 0;
+
+  &__action {
+    margin-top: $spacing-xl;
+  }
+}
+
+// Full-width content modifier
+.tj-content--full-width {
+  max-width: 100%;
+}
+
+// Section title modifier
+.tj-section-title--spaced {
+  margin-top: $spacing-3xl;
+}
+
+// Visually hidden but accessible to screen readers
+// pointer-events: none ensures it's not a touch target
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  pointer-events: none;
+}

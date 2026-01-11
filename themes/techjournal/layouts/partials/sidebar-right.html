@@ -1,0 +1,5 @@
+{{/* TOC widget (only on article pages with TOC enabled) */}}
+{{- $isArticle := and .IsPage (not (in (slice "archives" "search" "page") .Layout)) (.Params.toc | default true) }}
+{{- if $isArticle }}
+{{- partial "widgets/toc.html" . -}}
+{{- end }}

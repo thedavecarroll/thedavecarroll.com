@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.57.0",
+    "html-validate": "^10.5.0",
+    "hugo-validator": "file:../hugo-validator",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard-scss": "^16.0.0"
+  },
+  "scripts": {
+    "validate": "hugo-validator validate",
+    "validate:css": "hugo-validator validate --only css",
+    "validate:html": "hugo-validator validate --only html",
+    "validate:hugo": "hugo-validator validate --only hugo",
+    "test": "playwright test",
+    "test:links": "playwright test links",
+    "test:a11y": "playwright test a11y",
+    "test:ui": "playwright test --ui"
+  }
+}

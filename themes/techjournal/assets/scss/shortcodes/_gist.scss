@@ -1,0 +1,138 @@
+@use "../variables" as *;
+
+// Gist embed styles - override GitHub colors for WCAG AA contrast
+.gist {
+  margin: $spacing-lg 0;
+
+  .gist-file {
+    border-radius: $border-radius-lg !important;
+    border-color: var(--border-color) !important;
+  }
+
+  // Override GitHub's line numbers for better contrast
+  .blob-num {
+    color: #57606A !important; // WCAG AA contrast against white
+  }
+
+  // Override GitHub syntax highlighting colors for WCAG AA compliance
+  // Light mode overrides (default)
+  .blob-code {
+    color: #1A1A1A !important; // Dark text for contrast
+
+    // Comments
+    .pl-c {
+      color: #3D6030 !important;
+    }
+
+    // Keywords
+    .pl-k {
+      color: #0000AA !important;
+    }
+
+    // Strings
+    .pl-s, .pl-s1 {
+      color: #8B0000 !important;
+    }
+
+    // Variables/constants
+    .pl-c1, .pl-v {
+      color: #005A9E !important;
+    }
+
+    // Function names
+    .pl-en {
+      color: #5D4520 !important;
+    }
+
+    // Types
+    .pl-smi {
+      color: #000080 !important;
+    }
+  }
+}
+
+// Dark mode gist overrides
+[data-theme="dark"] .gist {
+  .blob-num {
+    color: #8B949E !important;
+  }
+
+  .blob-code {
+    color: #D4D4D4 !important;
+
+    .pl-c {
+      color: #7EC87E !important;
+    }
+
+    .pl-k {
+      color: #6CB6FF !important;
+    }
+
+    .pl-s, .pl-s1 {
+      color: #E9967A !important;
+    }
+
+    .pl-c1, .pl-v {
+      color: #9CDCFE !important;
+    }
+
+    .pl-en {
+      color: #DCDCAA !important;
+    }
+
+    .pl-smi {
+      color: #9CDCFE !important;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .gist {
+    .blob-num {
+      color: #8B949E !important;
+    }
+
+    .blob-code {
+      color: #D4D4D4 !important;
+
+      .pl-c {
+        color: #7EC87E !important;
+      }
+
+      .pl-k {
+        color: #6CB6FF !important;
+      }
+
+      .pl-s, .pl-s1 {
+        color: #E9967A !important;
+      }
+
+      .pl-c1, .pl-v {
+        color: #9CDCFE !important;
+      }
+
+      .pl-en {
+        color: #DCDCAA !important;
+      }
+
+      .pl-smi {
+        color: #9CDCFE !important;
+      }
+    }
+  }
+}
+
+.noscript-notice {
+  padding: $spacing-md;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-md;
+  margin: $spacing-lg 0;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.noscript-action {
+  margin-top: $spacing-sm;
+  font-weight: 600;
+}

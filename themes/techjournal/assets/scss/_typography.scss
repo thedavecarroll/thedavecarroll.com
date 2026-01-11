@@ -1,0 +1,124 @@
+@use "variables" as *;
+
+// Typography styles
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: $line-height-tight;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-base;
+}
+
+// Text utilities
+.tj-text {
+  &--primary {
+    color: var(--text-primary);
+  }
+
+  &--secondary {
+    color: var(--text-secondary);
+  }
+
+  &--accent {
+    color: var(--accent-primary);
+  }
+
+  &--sm {
+    font-size: $font-size-sm;
+  }
+
+  &--lg {
+    font-size: $font-size-lg;
+  }
+
+  &--xl {
+    font-size: $font-size-xl;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--mono {
+    font-family: var(--font-mono);
+  }
+
+  &--bold {
+    font-weight: 600;
+  }
+
+  &--light {
+    font-weight: 400;
+  }
+}
+
+// Reading time and metadata text
+.tj-reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+// Section titles
+.tj-section-title {
+  font-size: $font-size-2xl;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-sm;
+  border-bottom: 2px solid var(--accent-primary);
+}
+
+// Page title (for list pages)
+.tj-page-title {
+  font-size: $font-size-3xl;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: $spacing-xl;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+// Description text
+.tj-description {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  margin-bottom: $spacing-xl;
+  max-width: 65ch;
+}

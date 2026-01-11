@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--centered">
+  <div class="tj-content tj-error-page">
+    <h1 class="tj-page-title">404</h1>
+    <p class="tj-description">The page you're looking for doesn't exist.</p>
+    <p class="tj-error-page__action">
+      <a href="{{ "/" | relLangURL }}" class="tj-btn tj-btn--primary">
+        {{ partial "icons/home.html" }}
+        Back to Home
+      </a>
+    </p>
+  </div>
+</div>
+{{ end }}

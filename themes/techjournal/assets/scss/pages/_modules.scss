@@ -1,0 +1,73 @@
+@use "../variables" as *;
+
+// Modules page styles
+
+.tj-modules-grid {
+  display: grid;
+  gap: $spacing-xl;
+  grid-template-columns: 1fr;
+  margin-top: $spacing-xl;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tj-module-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: var(--accent-primary);
+  }
+
+  &--inactive {
+    // Use grayscale and border style to indicate inactive status
+    // Avoiding opacity which reduces text contrast ratios
+    filter: grayscale(0.4);
+    border-style: dashed;
+
+    &:hover {
+      border-color: var(--border-color);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-xl;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &__description {
+    color: var(--text-secondary);
+    margin-bottom: $spacing-md;
+    font-size: $font-size-sm;
+  }
+
+  &__meta {
+    margin-bottom: $spacing-lg;
+
+    img {
+      height: 20px;
+      width: auto;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+}

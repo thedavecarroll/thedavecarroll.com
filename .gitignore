@@ -20,3 +20,6 @@ node_modules/
 *.tmp
 *.swp
 *.swo
+# hugo-validator
+.validation-reports/
+test-results/

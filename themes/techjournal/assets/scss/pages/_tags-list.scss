@@ -1,0 +1,158 @@
+@use "../variables" as *;
+
+// Tags page styles - Two column layout
+.tj-tags-page {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $spacing-xl;
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+    }
+  }
+
+  // Left column - Tag navigation
+  &__nav {
+    @media (min-width: $breakpoint-md) {
+      width: 220px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__nav-inner {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+
+    @media (min-width: $breakpoint-md) {
+      position: sticky;
+      top: calc(#{$header-height} + #{$spacing-md});
+      max-height: calc(100vh - #{$header-height} - #{$spacing-xl});
+      overflow-y: auto;
+    }
+  }
+
+  &__nav-title {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &__tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__tag-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 44px;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    text-decoration: none;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: var(--bg-secondary);
+    }
+  }
+
+  &__tag-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__tag-count {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: $border-radius-sm;
+    margin-left: $spacing-xs;
+  }
+
+  // Right column - Articles by tag
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__section {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__section-count {
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: $font-size-sm;
+  }
+
+  &__articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__article {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: $spacing-md;
+    padding: $spacing-xs 0;
+    font-size: $font-size-sm;
+  }
+
+  &__article-link {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-primary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent-primary);
+    }
+  }
+
+  &__article-date {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,52 @@
+// TechJournal Theme - Main SCSS Entry Point
+// A PowerShell-inspired Hugo theme
+
+// 1. Variables and configuration
+@use "variables" as *;
+
+// 2. Reset and base styles
+@use "reset";
+
+// 3. Typography
+@use "typography";
+
+// 4. Layout
+@use "layout";
+
+// 5. Components
+@use "components/buttons";
+@use "components/cards";
+@use "components/tags";
+@use "components/badges";
+
+// 6. Sections (site chrome)
+@use "sections/header";
+@use "sections/sidebar";
+@use "sections/footer";
+@use "sections/pagination";
+
+// 7. Widgets (sidebar modules)
+@use "widgets/profile";
+@use "widgets/random-article";
+@use "widgets/toc";
+@use "widgets/related";
+@use "widgets/categories";
+
+// 8. Content (article formatting)
+@use "article";
+@use "content/prose";
+@use "content/code";
+@use "content/chroma";
+
+// 9. Shortcodes
+@use "shortcodes/notice";
+@use "shortcodes/updated";
+@use "shortcodes/influencer";
+@use "shortcodes/presentations";
+@use "shortcodes/gist";
+
+// 10. Pages (page-specific styles)
+@use "pages/search";
+@use "pages/archives";
+@use "pages/tags-list";
+@use "pages/modules";

@@ -1,0 +1,67 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    <div class="tj-search">
+      <header class="tj-search__header">
+        <h1 class="tj-page-title">Search</h1>
+        <form class="tj-search__form" onsubmit="return false;">
+          <div class="tj-search__input-wrapper">
+            {{ partial "icons/search.html" (dict "class" "tj-search__icon") }}
+            <input type="text" class="tj-search__input" id="search-input" placeholder="Search..." autocomplete="off" autofocus>
+            <button type="submit" class="visually-hidden">Search</button>
+            <button type="button" class="tj-search__help-toggle" id="search-help-toggle" aria-label="Search syntax help">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </button>
+            <div class="tj-search__help" id="search-help">
+              <div class="tj-search__help-title">Search Syntax</div>
+              <dl class="tj-search__help-list">
+                <dt>word</dt>
+                <dd>Match articles containing this word</dd>
+                <dt>"exact phrase"</dt>
+                <dd>Match exact phrase</dd>
+                <dt>term1 term2</dt>
+                <dd>AND - both terms must match</dd>
+                <dt>term1 OR term2</dt>
+                <dd>OR - either term can match</dd>
+                <dt>-term</dt>
+                <dd>NOT - exclude articles with this term</dd>
+                <dt>-"phrase"</dt>
+                <dd>Exclude articles with this phrase</dd>
+              </dl>
+              <div class="tj-search__help-example">
+                <strong>Example:</strong> powershell "get-command" -azure
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="tj-search__terms-wrapper" id="search-terms-wrapper">
+          <button type="button" class="tj-search__clear" id="search-clear">Clear</button>
+          <div class="tj-search__terms" id="search-terms"></div>
+        </div>
+        <div class="tj-search__stats" id="search-stats"></div>
+      </header>
+
+      <div class="tj-search__results" id="search-results"></div>
+
+      <div class="tj-search__no-results hidden" id="no-results">
+        {{ partial "icons/search.html" }}
+        <p>No results found. Try a different search term.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ $searchJS := resources.Get "js/search.js" }}
+{{ if $searchJS }}
+<script src="{{ $searchJS.RelPermalink }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initSearch('{{ "search/index.json" | relURL }}');
+  });
+</script>
+{{ end }}
+{{ end }}

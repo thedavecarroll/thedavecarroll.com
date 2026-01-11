@@ -1,0 +1,126 @@
+@use "../variables" as *;
+
+// Tag and category components
+
+.tj-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-sm;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &--lg {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+// Tag list (inline)
+.tj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+
+  &--compact {
+    gap: $spacing-xs;
+  }
+}
+
+// Category badge
+.tj-category {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  margin-bottom: $spacing-sm;
+  background-color: var(--accent-primary);
+  color: white;
+  border-radius: $border-radius-sm;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--accent-secondary);
+    color: white;
+  }
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+// Tag cloud (for tags page and widget)
+.tj-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+
+  &__item {
+    padding: $spacing-xs $spacing-sm;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-sm;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+
+    // Size variations based on weight
+    &[data-weight="1"] {
+      font-size: 0.75rem;
+    }
+
+    &[data-weight="2"] {
+      font-size: 0.875rem;
+    }
+
+    &[data-weight="3"] {
+      font-size: 1rem;
+    }
+
+    &[data-weight="4"] {
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+
+    &[data-weight="5"] {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+
+  &__count {
+    font-size: 0.75em;
+    opacity: 0.7;
+  }
+}

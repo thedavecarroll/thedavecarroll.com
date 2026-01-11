@@ -1,0 +1,94 @@
+@use "../variables" as *;
+
+// Presentations shortcode - presentation cards
+.presentations {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  margin: $spacing-xl 0;
+}
+
+.presentation-card {
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  background: var(--bg-tertiary);
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .presentation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+
+  .presentation-title {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: $font-size-xl;
+    font-weight: 600;
+  }
+
+  .presentation-date {
+    color: var(--text-secondary);
+    font-size: $font-size-sm;
+    white-space: nowrap;
+  }
+
+  .presentation-event {
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-bottom: $spacing-md;
+  }
+
+  .presentation-abstract {
+    color: var(--text-primary);
+    margin-bottom: $spacing-lg;
+
+    p {
+      margin: 0;
+      line-height: $line-height-loose;
+    }
+  }
+
+  .presentation-links {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-sm;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-md;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      transition: all $transition-fast;
+      font-size: $font-size-sm;
+
+      &:hover {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      .social-icon {
+        width: 1.2em;
+        height: 1.2em;
+      }
+    }
+  }
+}

@@ -2,12 +2,8 @@
 title: Search
 slug: search
 layout: search
+comments: false
 outputs:
     - html
     - json
-menu:
-    main:
-        weight: 90
-        params: 
-            icon: search
 ---

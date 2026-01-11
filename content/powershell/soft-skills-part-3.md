@@ -4,7 +4,7 @@ description: On the Road to DevOps, Don't Forget the Soft Skills
 published: 2023-04-10
 tags: ["soft skills", "career"]
 categories: ["PowerShell"]
-image: images/soft-skills/psconfbookv2.png
+image: /images/soft-skills/psconfbookv2.png
 ---
 
 ## Introduction

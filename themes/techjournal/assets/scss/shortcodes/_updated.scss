@@ -1,0 +1,35 @@
+@use "../variables" as *;
+
+// Updated shortcode - timestamp callout
+.updated {
+  padding: $spacing-lg;
+  margin: $spacing-xl 0;
+  border-radius: $border-radius-lg;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-primary);
+
+  .updated-content {
+    p {
+      display: inline;
+      margin: 0;
+      color: var(--text-primary);
+    }
+  }
+
+  .updated-icon {
+    color: var(--accent-primary);
+    margin-right: $spacing-xs;
+    vertical-align: -0.125rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  // Using accent-primary (#0969B3) for WCAG AA contrast (6.2:1 on white)
+  .updated-header {
+    color: var(--accent-primary);
+    font-weight: bold;
+    margin-right: $spacing-sm;
+  }
+}

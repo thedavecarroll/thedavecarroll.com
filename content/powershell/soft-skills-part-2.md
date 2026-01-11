@@ -1,7 +1,7 @@
 ---
 title: Soft Skills - Part 2 - Collaboration
 description: On the Road to DevOps, Don't Forget the Soft Skills
-image: images/soft-skills/psconfbookv2.png
+image: /images/soft-skills/psconfbookv2.png
 published: 2023-04-03
 tags: ["soft skills", "career", "collaboration"]
 categories: ["PowerShell"]

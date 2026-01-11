@@ -95,7 +95,7 @@ I found several YouTube channels on retro computing that took me back in time.
 - [8-Bit Show and Tell](https://www.youtube.com/@8_Bit)
 - [LGR](https://www.youtube.com/@LGR)
 - [Jan Beta](https://www.youtube.com/@JanBeta)
-- [RMC - The Cave](https://www.youtube.com/@RMCRetro)
+- [The Retro Collective](https://www.youtube.com/@TheRetroCollective)
 
 As I watched them, my realized that I wanted to relive my early computing history.
 Along with an *Atari 2600*, given to me by a close friend, and my brother's Pentium 166 system had started my collecting journey.
@@ -187,7 +187,7 @@ I contributed the chapter, **Exploring Experimental Features in PowerShell 7**, 
 I also wrote [PSTemperature](https://github.com/thedavecarroll/PSTemperature), a sample binary module that demonstrates how to include experimental features.
 
 You can purchase the digital version [here](https://leanpub.com/psconfbook3) and the physical version [here](https://www.amazon.com/dp/B08MGR749H/).
-Proceeds goes to the [OnRamp Scholarship](https://events.devopscollective.org/OnRamp/Scholarship/) for the OnRamp track for the [PowerShell + DevOps Global Summit](https://events.devopscollective.org/event/powershell-devops-global-summit/).
+Proceeds goes to the [OnRamp Scholarship](https://www.powershellsummit.org/on-ramp/) for the OnRamp track for the [PowerShell + DevOps Global Summit](https://www.powershellsummit.org/).
 
 ##### BluebirdPS
 

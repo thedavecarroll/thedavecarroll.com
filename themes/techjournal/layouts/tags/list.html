@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    <header class="tj-page-header" id="top">
+      <h1 class="tj-page-title">{{ .Title }}</h1>
+      {{ with .Description }}
+      <p class="tj-description">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="tj-tags-page__layout">
+      <!-- Left Column: Tag Navigation -->
+      <aside class="tj-tags-page__nav" aria-label="Tag navigation">
+        <div class="tj-tags-page__nav-inner">
+          <h2 class="tj-tags-page__nav-title">Tags ({{ len .Site.Taxonomies.tags }})</h2>
+          <nav class="tj-tags-page__tag-list" aria-label="Tags list">
+            {{ range .Site.Taxonomies.tags.Alphabetical }}
+              {{ $dict := $.Site.Data.dictionary.terms }}
+              {{ $term := .Page.Title | lower }}
+              {{ $result := $term }}
+              {{ range $key, $value := $dict }}
+                {{ if in $term $key }}
+                  {{ $result = replace $result $key $value }}
+                {{ end }}
+              {{ end }}
+              <a href="#{{ .Page.Title | urlize }}" class="tj-tags-page__tag-item">
+                <span class="tj-tags-page__tag-name">{{ $result | title }}</span>
+                <span class="tj-tags-page__tag-count">{{ .Count }}</span>
+              </a>
+            {{ end }}
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Right Column: Articles by Tag -->
+      <div class="tj-tags-page__content">
+      {{ range .Site.Taxonomies.tags.Alphabetical }}
+        {{ $dict := $.Site.Data.dictionary.terms }}
+        {{ $term := .Page.Title | lower }}
+        {{ $result := $term }}
+        {{ range $key, $value := $dict }}
+          {{ if in $term $key }}
+            {{ $result = replace $result $key $value }}
+          {{ end }}
+        {{ end }}
+        <section class="tj-tags-page__section" id="{{ .Page.Title | urlize }}">
+          <h3 class="tj-tags-page__section-title">
+            {{ $result | title }}
+            <span class="tj-tags-page__section-count">({{ .Count }})</span>
+          </h3>
+          <ul class="tj-tags-page__articles">
+            {{ range .Pages }}
+            <li class="tj-tags-page__article">
+              <a href="{{ .RelPermalink }}" class="tj-tags-page__article-link">{{ .Title }}</a>
+              <time class="tj-tags-page__article-date">{{ .Date.Format "Jan 2006" }}</time>
+            </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

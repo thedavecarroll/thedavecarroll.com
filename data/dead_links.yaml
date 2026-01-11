@@ -1,0 +1,20 @@
+# Dead external links and their archive.org snapshots
+# Used by layouts/_default/_markup/render-link.html
+
+- original: "https://github.com/PowerShell/PowerShell-RFC/blob/master/5-Final/RFC0029-Support-Experimental-Features.md"
+  archive: null
+
+- original: "https://github.com/PowerShell/PowerShell-RFC/blob/master/5-Final/RFC0029-Support-Experimental-Features.md#module-experimental-feature"
+  archive: null
+
+- original: "https://support.google.com/analytics/answer/9744165"
+  archive: "http://web.archive.org/web/20251216094414/https://support.google.com/analytics/answer/9744165"
+
+- original: "https://www.oracle.com/corporate/acquisitions/dyn/technologies/enterprise-customer-faq.html"
+  archive: "http://web.archive.org/web/20240812044012/https://www.oracle.com/corporate/acquisitions/dyn/technologies/enterprise-customer-faq.html"
+
+- original: "https://www.learnpwsh.com/change-powershells-tab-complete-behavior/"
+  archive: "http://web.archive.org/web/20191207090810/https://www.learnpwsh.com/change-powershells-tab-complete-behavior/"
+
+- original: "https://www.planetpowershell.com/feed"
+  archive: "http://web.archive.org/web/20250321061530/https://www.planetpowershell.com/feed"

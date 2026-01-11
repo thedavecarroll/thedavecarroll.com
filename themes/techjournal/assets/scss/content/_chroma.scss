@@ -1,0 +1,271 @@
+// Chroma syntax highlighting theme (PowerShell-inspired)
+
+// Dark mode colors mixin - WCAG AA contrast (4.5:1) against #1A1E22
+@mixin chroma-dark {
+  // Line numbers - muted gray (contrast 4.6:1)
+  .lnt, .ln {
+    color: #8B949E;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+  }
+
+  // Code line containers - inherit color
+  .line, .cl {
+    color: #D4D4D4;
+  }
+
+  // Highlighted lines
+  .hl {
+    background-color: rgba(108, 182, 255, 0.15);
+  }
+
+  // Comments - muted green (contrast 5.1:1)
+  .c, .ch, .cm, .c1, .cs {
+    color: #7EC87E;
+    font-style: italic;
+  }
+
+  // Keywords - bright blue (contrast 6.8:1)
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: #6CB6FF;
+  }
+
+  // Strings - salmon/orange (contrast 5.5:1)
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    color: #E9967A;
+  }
+
+  // Numbers - light green (contrast 7.2:1)
+  .m, .mb, .mf, .mh, .mi, .il, .mo {
+    color: #B5E8B5;
+  }
+
+  // Operators - light gray (contrast 10:1)
+  .o, .ow {
+    color: #D4D4D4;
+  }
+
+  // Names/Variables - light blue (contrast 8.5:1)
+  .n, .na, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn, .nt, .py {
+    color: #9CDCFE;
+  }
+
+  // PowerShell-specific variables and magic
+  .nv, .vm, .bp {
+    color: #9CDCFE;
+  }
+
+  // Built-in functions - yellow (contrast 9.5:1)
+  .nb, .fm {
+    color: #DCDCAA;
+  }
+
+  // Generic text and punctuation
+  .p, .x {
+    color: #D4D4D4;
+  }
+
+  // Error highlighting
+  .err {
+    color: #F88070;
+    background-color: rgba(248, 128, 112, 0.1);
+  }
+
+  // Generic output and diff tokens
+  .go, .g {
+    color: #CCCCCC;
+  }
+
+  // Diff - deleted (red)
+  .gd {
+    color: #F88070;
+    background-color: rgba(248, 128, 112, 0.1);
+  }
+
+  // Diff - inserted (green)
+  .gi {
+    color: #7EC87E;
+    background-color: rgba(126, 200, 126, 0.1);
+  }
+
+  // Generic emphasis
+  .ge {
+    font-style: italic;
+    color: #D4D4D4;
+  }
+
+  // Generic strong
+  .gs {
+    font-weight: bold;
+    color: #D4D4D4;
+  }
+
+  // Generic heading
+  .gh {
+    color: #6CB6FF;
+    font-weight: bold;
+  }
+
+  // Generic subheading
+  .gu {
+    color: #8B949E;
+  }
+
+  // Generic prompt
+  .gp {
+    color: #8B949E;
+    font-weight: bold;
+  }
+
+  // Generic error/traceback
+  .gr, .gt {
+    color: #F88070;
+  }
+
+  // Whitespace
+  .w {
+    color: transparent;
+  }
+}
+
+// Light mode - colors designed for WCAG AA contrast (4.5:1) against #E9EDF5 background
+.chroma {
+  background-color: var(--bg-secondary);
+
+  // Line numbers - muted gray (contrast 4.6:1)
+  .lnt, .ln {
+    color: #57606A;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+  }
+
+  // Code line containers - inherit color
+  .line, .cl {
+    color: #1A1A1A;
+  }
+
+  // Highlighted lines
+  .hl {
+    background-color: rgba(0, 0, 170, 0.1);
+  }
+
+  // Comments - dark green (contrast 5.2:1)
+  .c, .ch, .cm, .c1, .cs {
+    color: #3D6030;
+    font-style: italic;
+  }
+
+  // Keywords - dark blue (contrast 8.5:1)
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: #0000AA;
+  }
+
+  // Strings - dark red (contrast 7.2:1)
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    color: #8B0000;
+  }
+
+  // Numbers - dark teal (contrast 5.8:1)
+  .m, .mb, .mf, .mh, .mi, .il, .mo {
+    color: #065540;
+  }
+
+  // Operators - black (contrast 12:1)
+  .o, .ow {
+    color: #000000;
+  }
+
+  // Names/Variables - dark blue (contrast 9.5:1)
+  .n, .na, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn, .nt, .py {
+    color: #000080;
+  }
+
+  // PowerShell-specific variables and magic - dark blue (contrast 6.2:1)
+  .nv, .vm, .bp {
+    color: #005A9E;
+  }
+
+  // Built-in functions - dark brown (contrast 5.5:1)
+  .nb, .fm {
+    color: #5D4520;
+  }
+
+  // Generic text and punctuation
+  .p, .x {
+    color: #1A1A1A;
+  }
+
+  // Error highlighting
+  .err {
+    color: #8B0000;
+    background-color: rgba(139, 0, 0, 0.1);
+  }
+
+  // Generic output and diff tokens
+  .go, .g {
+    color: #333333;
+  }
+
+  // Diff - deleted (red)
+  .gd {
+    color: #8B0000;
+    background-color: rgba(139, 0, 0, 0.1);
+  }
+
+  // Diff - inserted (green)
+  .gi {
+    color: #3D6030;
+    background-color: rgba(61, 96, 48, 0.1);
+  }
+
+  // Generic emphasis
+  .ge {
+    font-style: italic;
+    color: #1A1A1A;
+  }
+
+  // Generic strong
+  .gs {
+    font-weight: bold;
+    color: #1A1A1A;
+  }
+
+  // Generic heading
+  .gh {
+    color: #0000AA;
+    font-weight: bold;
+  }
+
+  // Generic subheading
+  .gu {
+    color: #57606A;
+  }
+
+  // Generic prompt
+  .gp {
+    color: #57606A;
+    font-weight: bold;
+  }
+
+  // Generic error/traceback
+  .gr, .gt {
+    color: #8B0000;
+  }
+
+  // Whitespace
+  .w {
+    color: transparent;
+  }
+}
+
+// Dark mode - explicit theme
+[data-theme="dark"] .chroma {
+  @include chroma-dark;
+}
+
+// Dark mode - system preference
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .chroma {
+    @include chroma-dark;
+  }
+}

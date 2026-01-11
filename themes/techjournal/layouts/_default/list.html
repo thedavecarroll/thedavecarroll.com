@@ -1,0 +1,49 @@
+{{ define "main" }}
+<div class="tj-layout">
+  <div class="tj-content">
+    <header class="tj-page-header">
+      <h1 class="tj-page-title">{{ .Title }}</h1>
+      {{- if .Description }}
+      <p class="tj-description">{{ .Description }}</p>
+      {{- end }}
+    </header>
+
+    <div class="tj-article-list">
+      {{- $paginator := .Paginate .Pages }}
+      {{- range $paginator.Pages }}
+      <a href="{{ .RelPermalink }}" class="tj-card">
+        {{- if .Params.image }}
+        <div class="tj-card__image">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+        </div>
+        {{- end }}
+        <div class="tj-card__body">
+          <h2 class="tj-card__title">{{ .Title }}</h2>
+          {{- if .Summary }}
+          <p class="tj-card__excerpt">{{ .Summary | plainify | truncate 150 }}</p>
+          {{- end }}
+          <div class="tj-card__meta">
+            <span class="tj-card__meta-item">
+              {{ partial "icons/calendar.html" }}
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </span>
+            {{- if .ReadingTime }}
+            <span class="tj-card__meta-item">
+              {{ partial "icons/clock.html" }}
+              {{ .ReadingTime }} min read
+            </span>
+            {{- end }}
+          </div>
+        </div>
+      </a>
+      {{- end }}
+    </div>
+
+    {{- partial "pagination.html" $paginator -}}
+  </div>
+
+  <aside class="tj-sidebar" aria-label="Sidebar">
+    {{- partial "sidebar.html" . -}}
+  </aside>
+</div>
+{{ end }}

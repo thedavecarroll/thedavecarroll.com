@@ -1,7 +1,7 @@
 ---
 title: PowerShell Modules
 url: /modules/
-image: /icons/brand-powershell.svg
+image: /icons/powershell.png
 description: A collection of PowerShell automation solutions
 menu: 
     main:

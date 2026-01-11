@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}" data-theme="light">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body>
+  <div class="tj-page">
+    {{- partial "header.html" . -}}
+
+    <main class="tj-main">
+      <div class="tj-container">
+        {{- block "main" . }}{{- end }}
+      </div>
+    </main>
+
+    {{- partial "footer.html" . -}}
+  </div>
+
+  {{- partial "scripts.html" . -}}
+</body>
+</html>

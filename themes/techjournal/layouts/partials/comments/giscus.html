@@ -1,0 +1,23 @@
+{{- if and site.Params.comments.enabled (not .Params.disableComments) }}
+<section class="tj-comments">
+  <h2 class="tj-section-title">Comments</h2>
+  <div class="giscus-container">
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ site.Params.comments.giscus.repo }}"
+      data-repo-id="{{ site.Params.comments.giscus.repoId }}"
+      data-category="{{ site.Params.comments.giscus.category | default "Comments" }}"
+      data-category-id="{{ site.Params.comments.giscus.categoryId }}"
+      data-mapping="{{ site.Params.comments.giscus.mapping | default "pathname" }}"
+      data-strict="{{ site.Params.comments.giscus.strict | default "0" }}"
+      data-reactions-enabled="{{ site.Params.comments.giscus.reactionsEnabled | default "1" }}"
+      data-emit-metadata="{{ site.Params.comments.giscus.emitMetadata | default "0" }}"
+      data-input-position="{{ site.Params.comments.giscus.inputPosition | default "top" }}"
+      data-theme="{{ site.Params.comments.giscus.theme | default "preferred_color_scheme" }}"
+      data-lang="{{ site.Params.comments.giscus.lang | default site.Language.Lang | default "en" }}"
+      data-loading="{{ site.Params.comments.giscus.loading | default "lazy" }}"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+</section>
+{{- end }}

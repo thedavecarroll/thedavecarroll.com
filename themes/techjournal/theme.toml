@@ -1,0 +1,12 @@
+name = "TechJournal"
+license = "MIT"
+licenselink = "https://github.com/thedavecarroll/thedavecarroll.com/blob/main/LICENSE"
+description = "A clean, technical blog theme for Hugo with PowerShell-inspired colors"
+homepage = "https://thedavecarroll.com/"
+tags = ["blog", "responsive", "dark mode", "technical", "powershell"]
+features = ["search", "dark mode", "syntax highlighting", "table of contents", "related articles"]
+min_version = "0.100.0"
+
+[author]
+  name = "Dave Carroll"
+  homepage = "https://thedavecarroll.com/"
