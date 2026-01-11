@@ -1,0 +1,104 @@
+@use "../variables" as *;
+
+// Mobile Table of Contents - collapsible at top of article
+.tj-toc-mobile {
+  display: block;
+  margin-bottom: $spacing-lg;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+
+  // Hide on desktop - use sidebar ToC instead
+  @media (min-width: $breakpoint-lg) {
+    display: none;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-md;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+
+    // Remove default marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::marker {
+      display: none;
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-primary);
+  }
+
+  &__chevron {
+    margin-left: auto;
+    transition: transform $transition-fast;
+  }
+
+  // Rotate chevron when open
+  &[open] .tj-toc-mobile__chevron {
+    transform: rotate(180deg);
+  }
+
+  &__content {
+    padding: 0 $spacing-md $spacing-md;
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+// Table of Contents widget (desktop sidebar and mobile)
+.tj-toc {
+  #TableOfContents,
+  #TableOfContentsMobile {
+    ol, ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: $spacing-sm 0;
+      font-size: $font-size-xs;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: var(--accent-primary);
+      }
+    }
+
+    // Indentation for nested levels
+    ol ol a,
+    ul ul a {
+      padding-left: $spacing-sm;
+    }
+
+    ol ol ol a,
+    ul ul ul a {
+      padding-left: $spacing-md;
+    }
+
+    ol ol ol ol a,
+    ul ul ul ul a {
+      padding-left: $spacing-lg;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: PowerShell Articles
 # description: Articles on PowerShell
-image: /icons/brand-powershell.svg
+image: /icons/powershell.png
 # menu:
 #     main:
 #         name: PowerShell

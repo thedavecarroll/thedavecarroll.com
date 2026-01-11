@@ -1,0 +1,42 @@
+<div class="tj-widget">
+  <div class="tj-profile">
+    {{- with site.Params.author.avatar }}
+      {{- $avatar := resources.Get . }}
+      {{- if $avatar }}
+    <img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.author.name }}" class="tj-profile__avatar">
+      {{- end }}
+    {{- end }}
+
+    {{- with site.Params.author.name }}
+    <h3 class="tj-profile__name">{{ . }}</h3>
+    {{- end }}
+
+    {{- with site.Params.author.bio }}
+    <p class="tj-profile__bio">{{ . | replaceRE "\n" "<br>" | safeHTML }}</p>
+    {{- end }}
+
+    <div class="tj-profile__social">
+      {{- with site.Params.social.github }}
+      <a href="https://github.com/{{ . }}" class="tj-profile__social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        {{ partial "icons/github.html" }}
+      </a>
+      {{- end }}
+
+      {{- with site.Params.social.bluesky }}
+      <a href="https://bsky.app/profile/{{ . }}" class="tj-profile__social-link" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+        {{ partial "icons/bluesky.html" }}
+      </a>
+      {{- end }}
+
+      {{- with site.Params.social.linkedin }}
+      <a href="https://www.linkedin.com/in/{{ . }}" class="tj-profile__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        {{ partial "icons/linkedin.html" }}
+      </a>
+      {{- end }}
+
+      <a href="{{ "/index.xml" | relLangURL }}" class="tj-profile__social-link" aria-label="RSS Feed">
+        {{ partial "icons/rss.html" }}
+      </a>
+    </div>
+  </div>
+</div>

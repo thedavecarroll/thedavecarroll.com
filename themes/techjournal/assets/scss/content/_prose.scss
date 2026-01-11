@@ -1,0 +1,192 @@
+@use "../variables" as *;
+
+// Article content typography
+.tj-prose {
+  font-size: $font-size-base;
+  line-height: $line-height-loose;
+  color: var(--text-primary);
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: $line-height-tight;
+    color: var(--text-primary);
+    margin-top: $spacing-2xl;
+    margin-bottom: $spacing-md;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    font-size: $font-size-2xl;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+  }
+
+  h4 {
+    font-size: $font-size-lg;
+  }
+
+  p {
+    margin-bottom: $spacing-lg;
+  }
+
+  a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--accent-secondary);
+    }
+  }
+
+  // Archived link (links to archive.org snapshot)
+  .archived-link {
+    color: var(--text-secondary);
+  }
+
+  .archive-indicator {
+    font-size: $font-size-xs;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 2px;
+
+    a {
+      color: var(--text-secondary);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent-primary);
+      }
+    }
+  }
+
+  // Dead link (no archive available)
+  .dead-link {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+
+  ul, ol {
+    margin-bottom: $spacing-lg;
+    padding-left: $spacing-xl;
+
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  blockquote {
+    margin: $spacing-lg 0;
+    padding: $spacing-md $spacing-lg;
+    border-left: 4px solid var(--accent-primary);
+    background-color: var(--bg-secondary);
+    border-radius: 0 $border-radius-md $border-radius-md 0;
+    font-style: italic;
+    color: var(--text-secondary);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    // Citation styling
+    .cite {
+      display: block;
+      margin-top: $spacing-sm;
+      font-style: normal;
+      font-size: $font-size-sm;
+
+      a {
+        color: var(--accent-primary);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+
+        &:hover {
+          color: var(--accent-secondary);
+        }
+      }
+
+      cite {
+        font-style: italic;
+      }
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: $spacing-2xl 0;
+  }
+
+  img {
+    border-radius: $border-radius-md;
+    margin: $spacing-lg 0;
+  }
+
+  figure {
+    margin: $spacing-lg 0;
+
+    img {
+      margin: 0;
+    }
+
+    figcaption {
+      margin-top: $spacing-sm;
+      font-size: $font-size-sm;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  }
+
+  table {
+    margin: $spacing-lg 0;
+    font-size: $font-size-sm;
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-md;
+    overflow: hidden;
+
+    th, td {
+      padding: $spacing-sm $spacing-md;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--bg-secondary);
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: var(--bg-secondary);
+    }
+  }
+}

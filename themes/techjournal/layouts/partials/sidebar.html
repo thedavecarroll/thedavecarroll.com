@@ -1,0 +1,11 @@
+{{/* Profile widget */}}
+{{- partial "widgets/profile.html" . -}}
+
+{{/* TOC widget (only on article pages with TOC enabled, not special pages) */}}
+{{- $isArticle := and .IsPage (not (in (slice "archives" "search" "page") .Layout)) (.Params.toc | default true) }}
+{{- if $isArticle }}
+{{- partial "widgets/toc.html" . -}}
+{{- end }}
+
+{{/* Random PowerShell tip widget */}}
+{{- partial "widgets/random-tip.html" . -}}

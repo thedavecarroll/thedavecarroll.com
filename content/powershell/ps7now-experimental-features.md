@@ -65,7 +65,6 @@ If you do not specify a `Scope`, it will default to `CurrentUser`.
 For Windows, the user configuration file will be saved in the `$HOME\Documents\PowerShell` folder.\\
 For Linux, the user configuration file will be saved in the `$HOME\.config\powershell` folder.
 
-**Note:**
 {{< notice type="note" >}}
 On my system, I re-target my *Documents* folder to a separate volume.
 The PowerShell configuration file is saved there and is not in the `$HOME` hierarchy.

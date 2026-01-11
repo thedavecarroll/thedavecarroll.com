@@ -1,0 +1,20 @@
+<blockquote>
+    <p><em>{{ .Inner | markdownify }}</em></p>
+    {{- if or (.Get "author") (.Get "source") -}}
+    <span class="cite"><span>― </span>
+        {{- if .Get "author" -}}
+        <span>
+            {{- if .Get "author_url" -}}
+                <a href="{{ .Get "author_url" }}">{{- .Get "author" -}}</a>
+            {{- else -}}
+                {{- .Get "author" -}}
+            {{- end -}}
+            {{- if .Get "source" -}}, {{ end -}}
+        </span>
+        {{- end -}}
+        {{- with .Get "url" -}}<a href="{{ . }}">{{- end -}}
+            <cite>{{ .Get "source" }}</cite>
+        {{- if .Get "url" -}}</a>{{- end -}}
+    </span>
+    {{- end -}}
+</blockquote>

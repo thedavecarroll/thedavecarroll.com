@@ -1,0 +1,49 @@
+<header class="tj-header">
+  <div class="tj-header__container">
+    <a href="{{ "/" | relLangURL }}" class="tj-header__brand">
+      {{- if site.Params.logo }}
+      <img src="{{ site.Params.logo }}" alt="{{ site.Title }}" class="tj-header__logo">
+      {{- end }}
+      <span>{{ site.Title }}</span>
+    </a>
+
+    <nav class="tj-header__nav" aria-label="Main navigation">
+      {{- range site.Menus.main }}
+      <a href="{{ .URL }}" class="tj-header__nav-link{{ if $.IsMenuCurrent "main" . }} tj-header__nav-link--active{{ end }}">
+        {{- if .Pre }}{{ .Pre | safeHTML }}{{ end }}
+        {{ .Name }}
+      </a>
+      {{- end }}
+    </nav>
+
+    <div class="tj-header__actions">
+      <div class="tj-header__search" id="header-search">
+        <button type="button" class="tj-header__toggle tj-header__search-toggle" id="search-toggle" aria-label="Toggle search">
+          {{ partial "icons/search.html" }}
+        </button>
+        <form class="tj-header__search-form" action="{{ "/search/" | relLangURL }}" method="get">
+          <input type="text" name="q" class="tj-header__search-input" id="header-search-input" placeholder="Search..." autocomplete="off">
+          <button type="submit" class="visually-hidden">Search</button>
+        </form>
+      </div>
+
+      <button type="button" class="tj-header__toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon-light">{{ partial "icons/sun.html" }}</span>
+        <span class="theme-icon-dark hidden">{{ partial "icons/moon.html" }}</span>
+      </button>
+
+      <button type="button" class="tj-header__toggle tj-header__mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        {{ partial "icons/menu.html" }}
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="tj-mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  {{- range site.Menus.main }}
+  <a href="{{ .URL }}" class="tj-mobile-nav__link">
+    {{- if .Pre }}{{ .Pre | safeHTML }}{{ end }}
+    {{ .Name }}
+  </a>
+  {{- end }}
+</nav>

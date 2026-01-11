@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    <article class="tj-article">
+      <header class="tj-article__header">
+        <h1 class="tj-article__title">{{ .Title }}</h1>
+      </header>
+
+      <div class="tj-article__content tj-prose">
+        {{ .Content }}
+
+        <div class="tj-archives">
+          {{- $pages := where site.RegularPages "Type" "in" (slice "powershell" "blog" "retro" "personal") }}
+          {{- $pagesByYear := $pages.GroupByDate "2006" }}
+
+          {{- range $pagesByYear }}
+          <section class="tj-archives__year">
+            <h2 class="tj-archives__year-title">{{ .Key }}</h2>
+            <ul class="tj-archives__list">
+              {{- range .Pages }}
+              <li class="tj-archives__item">
+                <time class="tj-archives__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "Jan 02" }}
+                </time>
+                <a href="{{ .RelPermalink }}" class="tj-archives__link">{{ .Title }}</a>
+              </li>
+              {{- end }}
+            </ul>
+          </section>
+          {{- end }}
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,124 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    <header class="tj-page-header">
+      <h1 class="tj-page-title">{{ .Title }}</h1>
+    </header>
+
+    <div class="tj-prose">
+      {{ .Content }}
+    </div>
+
+    <!-- Active Modules -->
+    <div class="tj-modules-grid">
+      {{ range sort (where .Site.Data.modules.modules "status" "ne" "inactive") "order" "asc" }}
+      {{ $module := . }}
+      <div class="tj-module-card">
+        <div class="tj-module-card__header">
+          <h2 class="tj-module-card__title">{{ .name }}</h2>
+          {{ if eq .status "active" }}
+          <span class="tj-badge tj-badge--success">Active</span>
+          {{ end }}
+        </div>
+
+        <p class="tj-module-card__description">{{ .description }}</p>
+
+        <div class="tj-module-card__meta">
+          {{ if .psgallery }}
+          <img src="https://img.shields.io/powershellgallery/v/{{ .name }}.svg?style=flat-square&labelColor=555&color=0969b3"
+               alt="PowerShell Gallery version for {{ .name }}"
+               loading="lazy">
+          {{ end }}
+        </div>
+
+        <div class="tj-module-card__links">
+          {{ if .psgallery }}
+          <a href="https://www.powershellgallery.com/packages/{{ .name }}/"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/download.html" }}
+            PSGallery
+          </a>
+          {{ end }}
+          <a href="https://github.com/{{ site.Params.githubUsername }}/{{ .name }}"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/github.html" }}
+            GitHub
+          </a>
+          {{ with .online_help }}
+          <a href="{{ . }}"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/book.html" }}
+            Docs
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Inactive Modules -->
+    {{ if where .Site.Data.modules.modules "status" "eq" "inactive" }}
+    <h2 class="tj-section-title tj-section-title--spaced">Inactive Modules</h2>
+    <div class="tj-modules-grid">
+      {{ range sort (where .Site.Data.modules.modules "status" "eq" "inactive") "order" "asc" }}
+      {{ $module := . }}
+      <div class="tj-module-card tj-module-card--inactive">
+        <div class="tj-module-card__header">
+          <h2 class="tj-module-card__title">{{ .name }}</h2>
+          <span class="tj-badge tj-badge--muted">Inactive</span>
+        </div>
+
+        <p class="tj-module-card__description">{{ .description }}</p>
+
+        <div class="tj-module-card__meta">
+          {{ if .psgallery }}
+          <img src="https://img.shields.io/powershellgallery/v/{{ .name }}.svg?style=flat-square&labelColor=555&color=0969b3"
+               alt="PowerShell Gallery version for {{ .name }}"
+               loading="lazy">
+          {{ end }}
+        </div>
+
+        <div class="tj-module-card__links">
+          {{ if .psgallery }}
+          <a href="https://www.powershellgallery.com/packages/{{ .name }}/"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/download.html" }}
+            PSGallery
+          </a>
+          {{ end }}
+          <a href="https://github.com/{{ site.Params.githubUsername }}/{{ .name }}"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/github.html" }}
+            GitHub
+          </a>
+          {{ with .online_help }}
+          <a href="{{ . }}"
+             class="tj-btn tj-btn--secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            {{ partial "icons/book.html" }}
+            Docs
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

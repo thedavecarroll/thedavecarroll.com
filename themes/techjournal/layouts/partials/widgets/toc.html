@@ -1,0 +1,13 @@
+{{- if .TableOfContents }}
+<div class="tj-widget">
+  <div class="tj-widget__header">
+    {{ partial "icons/list.html" (dict "class" "tj-widget__icon") }}
+    <h3 class="tj-widget__title">Contents</h3>
+  </div>
+  <div class="tj-widget__content">
+    <nav class="tj-toc">
+      {{ .TableOfContents }}
+    </nav>
+  </div>
+</div>
+{{- end }}

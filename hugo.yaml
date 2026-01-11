@@ -1,6 +1,6 @@
 baseurl: https://thedavecarroll.com/
 languageCode: en-us
-theme: hugo-theme-stack
+theme: techjournal
 title: Dave's Technical Journal
 copyright: Dave Carroll
 
@@ -16,52 +16,46 @@ pagination:
 
 params:
     githubUsername: thedavecarroll
+    description: Articles on PowerShell, general IT, and retrocomputing
+
+    # Author information
+    author:
+        name: Dave Carroll
+        bio: |
+            PowerShell,
+            general IT, and
+            retrocomputing
+        avatar: images/thedavecarroll-avatar-transparent.png
+
+    # Social links
+    social:
+        github: thedavecarroll
+        linkedin: thedavecarroll
+        bluesky: thedavecarroll.com
+
+    # Analytics
+    analytics:
+        google: G-PM1EP6J9FE
+        anonymizeIP: true
+
+    # License
+    license:
+        name: CC BY-NC-SA 4.0
+        url: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
     mainSections:
         - powershell
         - blog
-        - retro
-        - personal
     featuredImageField: image
     rssFullContent: true
     favicon: /icons/favicon.ico
 
     footer:
         since: 2018
-        customText: |
-            This site uses <a href="https://policies.google.com/technologies/partner-sites">Google Analytics</a> with privacy-focused settings:
-            <span style="display:inline-flex;gap:1rem;margin:0.5rem 0;">
-                • IP addresses are anonymized
-                • Do Not Track signals are honored
-                • Cookies are used to track sessions
-            </span>
-            <p xmlns:cc="http://creativecommons.org/ns#">
-                This work is licensed under 
-                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">
-                    CC BY-NC-SA 4.0
-                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
-                        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC">
-                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
-                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY">
-                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
-                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC">
-                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
-                        src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA">
-                </a>
-            </p>
 
     dateFormat:
         published: January 02, 2006
         lastUpdated: January 03, 2006
-
-    sidebar:
-        #emoji: 🍥
-        compact: false
-        subtitle: Articles on PowerShell, general IT, and retrocomputing
-        avatar:
-            enabled: true
-            local: true
-            src: images/thedavecarroll-avatar-transparent.png
 
     article:
         math: false
@@ -122,11 +116,9 @@ params:
             enabled: true
 
 ### Custom menu
-### See https://stack.jimmycai.com/config/menu
-### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+### Menu items are defined in content front matter
+### To change menu items, edit the `menu` field in content files
 menu:
-    main: []
-
     social:
         - identifier: bluesky
           name: Bluesky

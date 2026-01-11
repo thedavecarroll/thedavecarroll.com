@@ -1,0 +1,25 @@
+<div class="tj-article__meta">
+  {{- if .Date }}
+  <span class="tj-article__meta-item">
+    {{ partial "icons/calendar.html" }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+  </span>
+  {{- end }}
+
+  {{- if .ReadingTime }}
+  <span class="tj-article__meta-item">
+    {{ partial "icons/clock.html" }}
+    {{ .ReadingTime }} min read
+  </span>
+  {{- end }}
+
+  {{- if .Params.categories }}
+  <span class="tj-article__meta-item">
+    {{ partial "icons/folder.html" }}
+    {{- range $i, $cat := .Params.categories }}
+      {{- if $i }}, {{ end }}
+      <a href="{{ "/categories/" | relLangURL }}{{ $cat | urlize }}/" class="tj-article__meta-link">{{ $cat }}</a>
+    {{- end }}
+  </span>
+  {{- end }}
+</div>

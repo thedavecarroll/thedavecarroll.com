@@ -1,0 +1,109 @@
+@use "../variables" as *;
+
+// Code and syntax highlighting styles
+
+// Inline code
+code {
+  padding: 2px $spacing-xs;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-sm;
+  font-size: 0.875em;
+  color: var(--text-primary);
+}
+
+// Code blocks
+pre {
+  margin: $spacing-lg 0;
+  padding: $spacing-lg;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  overflow-x: auto;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+
+  code {
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+// Hugo highlight shortcode wrapper
+.highlight {
+  margin: $spacing-lg 0;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+
+  pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  // Line numbers - use colors from chroma.scss that meet WCAG contrast requirements
+  .lnt, .ln {
+    padding-right: $spacing-md;
+    user-select: none;
+  }
+
+  // Code header (language label)
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm $spacing-lg;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+  }
+
+  &__language {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  &__copy {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    min-height: 44px;
+    padding: $spacing-xs $spacing-md;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-sm;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// Keyboard shortcut styling
+kbd {
+  display: inline-block;
+  padding: 2px $spacing-xs;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-sm;
+  box-shadow: 0 2px 0 var(--border-color);
+}

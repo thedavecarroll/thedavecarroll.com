@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{{- $title := .Title }}
+{{- if .IsHome }}
+  {{- $title = site.Title }}
+{{- else }}
+  {{- $title = printf "%s | %s" .Title site.Title }}
+{{- end }}
+<title>{{ $title }}</title>
+
+{{- if .Description }}
+<meta name="description" content="{{ .Description }}">
+{{- else if site.Params.description }}
+<meta name="description" content="{{ site.Params.description }}">
+{{- end }}
+
+{{- if .Params.author }}
+<meta name="author" content="{{ .Params.author }}">
+{{- else if site.Params.author.name }}
+<meta name="author" content="{{ site.Params.author.name }}">
+{{- end }}
+
+{{- if .Params.robots }}
+<meta name="robots" content="{{ .Params.robots }}">
+{{- end }}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- RSS -->
+{{- range .AlternativeOutputFormats }}
+  {{- printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink (printf "%s - %s" site.Title .Name) | safeHTML }}
+{{- end }}
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3ea8ff">
+<meta name="msapplication-TileColor" content="#3ea8ff">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#3ea8ff">
+
+<!-- Open Graph -->
+{{- partial "head/opengraph.html" . -}}
+
+<!-- Styles -->
+{{- $scss := resources.Get "scss/main.scss" }}
+{{- $style := $scss | css.Sass (dict "outputStyle" "compressed" "transpiler" "dartsass") | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+<!-- Analytics -->
+{{- partial "head/analytics.html" . -}}
+
+<!-- Theme initialization (before content to prevent flash) -->
+<script>
+  (function() {
+    // Prevent browser scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    // Set theme
+    const theme = localStorage.getItem('theme') || '{{ site.Params.colorScheme.default | default "auto" }}';
+    const isDark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  })();
+</script>

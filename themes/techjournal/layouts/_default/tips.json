@@ -1,0 +1,20 @@
+{{- $articles := slice -}}
+{{- range where .Site.RegularPages "Type" "in" (slice "powershell" "blog" "retro") -}}
+  {{- $summary := "" -}}
+  {{- if .Description -}}
+    {{- $summary = .Description | htmlUnescape -}}
+  {{- else if .Summary -}}
+    {{- $summary = .Summary | plainify | htmlUnescape -}}
+  {{- else -}}
+    {{- $summary = .Title -}}
+  {{- end -}}
+  {{- $article := dict
+    "title" .Title
+    "url" .RelPermalink
+    "summary" $summary
+    "date" (.Date.Format "Jan 2, 2006")
+    "section" .Section
+  -}}
+  {{- $articles = $articles | append $article -}}
+{{- end -}}
+{{ $articles | jsonify }}

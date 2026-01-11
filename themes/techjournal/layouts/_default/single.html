@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--three-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <article class="tj-content">
+    <div class="tj-article">
+      {{- if .Params.image }}
+      <div class="tj-article__hero">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="tj-article__hero-image">
+      </div>
+      {{- end }}
+
+      <header class="tj-article__header">
+        <h1 class="tj-article__title">{{ .Title }}</h1>
+        {{- partial "article/meta.html" . -}}
+      </header>
+
+      {{- partial "widgets/toc-mobile.html" . -}}
+
+      <div class="tj-article__content tj-prose">
+        {{ .Content }}
+      </div>
+
+      <footer class="tj-article__footer">
+        {{- if .Params.tags }}
+        <div class="tj-tags">
+          {{ range .Params.tags }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="tj-tag">
+            {{ partial "icons/tag.html" }}
+            {{ . }}
+          </a>
+          {{ end }}
+        </div>
+        {{- end }}
+      </footer>
+    </div>
+
+    {{- partial "article/related.html" . -}}
+
+    {{- if site.Params.comments.enabled | default true }}
+    {{- partial "comments/giscus.html" . -}}
+    {{- end }}
+  </article>
+
+  <aside class="tj-sidebar tj-sidebar--right" aria-label="Table of contents">
+    {{- partial "sidebar-right.html" . -}}
+  </aside>
+</div>
+{{ end }}

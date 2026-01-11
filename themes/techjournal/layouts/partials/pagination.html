@@ -1,0 +1,63 @@
+{{- if gt .TotalPages 1 }}
+<nav class="tj-pagination" aria-label="Pagination">
+  <div class="tj-pagination__list">
+    {{- if .HasPrev }}
+    <a href="{{ .Prev.URL }}" class="tj-pagination__link tj-pagination__link--prev" aria-label="Previous page">
+      {{ partial "icons/chevron-left.html" }}
+      <span>Previous</span>
+    </a>
+    {{- else }}
+    <span class="tj-pagination__link tj-pagination__link--prev tj-pagination__link--disabled" aria-disabled="true">
+      {{ partial "icons/chevron-left.html" }}
+      <span>Previous</span>
+    </span>
+    {{- end }}
+
+    <div class="tj-pagination__pages">
+      {{- $pagerSize := 5 }}
+      {{- $startPage := sub .PageNumber (div $pagerSize 2) }}
+      {{- if lt $startPage 1 }}{{ $startPage = 1 }}{{ end }}
+      {{- $endPage := add $startPage (sub $pagerSize 1) }}
+      {{- if gt $endPage .TotalPages }}
+        {{- $endPage = .TotalPages }}
+        {{- $startPage = sub $endPage (sub $pagerSize 1) }}
+        {{- if lt $startPage 1 }}{{ $startPage = 1 }}{{ end }}
+      {{- end }}
+
+      {{- if gt $startPage 1 }}
+      <a href="{{ .First.URL }}" class="tj-pagination__page">1</a>
+      {{- if gt $startPage 2 }}
+      <span class="tj-pagination__ellipsis">...</span>
+      {{- end }}
+      {{- end }}
+
+      {{- range seq $startPage $endPage }}
+      {{- if eq . $.PageNumber }}
+      <span class="tj-pagination__page tj-pagination__page--active" aria-current="page">{{ . }}</span>
+      {{- else }}
+      <a href="{{ (index $.Pagers (sub . 1)).URL }}" class="tj-pagination__page">{{ . }}</a>
+      {{- end }}
+      {{- end }}
+
+      {{- if lt $endPage .TotalPages }}
+      {{- if lt $endPage (sub .TotalPages 1) }}
+      <span class="tj-pagination__ellipsis">...</span>
+      {{- end }}
+      <a href="{{ .Last.URL }}" class="tj-pagination__page">{{ .TotalPages }}</a>
+      {{- end }}
+    </div>
+
+    {{- if .HasNext }}
+    <a href="{{ .Next.URL }}" class="tj-pagination__link tj-pagination__link--next" aria-label="Next page">
+      <span>Next</span>
+      {{ partial "icons/chevron-right.html" }}
+    </a>
+    {{- else }}
+    <span class="tj-pagination__link tj-pagination__link--next tj-pagination__link--disabled" aria-disabled="true">
+      <span>Next</span>
+      {{ partial "icons/chevron-right.html" }}
+    </span>
+    {{- end }}
+  </div>
+</nav>
+{{- end }}

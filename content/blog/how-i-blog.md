@@ -82,7 +82,7 @@ Check out the [Jekyll](https://jekyllrb.com/) site for more details.
 
 ## Minimal Mistakes
 
-The theme that I chose for simplicity is Minimal Mistakes by Michael Rose at [Made Mistakes](ttps://mademistakes.com/).
+The theme that I chose for simplicity is Minimal Mistakes by Michael Rose at [Made Mistakes](https://mademistakes.com/).
 He provides a [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes) demo site that can show you the theme's capabilities.
 
 The cool thing about most of the Jekyll themes is that they, themselves, are in GitHub repos.

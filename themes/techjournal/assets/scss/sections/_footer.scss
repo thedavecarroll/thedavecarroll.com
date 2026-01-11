@@ -1,0 +1,128 @@
+@use "variables" as *;
+
+// Footer styles
+
+.tj-footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: $spacing-md 0;
+  margin-top: auto;
+
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0 $spacing-xl;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    @media (min-width: $breakpoint-lg) {
+      align-items: flex-start;
+    }
+  }
+
+  &__center {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: var(--accent-secondary);
+      }
+    }
+
+    div:not(:first-child) {
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      text-decoration: none;
+      transition: opacity $transition-fast;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      img {
+        height: 28px;
+        width: auto;
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  &__license {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    img {
+      height: 18px;
+      width: auto;
+    }
+  }
+
+  &__cloudflare {
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: $border-radius-sm;
+    border: 1px solid var(--border-color);
+
+    img {
+      height: 22px;
+    }
+  }
+}

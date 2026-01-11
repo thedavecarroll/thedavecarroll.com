@@ -1,0 +1,14 @@
+{{- $index := slice -}}
+{{- range where .Site.RegularPages "Type" "in" (slice "powershell" "blog" "retro" "personal" "page") -}}
+  {{- $entry := dict
+    "title" .Title
+    "url" .RelPermalink
+    "date" (.Date.Format "Jan 2, 2006")
+    "section" .Section
+    "summary" (.Summary | plainify | htmlUnescape | truncate 200)
+    "content" (.Plain | htmlUnescape | truncate 5000)
+    "tags" .Params.tags
+  -}}
+  {{- $index = $index | append $entry -}}
+{{- end -}}
+{{ $index | jsonify }}

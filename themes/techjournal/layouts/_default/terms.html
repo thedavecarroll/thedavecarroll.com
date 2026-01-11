@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--centered">
+  <div class="tj-content">
+    <header class="tj-page-header">
+      <h1 class="tj-page-title">{{ .Title }}</h1>
+      {{- if .Description }}
+      <p class="tj-description">{{ .Description }}</p>
+      {{- end }}
+    </header>
+
+    {{- if eq .Data.Plural "tags" }}
+    {{/* Tag cloud for tags */}}
+    <div class="tj-tag-cloud">
+      {{- $max := 0 }}
+      {{- range .Pages }}
+        {{- if gt (len .Pages) $max }}
+          {{- $max = len .Pages }}
+        {{- end }}
+      {{- end }}
+
+      {{- range .Pages.ByTitle }}
+      {{- $count := len .Pages }}
+      {{- $weight := 1 }}
+      {{- if gt $max 0 }}
+        {{- $weight = add 1 (mul 4 (div (float $count) (float $max))) }}
+        {{- $weight = int $weight }}
+        {{- if gt $weight 5 }}{{ $weight = 5 }}{{ end }}
+      {{- end }}
+      <a href="{{ .RelPermalink }}" class="tj-tag-cloud__item" data-weight="{{ $weight }}">
+        {{ .Title }}
+        <span class="tj-tag-cloud__count">({{ $count }})</span>
+      </a>
+      {{- end }}
+    </div>
+    {{- else }}
+    {{/* List for categories */}}
+    <div class="tj-categories">
+      {{- range .Pages.ByTitle }}
+      <div class="tj-categories__item">
+        <a href="{{ .RelPermalink }}" class="tj-categories__link">{{ .Title }}</a>
+        <span class="tj-categories__count">{{ len .Pages }}</span>
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

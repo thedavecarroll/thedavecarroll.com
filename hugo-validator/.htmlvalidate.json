@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "hugo-validator/configs/htmlvalidate"
+  ],
+  "rules": {
+    "no-inline-style": "off",
+    "prefer-tbody": "off",
+    "long-title": "warn",
+    "valid-id": "off",
+    "unique-landmark": "off",
+    "element-permitted-content": "off"
+  }
+}

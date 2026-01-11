@@ -1,0 +1,19 @@
+{{- $related := .Site.RegularPages.Related . | first 5 }}
+{{- if $related }}
+<section class="tj-related-section">
+  <h2 class="tj-section-title">Related Articles</h2>
+  <div class="tj-related">
+    <div class="tj-related__list">
+      {{- range $related }}
+      <a href="{{ .RelPermalink }}" class="tj-related__item">
+        <img src="{{ .Params.image | default (site.Params.defaultImage.opengraph.src | default "/images/grid.png") }}" alt="{{ .Title }}" class="tj-related__image" loading="lazy">
+        <div class="tj-related__content">
+          <h3 class="tj-related__title">{{ .Title }}</h3>
+          <span class="tj-related__date">{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}

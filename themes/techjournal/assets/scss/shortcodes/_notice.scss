@@ -1,0 +1,91 @@
+@use "../variables" as *;
+
+// Notice shortcode - callout boxes with variants
+.notice {
+  padding: $spacing-lg $spacing-lg $spacing-lg $spacing-3xl;
+  margin: $spacing-xl 0;
+  border-radius: $border-radius-lg;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-left-width: 4px;
+
+  .notice-icon {
+    position: absolute;
+    left: $spacing-md;
+    top: 1.1rem;
+    width: 24px;
+    height: 24px;
+  }
+
+  .notice-type {
+    font-weight: bold;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+    margin-bottom: $spacing-sm;
+  }
+
+  .notice-content {
+    color: var(--text-primary);
+
+    .notice-text p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Light mode colors with WCAG AA contrast against white background
+  &.tip {
+    border-left-color: #6F42C1;
+    .notice-icon, .notice-type { color: #5A2D9E; } // Darker purple (4.8:1)
+  }
+
+  &.note {
+    border-left-color: #3EA8FF;
+    .notice-icon, .notice-type { color: #0066CC; } // Darker blue (5.3:1)
+  }
+
+  &.important {
+    border-left-color: var(--accent-primary);
+    .notice-icon, .notice-type { color: var(--accent-primary); }
+  }
+
+  &.warning {
+    border-left-color: #FFC107;
+    .notice-icon, .notice-type { color: #8B6914; } // Dark gold (4.7:1)
+  }
+
+  &.error {
+    border-left-color: #DC3545;
+    .notice-icon, .notice-type { color: #A71D2A; } // Darker red (5.5:1)
+  }
+
+  &.retiredlink {
+    border-left-color: #FFC107;
+    .notice-icon, .notice-type { color: #8B6914; } // Dark gold (4.7:1)
+  }
+
+  &.ai {
+    border-left-color: var(--accent-primary);
+    .notice-icon, .notice-type { color: var(--accent-primary); }
+  }
+}
+
+// Dark mode - lighter colors for contrast against dark background
+[data-theme="dark"] .notice {
+  &.tip .notice-icon, &.tip .notice-type { color: #A78BFA; }
+  &.note .notice-icon, &.note .notice-type { color: #60A5FA; }
+  &.warning .notice-icon, &.warning .notice-type { color: #FBBF24; }
+  &.error .notice-icon, &.error .notice-type { color: #F87171; }
+  &.retiredlink .notice-icon, &.retiredlink .notice-type { color: #FBBF24; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .notice {
+    &.tip .notice-icon, &.tip .notice-type { color: #A78BFA; }
+    &.note .notice-icon, &.note .notice-type { color: #60A5FA; }
+    &.warning .notice-icon, &.warning .notice-type { color: #FBBF24; }
+    &.error .notice-icon, &.error .notice-type { color: #F87171; }
+    &.retiredlink .notice-icon, &.retiredlink .notice-type { color: #FBBF24; }
+  }
+}

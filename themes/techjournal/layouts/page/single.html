@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="tj-layout tj-layout--two-col">
+  <aside class="tj-sidebar tj-sidebar--left" aria-label="Author profile">
+    {{- partial "sidebar-left.html" . -}}
+  </aside>
+
+  <div class="tj-content">
+    <article class="tj-article">
+      {{- if .Params.image }}
+      <div class="tj-article__hero">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="tj-article__hero-image">
+      </div>
+      {{- end }}
+
+      <header class="tj-article__header">
+        <h1 class="tj-article__title">{{ .Title }}</h1>
+      </header>
+
+      <div class="tj-article__content tj-prose">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,77 @@
+@use "../variables" as *;
+
+// Influencer shortcode - social links grid
+// Inline influencer links in prose need underlines for WCAG compliance
+.influencer-link {
+  a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--accent-secondary);
+    }
+  }
+
+  .social-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: $spacing-xs;
+    vertical-align: -0.125rem;
+    stroke: currentColor;
+  }
+}
+
+.influencer-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: $spacing-md 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  li.influencer-link {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    &::before {
+      display: none !important;
+    }
+
+    &::marker {
+      display: none !important;
+      content: none !important;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-xs;
+      padding: $spacing-sm $spacing-md;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius-md;
+      transition: all $transition-fast;
+      text-align: center;
+      text-decoration: none; // Grid links don't need underlines - border provides visual distinction
+
+      &:hover {
+        border-color: var(--accent-primary);
+        background: var(--bg-secondary);
+      }
+    }
+  }
+}
+
+.influencer-name {
+  font-weight: 600;
+}

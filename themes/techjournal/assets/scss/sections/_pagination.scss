@@ -1,0 +1,85 @@
+@use "variables" as *;
+
+// Pagination styles
+
+.tj-pagination {
+  margin-top: $spacing-2xl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid var(--border-color);
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    min-height: 44px;
+    padding: $spacing-sm $spacing-md;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-md;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all $transition-fast;
+
+    &:hover:not(.tj-pagination__link--disabled) {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 $spacing-sm;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-md;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all $transition-fast;
+
+    &:hover:not(.tj-pagination__page--active) {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    &--active {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+  }
+
+  &__ellipsis {
+    color: var(--text-secondary);
+    padding: 0 $spacing-xs;
+  }
+}

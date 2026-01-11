@@ -30,7 +30,7 @@ This post focuses on solving the issues I had with updatable help. For instructi
 these sites.
 
 * [Module Tools - Adding Cmdlet Help With PlatyPS](https://overpoweredshell.com/Module-Tools-Adding-Cmdlet-Help-With-PlatyPS/)
-* [Convert PowerShell Help to a Website](https://ntsystems.it/post/converting-powershell-help-a-website)
+* [Convert PowerShell Help to a Website](https://onprem.wtf/post/converting-powershell-help-to-a-website/)
 
 I had already created the markdown files that I was serving via GitHub for online help and moved those into my blog
 repository structure. I used `Update-MarkdownHelp` to update them and noticed that my Jekyll front matter was largely

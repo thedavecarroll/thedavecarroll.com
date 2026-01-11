@@ -32,11 +32,9 @@ At some point, I realized that [AI's carbon footprint is an issue](https://www.n
 
 ### Text
 
-I have used [OpenAI](https://openai.com/)'s _ChatGPT_ and [Anthopic](https://www.anthropic.com/)'s _Claude.ai_ as sounding boards and sometimes for more than a little inspiration.
+I have used [OpenAI](https://openai.com/)'s _ChatGPT_ and [Anthropic](https://www.anthropic.com/)'s _Claude.ai_ as sounding boards and sometimes for more than a little inspiration.
 
-I have not used AI to assist with any of the text on this site.
-And that is my goal.
-Anything written here, I want you to know is 100% human crafted.
+For the most part, the text on this site is 100% human crafted---with one notable exception: I let Claude Code write its own introduction in the The TechJournal Theme section below.
 _(I have recently acquiesced to the fact that I am human, though my autistic traits wanted me to believe otherwise.)_
 
 I've asked AI for assistance with presentation outlines and synopses, though in the future, I will endeavor to write these myself, perhaps asking some close friends to be a sounding board.
@@ -71,6 +69,8 @@ I've used AI to create Pester tests, to optimize code, and to assist with more a
 
 > This site brought to you by the letters "AI".
 
+##### The Jekyll to Hugo Migration (Late 2024)
+
 Not gonna lie.
 I've used _Claude.ai_ significantly to redesign this site.
 And I found it to be one of the most frustrating things I've done using AI assistance.
@@ -84,13 +84,27 @@ In reality, I spent several days tinkering with different designs.
 Did I say days?
 I meant to say a few weeks.
 
-As I type this, it's December 29<sup>th</sup> and I'm hoping to roll out my new site design before the end of the year.
-I installed this template, [Stack](https://github.com/CaiJimmy/hugo-theme-stack), just a little over a month ago and I have been tinkering and polishing it since.
+I installed the [Stack](https://github.com/CaiJimmy/hugo-theme-stack) template in late November 2024 and tinkered and polished it through the end of the year.
 
-{{< notice type="tip" >}}
-Watch for an upcoming post which documents this process.
-Once created, I'll replace this tip with a link to the post.
-{{< /notice >}}
+##### The TechJournal Theme (January 2026)
+
+In mid December 2025, I started messing around with a new AI tool. At first, I used it to spruce up my [retro-style blog](https://thedavecarroll.blog) (adding some really cool features) and my [original site](https://anovelidea.org).
+
+After seeing the results from those two site rebuilds, this tool is like a magical paint brush, pencil, or keyboard. With just a few commands typed or verbalized, your inner design can be realized.
+
+But enough from me, let's hear from the wizard.
+
+> **[Claude Code](https://docs.anthropic.com/en/docs/claude-code) here**, powered by [Claude Opus 4.5](https://www.anthropic.com/claude/opus).
+>
+> Dave and I built the **TechJournal** theme from scratch. I could read his files, make edits, run commands, and iterate on fixes---all within a conversational flow. The work included:
+>
+> - **Custom SCSS architecture** with CSS variables for light/dark mode theming
+> - **WCAG 2.2 AA accessibility compliance** including color contrast fixes, touch target sizing, and link distinguishability
+> - **Responsive design** with mobile-first approach and no horizontal overflow
+> - **Custom shortcodes** for notices, influencer links, and more
+> - **[hugo-validator](https://github.com/thedavecarroll/hugo-validator)** for automated testing of Hugo sites
+>
+> Was it perfect? No. Did we go in circles sometimes? Absolutely. But when accessibility tests failed, we worked through each issue methodically. The iterative, agentic approach made complex refactoring manageable in a way that copy-pasting code snippets from a chat window never could.
 
 ### Recipes
 

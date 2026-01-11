@@ -1,0 +1,149 @@
+{{/* Theme toggle script */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const lightIcon = toggle.querySelector('.theme-icon-light');
+  const darkIcon = toggle.querySelector('.theme-icon-dark');
+
+  function getStoredTheme() {
+    return localStorage.getItem('theme');
+  }
+
+  function getEffectiveTheme() {
+    const stored = getStoredTheme();
+    if (stored === 'dark' || stored === 'light') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
+      if (lightIcon) lightIcon.classList.add('hidden');
+      if (darkIcon) darkIcon.classList.remove('hidden');
+    } else {
+      if (lightIcon) lightIcon.classList.remove('hidden');
+      if (darkIcon) darkIcon.classList.add('hidden');
+    }
+  }
+
+  // Initialize
+  applyTheme(getEffectiveTheme());
+
+  // Toggle handler
+  toggle.addEventListener('click', function() {
+    const current = getEffectiveTheme();
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
+  });
+
+  // Listen for system theme changes (only applies if no explicit preference)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!getStoredTheme()) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+});
+</script>
+
+{{/* Mobile menu toggle */}}
+<script>
+(function() {
+  const toggle = document.getElementById('mobile-toggle');
+  const nav = document.getElementById('mobile-nav');
+
+  toggle.addEventListener('click', function() {
+    nav.classList.toggle('tj-mobile-nav--open');
+  });
+
+  // Close on click outside
+  document.addEventListener('click', function(e) {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove('tj-mobile-nav--open');
+    }
+  });
+})();
+</script>
+
+{{/* Header search toggle */}}
+<script>
+(function() {
+  const searchContainer = document.getElementById('header-search');
+  const searchToggle = document.getElementById('search-toggle');
+  const searchInput = document.getElementById('header-search-input');
+
+  if (!searchToggle || !searchContainer) return;
+
+  searchToggle.addEventListener('click', function() {
+    searchContainer.classList.toggle('tj-header__search--open');
+    if (searchContainer.classList.contains('tj-header__search--open')) {
+      searchInput.focus();
+    }
+  });
+
+  // Close on click outside
+  document.addEventListener('click', function(e) {
+    if (!searchContainer.contains(e.target)) {
+      searchContainer.classList.remove('tj-header__search--open');
+    }
+  });
+
+  // Close on Escape key
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      searchContainer.classList.remove('tj-header__search--open');
+      searchToggle.focus();
+    }
+  });
+})();
+</script>
+
+{{/* TOC toggle for mobile */}}
+<script>
+(function() {
+  const tocHeaders = document.querySelectorAll('.tj-article-toc__header');
+
+  tocHeaders.forEach(function(header) {
+    header.addEventListener('click', function() {
+      const toc = header.closest('.tj-article-toc');
+      toc.classList.toggle('tj-article-toc--expanded');
+    });
+  });
+})();
+</script>
+
+{{/* Copy code button */}}
+<script>
+(function() {
+  const codeBlocks = document.querySelectorAll('.highlight pre');
+
+  codeBlocks.forEach(function(block) {
+    const button = document.createElement('button');
+    button.className = 'highlight__copy';
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+
+    button.addEventListener('click', async function() {
+      const code = block.textContent;
+      await navigator.clipboard.writeText(code);
+      button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+      setTimeout(function() {
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+      }, 2000);
+    });
+
+    const wrapper = block.closest('.highlight');
+    if (wrapper) {
+      wrapper.style.position = 'relative';
+      wrapper.insertBefore(button, wrapper.firstChild);
+    }
+  });
+})();
+</script>
+
+{{/* Random PowerShell tip */}}
+{{ $randomTip := resources.Get "js/random-tip.js" }}
+{{ if $randomTip }}
+<script src="{{ $randomTip.RelPermalink }}"></script>
+{{ end }}

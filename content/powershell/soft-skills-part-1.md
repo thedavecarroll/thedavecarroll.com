@@ -1,7 +1,7 @@
 ---
 title: Soft Skills - Part 1 - Communication
 description: On the Road to DevOps, Don't Forget the Soft Skills
-image: images/soft-skills/psconfbookv2.png
+image: /images/soft-skills/psconfbookv2.png
 published: 2023-03-25
 tags: ["soft skills", "career", "communication"]
 categories: ["PowerShell"]

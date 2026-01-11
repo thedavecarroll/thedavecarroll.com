@@ -17,7 +17,7 @@ The contributors were asked to publish one to two blog posts on a specific topic
 A specific time, for my static blog, meant that I needed to push my blog post at or near that time manually.
 I had no mechanism to schedule a post.
 
-Back then, I did a little searching and found a [GitHub Action](https://help.github.com/en/actions/getting-started-with-github-actions/about-github-actions) that seemed like it would do the trick, but I didn't spend the time to work on it.
+Back then, I did a little searching and found a [GitHub Action](https://docs.github.com/en/actions/get-started/quickstart) that seemed like it would do the trick, but I didn't spend the time to work on it.
 
 In this post, I will show you how easy it is to configure a workflow using [Jekyll Publish Drafts](https://github.com/marketplace/actions/jekyll-publish-drafts) to schedule the publishing of a post for a GitHub Pages hosted Jekyll-based site.
 
