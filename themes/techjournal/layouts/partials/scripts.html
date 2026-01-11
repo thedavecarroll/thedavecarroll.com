@@ -117,27 +117,106 @@ document.addEventListener('DOMContentLoaded', function() {
 {{/* Copy code button */}}
 <script>
 (function() {
-  const codeBlocks = document.querySelectorAll('.highlight pre');
+  var copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+  var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
 
-  codeBlocks.forEach(function(block) {
-    const button = document.createElement('button');
+  // Language display names
+  var langNames = {
+    'powershell': 'PowerShell',
+    'ps1': 'PowerShell',
+    'pwsh': 'PowerShell',
+    'bash': 'Bash',
+    'sh': 'Shell',
+    'shell': 'Shell',
+    'zsh': 'Zsh',
+    'javascript': 'JavaScript',
+    'js': 'JavaScript',
+    'typescript': 'TypeScript',
+    'ts': 'TypeScript',
+    'python': 'Python',
+    'py': 'Python',
+    'go': 'Go',
+    'rust': 'Rust',
+    'yaml': 'YAML',
+    'yml': 'YAML',
+    'json': 'JSON',
+    'xml': 'XML',
+    'html': 'HTML',
+    'css': 'CSS',
+    'scss': 'SCSS',
+    'sql': 'SQL',
+    'markdown': 'Markdown',
+    'md': 'Markdown',
+    'text': 'Text',
+    'plaintext': 'Text'
+  };
+
+  // Find all highlight blocks
+  var highlights = document.querySelectorAll('.highlight');
+
+  highlights.forEach(function(wrapper) {
+    if (wrapper.querySelector('.highlight__header')) return;
+
+    // Find the code element - in table (line numbers) or direct pre
+    var codeEl = wrapper.querySelector('.lntd:last-child code') ||
+                 wrapper.querySelector('pre code');
+    if (!codeEl) return;
+
+    // Get language from data-lang attribute
+    var lang = codeEl.getAttribute('data-lang') || '';
+    var displayLang = langNames[lang.toLowerCase()] || lang.toUpperCase() || 'Code';
+
+    // Create header bar
+    var header = document.createElement('div');
+    header.className = 'highlight__header';
+
+    // Language label
+    var label = document.createElement('span');
+    label.className = 'highlight__label';
+    label.textContent = displayLang;
+
+    // Copy button
+    var button = document.createElement('button');
     button.className = 'highlight__copy';
-    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+    button.type = 'button';
+    button.innerHTML = copyIcon;
 
-    button.addEventListener('click', async function() {
-      const code = block.textContent;
-      await navigator.clipboard.writeText(code);
-      button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
-      setTimeout(function() {
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
-      }, 2000);
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      var code = (codeEl.innerText || codeEl.textContent).replace(/\n$/, '');
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(function() {
+          button.innerHTML = checkIcon;
+          setTimeout(function() { button.innerHTML = copyIcon; }, 2000);
+        }).catch(function() {
+          fallbackCopy(code);
+        });
+      } else {
+        fallbackCopy(code);
+      }
+
+      function fallbackCopy(text) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          button.innerHTML = checkIcon;
+          setTimeout(function() { button.innerHTML = copyIcon; }, 2000);
+        } catch (err) {
+          console.error('Copy failed:', err);
+        }
+        document.body.removeChild(textarea);
+      }
     });
 
-    const wrapper = block.closest('.highlight');
-    if (wrapper) {
-      wrapper.style.position = 'relative';
-      wrapper.insertBefore(button, wrapper.firstChild);
-    }
+    header.appendChild(label);
+    header.appendChild(button);
+    wrapper.insertBefore(header, wrapper.firstChild);
   });
 })();
 </script>
