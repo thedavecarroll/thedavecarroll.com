@@ -11,6 +11,8 @@
     "stylelint-config-standard-scss": "^16.0.0"
   },
   "scripts": {
+    "postinstall": "chmod +x node_modules/.bin/sass 2>/dev/null || true",
+    "build": "hugo",
     "validate": "hugo-validator validate",
     "validate:css": "hugo-validator validate --only css",
     "validate:html": "hugo-validator validate --only html",
