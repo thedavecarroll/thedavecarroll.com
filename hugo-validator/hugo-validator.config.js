@@ -45,8 +45,7 @@ module.exports = {
   },
 
   // Report settings
-  reportRetention: 8,                    // Number of reports to keep
-  reportFilename: 'VALIDATION-REPORT.md', // Main report filename
+  generateReport: false,                 // Disable VALIDATION-REPORT.md generation
   reportsDir: 'hugo-validator/reports',  // Directory for timestamped reports
 
   // Test server settings
