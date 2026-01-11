@@ -50,7 +50,7 @@
 
 <!-- Styles -->
 {{- $scss := resources.Get "scss/main.scss" }}
-{{- $style := $scss | css.Sass (dict "outputStyle" "compressed" "transpiler" "dartsass") | resources.Fingerprint }}
+{{- $style := $scss | css.Sass (dict "outputStyle" "compressed") | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 
 <!-- Analytics -->
