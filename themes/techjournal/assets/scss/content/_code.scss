@@ -44,54 +44,116 @@ pre {
     border-radius: 0;
   }
 
+  // Line numbers table layout
+  .lntable {
+    width: 100%;
+    margin: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  // Chroma wrapper - horizontal scroll
+  .chroma {
+    overflow-x: auto;
+
+    // Always show scrollbar
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+
+      &:hover {
+        background: var(--text-muted);
+      }
+    }
+  }
+
+  .lntd {
+    vertical-align: top;
+    padding: 0;
+
+    // Line numbers column
+    &:first-child {
+      width: 1%;
+      white-space: nowrap;
+      user-select: none;
+      padding: $spacing-xs $spacing-sm $spacing-xs $spacing-md;
+      text-align: right;
+      color: var(--text-muted);
+      border-right: 1px solid var(--border-color);
+
+      pre {
+        padding: 0;
+        background: transparent;
+      }
+    }
+
+    // Code column
+    &:last-child {
+      padding: $spacing-xs $spacing-md;
+      overflow-x: auto;
+
+      pre {
+        padding: 0;
+        overflow-x: auto;
+      }
+    }
+  }
+
   // Line numbers - use colors from chroma.scss that meet WCAG contrast requirements
   .lnt, .ln {
-    padding-right: $spacing-md;
+    padding-right: $spacing-sm;
     user-select: none;
   }
 
-  // Code header (language label)
+  // Code header bar with language label and copy button
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-sm $spacing-lg;
+    min-height: 44px;
+    padding: 0 $spacing-sm;
     background-color: var(--bg-tertiary);
     border-bottom: 1px solid var(--border-color);
-    font-size: $font-size-sm;
-    color: var(--text-secondary);
+    font-size: 0.75rem;
   }
 
-  &__language {
+  &__label {
     font-family: var(--font-mono);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
   }
 
   &__copy {
     display: flex;
     align-items: center;
     gap: $spacing-xs;
+    min-width: 44px;
     min-height: 44px;
-    padding: $spacing-xs $spacing-md;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    padding: $spacing-xs $spacing-sm;
+    background: none;
+    border: none;
     border-radius: $border-radius-sm;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-secondary);
     cursor: pointer;
     transition: all $transition-fast;
 
     &:hover {
-      background-color: var(--accent-primary);
-      border-color: var(--accent-primary);
-      color: white;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
     }
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
   }
 }
