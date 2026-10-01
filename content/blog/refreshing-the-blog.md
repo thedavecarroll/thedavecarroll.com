@@ -2,7 +2,7 @@
 title: Refreshing the Blog
 description: In this article, I'll go into detail on how I rejuvenated this site, focusing on key technical aspects along the way.
 published: 2022-09-13
-lastMod: 2020-06-18
+lastMod: 2026-10-01
 tags: ["blog", "powershell blog", "github actions", "github pages", "giscus", "giscus comments", "docker"]
 categories: ["blog"]
 ---
@@ -379,13 +379,96 @@ I want to create the following workflows.
 + Publish Blog Drafts
   + Even though I already have a workflow for this, it doesn't work as smooth as I would like (the filename had an incorrect date prefix). And I would like to use PowerShell as the scripting language.\
   \
-  *Note: I've already made some significant progress on this. Checkout out the [Rename Draft Articles](https://github.com/thedavecarroll/thedavecarroll.com/actions/workflows/rename-draft-articles.yml) workflow in my site's repo.*
+  *Note: I've already made some significant progress on this. See the Rename Draft Articles workflow below.*
 + Announce New Article
   + I want to use [BluebirdPS](https://www.powershellgallery.com/packages/BluebirdPS) to Tweet new articles after they are published.
 + Announce Archive Article
   + I want to Tweet an older article once or twice a month to cover any times when I'm in *maintenance mode* again.
 + Ideally, I would like to validate the links, especially internal, before deploying the site.
 + The standard publish workflow should include a sitemap or new article ping to Google and IndexNow.
+
+{{< update date="2026-10-01" >}}
+The Rename Draft Articles workflow mentioned above was removed from the repo when the site moved off GitHub Actions. Here it is as it stood at the time, for reference. It ran daily, renamed any draft whose date had arrived using a PowerShell script, then opened and merged a pull request to publish it.
+
+```yaml
+name: Rename Draft Articles
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  check_draft_articles:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: PowerShell Module Cache
+      uses: potatoqualitee/psmodulecache@v5.2
+      with:
+        modules-to-cache: powershell-yaml
+
+    - name: Rename Draft Articles
+      id: rename_drafts
+      run: |
+        Set-Location -Path $env:GITHUB_WORKSPACE
+        .github/scripts/RenameDraftArticles.ps1
+
+    - name: Check for New Articles to Publish
+      id: check_articles_to_publish
+      run: |
+        if ([System.Convert]::ToBoolean($env:DRAFTS_ARTICLES_RENAMED)) {
+          'Found and renamed at least one draft article requiring the site to be published.'
+          'PUBLISH_ARTICLES=true' >> $env:GITHUB_OUTPUT
+        } else {
+          'No articles matched the criteria to be renamed and published.'
+          'PUBLISH_ARTICLES=false' >> $env:GITHUB_OUTPUT
+        }
+
+    - name: Import GPG
+      uses: crazy-max/ghaction-import-gpg@v5.2.0
+      if: steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES == 'true'
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4.2.4
+      if: steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES == 'true'
+      with:
+        commit-message: publish draft article
+        committer: ${{ vars.GIT_USER_NAME }} <${{ vars.GIT_USER_EMAIL }}>
+        branch: draft-articles
+        title: Create Pull Request
+        body: Create pull request to publish renamed article
+        delete-branch: true
+
+    - name: Find Pull Request
+      uses: juliangruber/find-pull-request-action@v1.8.0
+      if: steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES == 'true'
+      id: find-pull-request
+      with:
+        branch: draft-articles
+
+    - name: Merge Pull Request
+      id: merge-pull-request
+      uses: juliangruber/merge-pull-request-action@v1.1.0
+      if: steps.check_articles_to_publish.outputs.PUBLISH_ARTICLES == 'true'
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        number: ${{ steps.find-pull-request.outputs.number }}
+        method: merge
+```
+{{< /update >}}
 
 {{< notice type="tip" >}}
 When I reached out to PowerShell Twitter, [Josh Rickard](https://www.linkedin.com/in/josh-rickard/) provided me a link to his [revive-social-media repo](https://github.com/MSAdministrator/revive-social-media) which can submit a post to LinkedIn and publish a Tweet.
