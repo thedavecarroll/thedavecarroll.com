@@ -7,10 +7,6 @@ copyright: Dave Carroll
 DefaultContentLanguage: en
 hasCJKLanguage: false
 
-services:
-    googleAnalytics:
-        id: G-PM1EP6J9FE
-
 pagination:
     pagerSize: 10
 
@@ -32,11 +28,6 @@ params:
         github: thedavecarroll
         linkedin: thedavecarroll
         bluesky: thedavecarroll.com
-
-    # Analytics
-    analytics:
-        google: G-PM1EP6J9FE
-        anonymizeIP: true
 
     # License
     license:
