@@ -23,39 +23,48 @@ This site is designed to meet **WCAG 2.2 Level AA** accessibility standards.
 
 ### Testing
 
-Accessibility is validated on every commit using:
+Accessibility is checked on every commit using:
 
-- [axe-core](https://github.com/dequelabs/axe-core) - Automated accessibility testing
-- [Playwright](https://playwright.dev/) - Cross-browser testing including touch target validation
+- [axe-core](https://github.com/dequelabs/axe-core) - Automated WCAG 2.2 AA testing of every page
+- [Playwright](https://playwright.dev/) - Keyboard navigation, visible focus, and touch target size checks
 - Manual testing with screen readers and keyboard navigation
 
 ## Validation
 
-All code is validated automatically before deployment.
+All code is validated locally before it can be committed, using [hugo-validator](https://github.com/thedavecarroll/hugo-validator), a validation pipeline I maintain for my Hugo sites.
+
+### Build
+
+- Hugo builds the site with warnings treated as errors, so deprecated templates and broken content never reach production
 
 ### HTML
 
-- Validated against HTML5 specification using [html-validate](https://html-validate.org/)
+- Validated against the HTML5 specification using [html-validate](https://html-validate.org/)
 - Checks for proper document structure, valid attributes, and semantic markup
 
 ### CSS
 
-- Validated using [Stylelint](https://stylelint.io/) with SCSS standard configuration
+- Validated using [Stylelint](https://stylelint.io/) with the SCSS standard configuration
 - Ensures consistent formatting and catches common errors
+
+### Layout
+
+- Every page is checked at mobile and tablet widths for horizontal overflow and content escaping its container
 
 ### Links
 
 - Internal links verified to exist
 - External links checked for availability
-- Anchor links validated against page content
+- When an external site disappears, the link is replaced with an [archive.org](https://archive.org) snapshot where one exists, marked with **[archive]**, or shown as plain text when none does
 
 ## Continuous Integration
 
 Validation runs automatically:
 
-1. **Pre-commit hooks** - All validators run before each commit
-2. **Build process** - Hugo validates templates and content
-3. **Deployment** - Cloudflare Pages builds with validation
+1. **Pre-commit hook** - The full pipeline runs before each commit and blocks the commit on any failure
+2. **Build** - Cloudflare Pages builds the site from the `main` branch after changes are merged
+
+Validation does not run on Cloudflare; nothing reaches `main` without passing locally first.
 
 ## Report an Issue
 
