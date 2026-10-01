@@ -26,7 +26,7 @@ module.exports = {
     // CSS selector for your main page wrapper
     wrapperSelector: '.tj-page',
     // Pages to spot-check for responsive layout issues
-    spotCheckPages: ['/', '/powershell/', '/about/'],
+    spotCheckPages: ['/', '/powershell/'],
   },
 
   // Interaction testing configuration

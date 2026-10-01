@@ -19,7 +19,7 @@
           <h2 class="tj-tags-page__nav-title">Tags ({{ len .Site.Taxonomies.tags }})</h2>
           <nav class="tj-tags-page__tag-list" aria-label="Tags list">
             {{ range .Site.Taxonomies.tags.Alphabetical }}
-              {{ $dict := $.Site.Data.dictionary.terms }}
+              {{ $dict := hugo.Data.dictionary.terms }}
               {{ $term := .Page.Title | lower }}
               {{ $result := $term }}
               {{ range $key, $value := $dict }}
@@ -39,7 +39,7 @@
       <!-- Right Column: Articles by Tag -->
       <div class="tj-tags-page__content">
       {{ range .Site.Taxonomies.tags.Alphabetical }}
-        {{ $dict := $.Site.Data.dictionary.terms }}
+        {{ $dict := hugo.Data.dictionary.terms }}
         {{ $term := .Page.Title | lower }}
         {{ $result := $term }}
         {{ range $key, $value := $dict }}

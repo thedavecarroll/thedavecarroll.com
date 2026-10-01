@@ -3,6 +3,6 @@
         "https://thedavecarroll.com"
     ],
     "originsRegex": [
-        "http://localhost:[0-9]+"
+        "https://[a-z0-9-]+\\.thedavecarroll-com\\.pages\\.dev"
     ]
 }

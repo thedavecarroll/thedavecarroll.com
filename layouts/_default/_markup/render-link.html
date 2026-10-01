@@ -6,7 +6,7 @@
 {{- $archiveUrl := "" -}}
 
 {{- /* Check if this URL is in our dead links list */ -}}
-{{- range site.Data.dead_links -}}
+{{- range hugo.Data.dead_links -}}
   {{- if eq $url .original -}}
     {{- $deadLink = true -}}
     {{- if .archive -}}

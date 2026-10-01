@@ -108,10 +108,10 @@ These commands will allow you to view users, jobs, or tasks.
 
 Please check out the following links for more information on the Dyn Managed DNS REST API.
 
-* [DNS API Quick-Start Guide](https://help.dyn.com/dns-api-guide/)
-* [Understanding How The API Works](https://help.dyn.com/understanding-works-api/)
-* [REST Resources](https://help.dyn.com/rest-resources/)
-* [RESTful API Interface](https://help.dyn.com/rest/)
+* [DNS API Quick-Start Guide](https://help.dyn.com/deprecation-notice.html)
+* [Understanding How The API Works](https://help.dyn.com/deprecation-notice.html)
+* [REST Resources](https://help.dyn.com/deprecation-notice.html)
+* [RESTful API Interface](https://help.dyn.com/deprecation-notice.html)
 
 ![Disconnect-DynDnsSession](/images/dyndnsdisconnect.png)
 
