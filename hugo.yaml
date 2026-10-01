@@ -62,8 +62,8 @@ params:
         toc: true
         readingTime: true
         license:
-            enabled: false
-            default: Licensed under CC BY-NC-SA 4.0
+            enabled: true
+            default: This article is licensed under
 
     comments:
         enabled: true

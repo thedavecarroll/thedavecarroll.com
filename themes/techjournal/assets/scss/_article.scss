@@ -78,6 +78,12 @@
     padding: $spacing-lg;
     border-top: 1px solid var(--border-color);
   }
+
+  &__license {
+    margin-top: $spacing-md;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+  }
 }
 
 // Article list

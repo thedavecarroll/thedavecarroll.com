@@ -1,0 +1,19 @@
+{{- /*
+  Per-article licence notice, rendered as "<text> <licence name>." where the
+  name links to the licence URL.
+  Enabled by params.article.license.enabled. The text comes from
+  params.article.license.default; a page can override it with `license` in
+  front matter, or hide the notice with `license: false`. The link uses the
+  site-wide params.license.name and params.license.url.
+*/ -}}
+{{- $cfg := site.Params.article.license -}}
+{{- if and $cfg.enabled (ne .Params.license false) }}
+{{- $text := .Params.license | default $cfg.default -}}
+{{- $lic := site.Params.license -}}
+<div class="tj-article__license">
+  {{ $text }}
+  {{- if $lic.url }} <a href="{{ $lic.url }}" target="_blank" rel="license noopener noreferrer">{{ $lic.name | default $lic.url }}</a>.
+  {{- else if $lic.name }} {{ $lic.name }}.
+  {{- end }}
+</div>
+{{- end }}
