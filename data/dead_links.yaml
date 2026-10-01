@@ -7,14 +7,42 @@
 - original: "https://github.com/PowerShell/PowerShell-RFC/blob/master/5-Final/RFC0029-Support-Experimental-Features.md#module-experimental-feature"
   archive: null
 
+- original: "https://help.github.com/en/actions/getting-started-with-github-actions/about-github-actions"
+  archive: "http://web.archive.org/web/20200628234622/https://help.github.com/en/actions/getting-started-with-github-actions/about-github-actions"
+
 - original: "https://support.google.com/analytics/answer/9744165"
-  archive: "http://web.archive.org/web/20251216094414/https://support.google.com/analytics/answer/9744165"
+  archive: "http://web.archive.org/web/20260919231508/https://support.google.com/analytics/answer/9744165"
 
 - original: "https://www.oracle.com/corporate/acquisitions/dyn/technologies/enterprise-customer-faq.html"
   archive: "http://web.archive.org/web/20240812044012/https://www.oracle.com/corporate/acquisitions/dyn/technologies/enterprise-customer-faq.html"
+
+- original: "https://ntsystems.it/post/converting-powershell-help-a-website"
+  archive: "http://web.archive.org/web/20191114201614/https://ntsystems.it/post/converting-powershell-help-a-website"
+
+- original: "https://events.devopscollective.org/OnRamp/Scholarship/"
+  archive: "http://web.archive.org/web/20230331155251/https://events.devopscollective.org/onramp/scholarship/"
+
+- original: "https://events.devopscollective.org/event/powershell-devops-global-summit/"
+  archive: "http://web.archive.org/web/20230531162640/https://events.devopscollective.org/event/powershell-devops-global-summit/"
 
 - original: "https://www.learnpwsh.com/change-powershells-tab-complete-behavior/"
   archive: "http://web.archive.org/web/20191207090810/https://www.learnpwsh.com/change-powershells-tab-complete-behavior/"
 
 - original: "https://www.planetpowershell.com/feed"
   archive: "http://web.archive.org/web/20250321061530/https://www.planetpowershell.com/feed"
+
+- original: "https://www.youtube.com/@RMCRetro"
+  archive: "http://web.archive.org/web/20250120021741/https://www.youtube.com/@RMCRetro"
+
+- original: "http://duffney.io/APracticalGuideforUsingRegexinPowerShell"
+  archive: "http://web.archive.org/web/20230921192707/https://duffney.io/apracticalguideforusingregexinpowershell/"
+
+- original: "https://duffney.io/"
+  archive: null
+
+- original: "https://winsysblog.com/"
+  archive: "http://web.archive.org/web/20260625184718/https://winsysblog.com/"
+
+- original: "https://adamtheautomator.com/"
+  archive: null
+

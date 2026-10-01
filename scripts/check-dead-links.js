@@ -17,6 +17,10 @@ const DEAD_LINKS = [
   'https://www.learnpwsh.com/change-powershells-tab-complete-behavior/',
   'https://www.planetpowershell.com/feed',
   'https://www.youtube.com/@RMCRetro',
+  'http://duffney.io/APracticalGuideforUsingRegexinPowerShell',
+  'https://duffney.io/',
+  'https://winsysblog.com/',
+  'https://adamtheautomator.com/',
 ];
 
 async function checkWaybackMachine(url) {
