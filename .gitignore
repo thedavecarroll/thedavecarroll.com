@@ -24,3 +24,8 @@ node_modules/
 .validation-reports/
 test-results/
 hugo-validator/.validation-cache.json
+
+# hugo-validator
+hugo-validator/.runtime/
+hugo-validator/reports/
+VALIDATION-REPORT.md
