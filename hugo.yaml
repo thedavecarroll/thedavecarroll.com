@@ -1,5 +1,5 @@
 baseurl: https://thedavecarroll.com/
-languageCode: en-us
+locale: en-us
 theme: techjournal
 title: Dave's Technical Journal
 copyright: Dave Carroll
@@ -71,9 +71,9 @@ params:
 
         giscus:
             repo: thedavecarroll/thedavecarroll.com
-            repoID: R_kgDOGcQm8w
+            repoId: R_kgDOGcQm8w
             category: Site Comments
-            categoryID: DIC_kwDOGcQm884CRFma
+            categoryId: DIC_kwDOGcQm884CRFma
             mapping: pathname
             strict: 1
             reactionsEnabled: 1
