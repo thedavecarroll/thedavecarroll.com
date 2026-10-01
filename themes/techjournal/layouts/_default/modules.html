@@ -15,7 +15,7 @@
 
     <!-- Active Modules -->
     <div class="tj-modules-grid">
-      {{ range sort (where .Site.Data.modules.modules "status" "ne" "inactive") "order" "asc" }}
+      {{ range sort (where hugo.Data.modules.modules "status" "ne" "inactive") "order" "asc" }}
       {{ $module := . }}
       <div class="tj-module-card">
         <div class="tj-module-card__header">
@@ -67,10 +67,10 @@
     </div>
 
     <!-- Inactive Modules -->
-    {{ if where .Site.Data.modules.modules "status" "eq" "inactive" }}
+    {{ if where hugo.Data.modules.modules "status" "eq" "inactive" }}
     <h2 class="tj-section-title tj-section-title--spaced">Inactive Modules</h2>
     <div class="tj-modules-grid">
-      {{ range sort (where .Site.Data.modules.modules "status" "eq" "inactive") "order" "asc" }}
+      {{ range sort (where hugo.Data.modules.modules "status" "eq" "inactive") "order" "asc" }}
       {{ $module := . }}
       <div class="tj-module-card tj-module-card--inactive">
         <div class="tj-module-card__header">

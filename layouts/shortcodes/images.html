@@ -5,7 +5,7 @@
 
 {{/* Fetch the YAML file dynamically based on the key */}}
 {{ if $key }}
-  {{ $data = index site.Data.images $key | default dict }}
+  {{ $data = index hugo.Data.images $key | default dict }}
 {{ end }}
 
 {{/* Inline parameters take precedence over data file values */}}

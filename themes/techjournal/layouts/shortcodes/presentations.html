@@ -1,6 +1,6 @@
 <!-- layouts/shortcodes/presentations.html -->
 {{ $debug := .Get 0 }}
-{{ $presentations := .Site.Data.presentations }}
+{{ $presentations := hugo.Data.presentations }}
 
 {{ if eq $debug "debug" }}
 <pre>{{ $presentations | jsonify (dict "indent" "  ") }}</pre>

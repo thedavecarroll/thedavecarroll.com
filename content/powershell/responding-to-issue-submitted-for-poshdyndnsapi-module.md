@@ -54,7 +54,7 @@ With the default `RecordType` of **All**, it uses URI `/REST/AllRecord/<zone>` o
 The bold text is the key difference between any other RecordType URI.
 
 {{< notice type="tip" >}}
-If you want to know more, here is the [Get All Records (API)](https://help.dyn.com/get-all-records-api/) documentation page.
+If you want to know more, here is the [Get All Records (API)](https://help.dyn.com/deprecation-notice.html) documentation page.
 {{< /notice >}}
 
 ### Options

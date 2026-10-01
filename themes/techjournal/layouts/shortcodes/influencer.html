@@ -3,7 +3,7 @@
 {{ $debug := .Get 2 }}
 
 {{ $influencer := false }}
-{{ range $key, $value := $.Site.Data.influencers }}
+{{ range $key, $value := hugo.Data.influencers }}
   {{ if eq $key $influencerKey }}
     {{ $influencer = $value }}
   {{ end }}

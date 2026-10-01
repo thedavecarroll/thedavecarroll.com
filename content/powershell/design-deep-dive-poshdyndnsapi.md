@@ -61,7 +61,7 @@ Dyn provides two APIs which can be used to interact with the Managed DNS Service
 Each API has specific requirements for establishing a session, creating resources, querying resources, modifying
 resources, and deleting resources.
 
-For more details, please visit [Dyn's DNS API Quick-Start Guide](https://help.dyn.com/dns-api-guide/).
+For more details, please visit [Dyn's DNS API Quick-Start Guide](https://help.dyn.com/deprecation-notice.html).
 
 ## PowerShell Web Cmdlets
 
