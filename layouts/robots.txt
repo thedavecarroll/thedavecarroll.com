@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}
+
+# -----------------------------------------------------------------------------
+# This site welcomes search engines, AI search and AI assistants that fetch a
+# page to answer someone's question. It does not allow use of its content for
+# training models, or crawling by SEO-tool bots. Both are also blocked at the
+# Cloudflare edge; this file states the policy for crawlers that ask first.
+# Cloudflare prepends its own Content Signals and AI crawler rules above.
+# -----------------------------------------------------------------------------
+
+# AI training and dataset crawlers
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Diffbot
+User-agent: img2dataset
+User-agent: ImagesiftBot
+User-agent: omgili
+User-agent: omgilibot
+User-agent: Webzio-Extended
+User-agent: Timpibot
+User-agent: AI2Bot
+User-agent: cohere-training-data-crawler
+User-agent: PanguBot
+User-agent: TikTokSpider
+Disallow: /
+
+# SEO-tool bots
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DataForSeoBot
+User-agent: DotBot
+User-agent: BLEXBot
+Disallow: /
