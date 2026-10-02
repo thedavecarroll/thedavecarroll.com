@@ -5,6 +5,7 @@ title: Dave's Technical Journal
 copyright: Dave Carroll
 
 DefaultContentLanguage: en
+enableRobotsTXT: true
 hasCJKLanguage: false
 
 pagination:
