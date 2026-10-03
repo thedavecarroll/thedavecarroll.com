@@ -3,7 +3,7 @@ title: PowerShell 7 Changes to JSON Cmdlets
 description: We wanted to cover some of the changes that demonstrate the efficacy of adopting the newest, fastest, and best PowerShell. This article focuses on the JSON cmdlets - ConvertFrom-Json, ConvertTo-Json, and the new addition Test-Json.
 image: /images/ps7now/pwsh-7-json-cmdlets.png
 published: 2020-03-09
-tags: ["psblogweek", "ps7now", "powershell7", "pwsh", "convertfrom-json", "convertto-json", "test-json", "json", "json-schema", "json schema"]
+tags: ["psblogweek", "ps7now", "powershell7", "pwsh", "convertfrom-json", "convertto-json", "test-json", "json", "json schema", "json schema"]
 categories: ["PowerShell"]
 ---
 

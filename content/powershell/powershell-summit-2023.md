@@ -2,7 +2,7 @@
 title: PowerShell Summit 2023
 description: I'm attending my first PowerShell Summit!
 published: 2023-03-22
-tags: ["powershell-summit-2023", "powershell-summit", "powershell-community", "learn-powershell", "conference"]
+tags: ["powershell-summit-2023", "powershell-summit", "powershell-community", "learn powershell", "conference"]
 categories: ["PowerShell"]
 ---
 

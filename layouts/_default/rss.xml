@@ -1,7 +1,10 @@
 {{- $pctx := . -}}
 {{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
 {{- $pages := slice -}}
-{{- if or $.IsHome $.IsSection -}}
+{{- if $.IsHome -}}
+{{- /* Home feed: articles only, not standing pages such as About or Search. */ -}}
+{{- $pages = where $pctx.RegularPages "Section" "in" site.MainSections -}}
+{{- else if $.IsSection -}}
 {{- $pages = $pctx.RegularPages -}}
 {{- else -}}
 {{- $pages = $pctx.Pages -}}

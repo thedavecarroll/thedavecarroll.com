@@ -4,9 +4,7 @@ theme: techjournal
 title: Dave's Technical Journal
 copyright: Dave Carroll
 
-DefaultContentLanguage: en
 enableRobotsTXT: true
-hasCJKLanguage: false
 
 pagination:
     pagerSize: 10
@@ -38,29 +36,18 @@ params:
     mainSections:
         - powershell
         - blog
-    featuredImageField: image
-    rssFullContent: true
-    favicon: /icons/favicon.ico
 
     footer:
         since: 2018
 
-    dateFormat:
-        published: January 02, 2006
-        lastUpdated: January 03, 2006
-
     article:
-        math: false
-        toc: true
-        readingTime: true
         license:
             enabled: true
+            source: Originally published at
             default: This article is licensed under
 
     comments:
         enabled: true
-        provider: giscus
-
         giscus:
             repo: thedavecarroll/thedavecarroll.com
             repoId: R_kgDOGcQm8w
@@ -73,21 +60,6 @@ params:
             inputPosition: "bottom"
             lang: "en"
 
-    widgets:
-        homepage:
-            - type: search
-            - type: archives
-              params:
-                  limit: 8
-            - type: categories
-              params:
-                  limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
-        page:
-            - type: toc
-
     defaultImage:
         opengraph:
             enabled: true
@@ -95,40 +67,11 @@ params:
             src: /images/grid.png
 
     colorScheme:
-        # Display toggle
-        toggle: true
-
         # Available values: auto, light, dark
         default: auto
 
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
-
-### Custom menu
-### Menu items are defined in content front matter
-### To change menu items, edit the `menu` field in content files
-menu:
-    social:
-        - identifier: bluesky
-          name: Bluesky
-          url: https://bsky.app/profile/thedavecarroll.com
-          params:
-              icon: brand-bluesky
-
-        - identifier: github
-          name: GitHub
-          url: https://github.com/thedavecarroll/
-          params:
-              icon: brand-github
-
-        - identifier: linkedin
-          name: LinkedIn
-          url: https://www.linkedin.com/in/thedavecarroll/
-          params:
-              icon: brand-linkedin
+### Menu items are defined in content front matter.
+### To change them, edit the `menu` field in content files.
 
 related:
     includeNewer: true
@@ -143,18 +86,6 @@ related:
 
 markup:
     goldmark:
-        extensions:
-            passthrough:
-                enable: true
-                delimiters:
-                    block:
-                        - - \[
-                          - \]
-                        - - $$
-                          - $$
-                    inline:
-                        - - \(
-                          - \)
         renderer:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true

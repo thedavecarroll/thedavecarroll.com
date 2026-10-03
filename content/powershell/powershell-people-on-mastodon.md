@@ -2,7 +2,7 @@
 title: Where are the PowerShell People on Mastodon?
 description: If you are like many others, you may have been contemplating which Mastodon instance to join, but which one?
 published: 2022-11-29
-tags: ["mastodon", "fediverse", "twitter", "twitter-api", "powershell", "bluebirdps", "github-actions", "gh-actions"]
+tags: ["mastodon", "fediverse", "twitter", "twitter api", "powershell", "bluebirdps", "github actions", "gh-actions"]
 categories: ["PowerShell"]
 ---
 
