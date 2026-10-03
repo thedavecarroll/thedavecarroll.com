@@ -13,7 +13,7 @@ pagination:
 
 params:
     githubUsername: thedavecarroll
-    description: Articles on PowerShell, general IT, and retrocomputing
+    description: "Dave Carroll's technical journal: PowerShell scripting, module design and automation, retrocomputing, and lessons from over 30 years in IT."
 
     # Author information
     author:
