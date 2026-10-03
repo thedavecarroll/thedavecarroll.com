@@ -55,6 +55,7 @@ params:
         readingTime: true
         license:
             enabled: true
+            source: Originally published at
             default: This article is licensed under
 
     comments:
