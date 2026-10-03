@@ -25,7 +25,7 @@ Welcome to my technical journal where I share my experiences and knowledge about
 
 ## Me
 
-I started my career nearly 30 years ago at a small Mom-and-Pop computer store, building and repairing home computer systems and peripherals.
+I started my career over 30 years ago at a small Mom-and-Pop computer store, building and repairing home computer systems and peripherals.
 To put that time into perspective, we rented parallel CD-ROM drives and CD-ROM based games because the drives were cost prohibitive to the average gamer.
 Since then, I've worked in the public and private sectors with 17 years spent in higher education.
 Currently, I am a DevOps engineer for a finance company and use PowerShell and Python daily.

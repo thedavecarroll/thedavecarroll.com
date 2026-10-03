@@ -10,7 +10,8 @@
 {{- end }}
 <title>{{ $title }}</title>
 
-{{- if .Description }}
+{{- /* The home page always uses the site description: its front-matter description is a short welcome line. */ -}}
+{{- if and .Description (not .IsHome) }}
 <meta name="description" content="{{ .Description }}">
 {{- else if site.Params.description }}
 <meta name="description" content="{{ site.Params.description }}">
