@@ -13,6 +13,7 @@ module.exports = {
   // skipExternalDomains: Defaults provided by hugo-validator, add site-specific overrides here
   skipExternalDomains: {
     // Example: 'example.com': 'Custom reason',
+    'reddit.com': 'Blocks automated requests (403)',
   },
 
   // CSS validation: glob pattern for SCSS/CSS files
@@ -20,6 +21,12 @@ module.exports = {
 
   // Paths to skip in accessibility and link tests
   skipPaths: ['/rss.xml', '/sitemap.xml', '/robots.txt'],
+
+  // Heading structure (hugo-validator 2.1.0). Best practice, not WCAG 2.2 AA, so opt-in.
+  headings: {
+    requireH1: true,        // every page must have an <h1>
+    allowMultipleH1: false, // and only one
+  },
 
   // Responsive testing configuration
   responsive: {
