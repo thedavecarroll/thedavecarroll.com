@@ -36,6 +36,14 @@ npm test                           # Playwright tests only
 
 A full run takes about a minute (174 pages, around 290 external links). A few external links report certificate or 403 warnings; they are warnings by design, not failures.
 
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/new-post.sh [-s section] [-b] [-n] <slug>` | Create a draft article from the archetype. Section is `powershell` (default) or `blog`. `-b` makes a page bundle, `-n` sets `toc: false`. The front matter date is the time of creation. Run with no arguments for usage. |
+| `scripts/prune-deployments.sh [--dry-run]` | Delete old Cloudflare Pages deployments, which Pages otherwise keeps forever. Keeps the newest 3 production deployments and the newest deployment of each preview branch. Needs `~/.config/cloudflare/pages.env` with `CLOUDFLARE_API_TOKEN` (Pages Edit) and `CLOUDFLARE_ACCOUNT_ID`. Run with `--dry-run` first. |
+| `scripts/check-dead-links.js` | Repair helper for dead external links: records them in `data/dead_links.yaml`. Not part of validation. |
+
 ## Comments
 
 Comments use [giscus](https://giscus.app), backed by GitHub Discussions in this repo, category "Site Comments", mapped by pathname. The repo and category IDs are in `hugo.yaml` under `params.comments.giscus`; `giscus.json` restricts the widget to the production origin and the `*.thedavecarroll-com.pages.dev` preview URLs.
