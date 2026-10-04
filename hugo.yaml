@@ -70,6 +70,13 @@ params:
         # Available values: auto, light, dark
         default: auto
 
+# YAML as an output format, used by the résumé page (/resume/index.yaml)
+outputFormats:
+    yaml:
+        mediaType: application/yaml
+        baseName: index
+        isPlainText: true
+
 ### Menu items are defined in content front matter.
 ### To change them, edit the `menu` field in content files.
 

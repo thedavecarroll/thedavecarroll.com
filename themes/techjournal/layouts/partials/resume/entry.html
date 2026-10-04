@@ -1,0 +1,32 @@
+{{- /*
+  One résumé entry. Takes a dict:
+    title       heading of the entry
+    url         optional link for the heading
+    meta        slice of short facts shown under the heading; empty ones are dropped
+    text        optional Markdown paragraph(s)
+    highlights  optional list of Markdown items
+    tags        optional list shown as one comma-separated line
+*/ -}}
+<article class="tj-resume__entry">
+  <h3 class="tj-resume__title">
+    {{- with .url }}<a href="{{ . }}">{{ $.title }}</a>{{ else }}{{ .title }}{{ end -}}
+  </h3>
+  {{- $meta := slice }}
+  {{- range .meta }}{{ with . }}{{ $meta = $meta | append . }}{{ end }}{{ end }}
+  {{- with $meta }}
+  <p class="tj-resume__meta">{{ delimit . " · " }}</p>
+  {{- end }}
+  {{- with .text }}
+  <div class="tj-resume__text">{{ . | markdownify }}</div>
+  {{- end }}
+  {{- with .highlights }}
+  <ul class="tj-resume__list">
+    {{- range . }}
+    <li>{{ . | markdownify }}</li>
+    {{- end }}
+  </ul>
+  {{- end }}
+  {{- with .tags }}
+  <p class="tj-resume__tags">{{ delimit . ", " }}</p>
+  {{- end }}
+</article>

@@ -43,6 +43,7 @@ A full run takes about a minute (174 pages, around 290 external links). A few ex
 | `scripts/new-post.sh [-s section] [-b] [-n] <slug>` | Create a draft article from the archetype. Section is `powershell` (default) or `blog`. `-b` makes a page bundle, `-n` sets `toc: false`. The front matter date is the time of creation. Run with no arguments for usage. |
 | `scripts/prune-deployments.sh [--dry-run]` | Delete old Cloudflare Pages deployments, which Pages otherwise keeps forever. Keeps the newest 3 production deployments and the newest deployment of each preview branch. Needs `~/.config/cloudflare/pages.env` with `CLOUDFLARE_API_TOKEN` (Pages Edit) and `CLOUDFLARE_ACCOUNT_ID`. Run with `--dry-run` first. |
 | `scripts/check-dead-links.js` | Repair helper for dead external links: records them in `data/dead_links.yaml`. Not part of validation. |
+| `node scripts/resume-pdf.js [--drafts] [--a4]` | Print the résumé page to `static/resume/resume.pdf` with the Chromium that hugo-validator installs. Hugo cannot make a PDF, so run this after changing `data/resume.yaml` and commit the PDF with the change. `--drafts` while the page is still a draft; `--a4` for A4 paper (default US Letter). |
 
 ## Comments
 

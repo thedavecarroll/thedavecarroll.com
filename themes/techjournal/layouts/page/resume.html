@@ -1,0 +1,241 @@
+{{- /*
+  The résumé: a complete page of its own, without the site's header, sidebar
+  or footer. Everything shown comes from data/resume.yaml, which uses the
+  field names of the JSON Resume schema. A section with no data is left out.
+
+  The styles are inlined, so the page needs no other file from the site. That
+  lets a second hostname serve this one page and nothing else.
+*/ -}}
+{{- $resume := hugo.Data.resume -}}
+{{- $basics := $resume.basics -}}
+{{- $canonical := .Params.canonical | default .Permalink -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ $basics.name }}{{ with $basics.label }} | {{ . }}{{ end }}</title>
+  <meta name="description" content="{{ .Description }}">
+  <meta name="author" content="{{ $basics.name }}">
+  <link rel="canonical" href="{{ $canonical }}">
+  {{- range .AlternativeOutputFormats }}
+  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}">
+  {{- end }}
+  <link rel="icon" type="image/x-icon" href="{{ "icons/favicon.ico" | absURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "icons/apple-touch-icon.png" | absURL }}">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="{{ $basics.name }}{{ with $basics.label }} | {{ . }}{{ end }}">
+  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:url" content="{{ $canonical }}">
+  {{- with resources.Get "scss/resume.scss" | css.Sass (dict "outputStyle" "compressed" "transpiler" "dartsass") }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{- end }}
+</head>
+<body class="tj-resume">
+  <main class="tj-resume__page">
+    <header class="tj-resume__header">
+      <h1 class="tj-resume__name">{{ $basics.name }}</h1>
+      {{- with $basics.label }}
+      <p class="tj-resume__label">{{ . }}</p>
+      {{- end }}
+      <ul class="tj-resume__contact">
+        {{- with $basics.location }}
+        {{- $place := slice }}
+        {{- range (slice .city .region .countryCode) }}{{ with . }}{{ $place = $place | append . }}{{ end }}{{ end }}
+        {{- with $place }}
+        <li>{{ delimit . ", " }}</li>
+        {{- end }}
+        {{- end }}
+        {{- with $basics.email }}
+        <li><a href="mailto:{{ . }}">{{ . }}</a></li>
+        {{- end }}
+        {{- with $basics.phone }}
+        <li>{{ . }}</li>
+        {{- end }}
+        {{- with $basics.url }}
+        <li><a href="{{ . }}">{{ . | strings.TrimPrefix "https://" | strings.TrimSuffix "/" }}</a></li>
+        {{- end }}
+        {{- range $basics.profiles }}
+        <li><a href="{{ .url }}">{{ .network }}</a></li>
+        {{- end }}
+      </ul>
+    </header>
+
+    {{- with $basics.summary }}
+    <section class="tj-resume__section" aria-labelledby="resume-summary">
+      <h2 class="tj-resume__heading" id="resume-summary">Summary</h2>
+      <div class="tj-resume__body tj-resume__text">{{ . | markdownify }}</div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.work }}
+    <section class="tj-resume__section" aria-labelledby="resume-experience">
+      <h2 class="tj-resume__heading" id="resume-experience">Experience</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .position
+          "meta" (slice .name .location (partial "resume/dates.html" .))
+          "text" .summary
+          "highlights" .highlights) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.projects }}
+    <section class="tj-resume__section" aria-labelledby="resume-projects">
+      <h2 class="tj-resume__heading" id="resume-projects">Projects</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .name
+          "url" .url
+          "meta" (slice (delimit (.roles | default slice) ", ") .entity (partial "resume/dates.html" .))
+          "text" .description
+          "highlights" .highlights
+          "tags" .keywords) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.skills }}
+    <section class="tj-resume__section" aria-labelledby="resume-skills">
+      <h2 class="tj-resume__heading" id="resume-skills">Skills</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict "title" .name "meta" (slice .level) "tags" .keywords) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.education }}
+    <section class="tj-resume__section" aria-labelledby="resume-education">
+      <h2 class="tj-resume__heading" id="resume-education">Education</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- $degree := slice }}
+        {{- range (slice .studyType .area) }}{{ with . }}{{ $degree = $degree | append . }}{{ end }}{{ end }}
+        {{- partial "resume/entry.html" (dict
+          "title" .institution
+          "url" .url
+          "meta" (slice (delimit $degree ", ") (partial "resume/dates.html" .) .score)
+          "tags" .courses) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.certificates }}
+    <section class="tj-resume__section" aria-labelledby="resume-certificates">
+      <h2 class="tj-resume__heading" id="resume-certificates">Certificates</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .name
+          "url" .url
+          "meta" (slice .issuer (partial "resume/dates.html" (dict "endDate" .date)))) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.publications }}
+    <section class="tj-resume__section" aria-labelledby="resume-publications">
+      <h2 class="tj-resume__heading" id="resume-publications">Publications</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .name
+          "url" .url
+          "meta" (slice .publisher (partial "resume/dates.html" (dict "endDate" .releaseDate)))
+          "text" .summary) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.awards }}
+    <section class="tj-resume__section" aria-labelledby="resume-awards">
+      <h2 class="tj-resume__heading" id="resume-awards">Awards</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .title
+          "meta" (slice .awarder (partial "resume/dates.html" (dict "endDate" .date)))
+          "text" .summary) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.volunteer }}
+    <section class="tj-resume__section" aria-labelledby="resume-volunteer">
+      <h2 class="tj-resume__heading" id="resume-volunteer">Volunteer</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict
+          "title" .position
+          "meta" (slice .organization (partial "resume/dates.html" .))
+          "text" .summary
+          "highlights" .highlights) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.languages }}
+    <section class="tj-resume__section" aria-labelledby="resume-languages">
+      <h2 class="tj-resume__heading" id="resume-languages">Languages</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict "title" .language "meta" (slice .fluency)) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.interests }}
+    <section class="tj-resume__section" aria-labelledby="resume-interests">
+      <h2 class="tj-resume__heading" id="resume-interests">Interests</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict "title" .name "tags" .keywords) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $resume.references }}
+    <section class="tj-resume__section" aria-labelledby="resume-references">
+      <h2 class="tj-resume__heading" id="resume-references">References</h2>
+      <div class="tj-resume__body">
+        {{- range . }}
+        {{- partial "resume/entry.html" (dict "title" .name "text" .reference) }}
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- /* Other formats. The PDF is made by scripts/resume-pdf.js and is linked once it exists. */ -}}
+    {{- $pdf := "resume/resume.pdf" }}
+    {{- $formats := slice }}
+    {{- if fileExists (printf "static/%s" $pdf) }}
+    {{- $formats = $formats | append (dict "name" "PDF" "url" ($pdf | absURL)) }}
+    {{- end }}
+    {{- range .AlternativeOutputFormats }}
+    {{- $formats = $formats | append (dict "name" (.Name | upper) "url" .Permalink) }}
+    {{- end }}
+    {{- with $formats }}
+    <footer class="tj-resume__footer">
+      <p>Also available as
+        {{- range $index, $format := . }}
+        {{- if $index }},{{ end }} <a href="{{ $format.url }}">{{ $format.name }}</a>
+        {{- end }}.</p>
+    </footer>
+    {{- end }}
+  </main>
+</body>
+</html>

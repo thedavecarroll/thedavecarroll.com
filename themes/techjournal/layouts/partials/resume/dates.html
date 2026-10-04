@@ -1,0 +1,13 @@
+{{- /*
+  The date range of an entry: "Jan 2020 – Jun 2024", "Jan 2020 – Present",
+  or a single date when only the end is given. Empty when there are no dates.
+*/ -}}
+{{- $text := "" -}}
+{{- if and .startDate .endDate -}}
+  {{- $text = printf "%s – %s" (partial "resume/date.html" .startDate) (partial "resume/date.html" .endDate) -}}
+{{- else if .startDate -}}
+  {{- $text = printf "%s – Present" (partial "resume/date.html" .startDate) -}}
+{{- else if .endDate -}}
+  {{- $text = partial "resume/date.html" .endDate -}}
+{{- end -}}
+{{- return $text -}}
