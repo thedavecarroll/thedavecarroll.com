@@ -1,0 +1,2 @@
+{{- /* The résumé data as YAML, in JSON Resume's field names. */ -}}
+{{- hugo.Data.resume | transform.Remarshal "yaml" -}}

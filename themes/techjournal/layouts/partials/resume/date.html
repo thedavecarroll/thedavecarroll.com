@@ -1,0 +1,12 @@
+{{- /*
+  A JSON Resume date ("2024", "2024-03", "2024-03-15") as text: the year alone,
+  or "Mar 2024". Anything else is shown as written.
+*/ -}}
+{{- $date := printf "%v" . -}}
+{{- $text := $date -}}
+{{- if findRE `^\d{4}-\d{2}-\d{2}` $date -}}
+  {{- $text = (time.AsTime (substr $date 0 10)).Format "Jan 2006" -}}
+{{- else if findRE `^\d{4}-\d{2}$` $date -}}
+  {{- $text = (time.AsTime (printf "%s-01" $date)).Format "Jan 2006" -}}
+{{- end -}}
+{{- return $text -}}

@@ -1,0 +1,2 @@
+{{- /* The résumé data as published JSON Resume. */ -}}
+{{- hugo.Data.resume | jsonify (dict "indent" "  ") -}}

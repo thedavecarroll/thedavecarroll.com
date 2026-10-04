@@ -1,0 +1,395 @@
+# Résumé data for /resume/, in the field names of the JSON Resume schema
+# (https://jsonresume.org/schema). Fill in the sections you want; a section
+# that is missing or empty is left off the page.
+#
+# Dates: quote them, as "2024", "2024-03" or "2024-03-15". Leave endDate out
+# for something current. summary, description and highlights accept Markdown.
+
+basics:
+  name: Dave Carroll
+  # label: A short professional title
+  url: https://thedavecarroll.com/
+  # email: you@example.com
+  # phone: "+1 555 000 0000"
+  # summary: |
+  #   Two or three sentences on what you do.
+  # location:
+  #   city: City
+  #   region: State
+  #   countryCode: US
+  profiles:
+    - network: GitHub
+      username: thedavecarroll
+      url: https://github.com/thedavecarroll/
+    - network: LinkedIn
+      username: thedavecarroll
+      url: https://www.linkedin.com/in/thedavecarroll/
+    - network: Bluesky
+      username: thedavecarroll.com
+      url: https://bsky.app/profile/thedavecarroll.com
+
+work:
+  - name: Undisclosed
+    position: Senior DevOps Engineer
+    location: California
+    startDate: "2024-10"
+
+  - name: Undisclosed
+    position: DevOps Engineer
+    location: California
+    startDate: "2020-09"
+    endDate: "2024-10"
+
+  - name: University
+    position: IAM Applications Developer
+    location: California
+    startDate: "2019-11"
+    endDate: "2020-05"
+    highlights:
+      - Wrote WebAPI in C# for management of Active Directory groups, group membership, and user attribute updates.
+      - Used Azure DevOps pipelines to create builds for WebAPI service.
+      - Used OctoDeploy to deploy service into multiple environments.
+      - Enhanced logging of Active Directory Federation Service (ADFS) logon failures by updating PowerShell script.
+
+  - name: Undisclosed Global Financial
+    position: Identity Management and Automation Engineer
+    location: Greater Nashville Area, TN
+    startDate: "2018-10"
+    endDate: "2019-10"
+    highlights:
+      - Member of global team focusing on Active Directory and other critical services.
+      - Created several PowerShell functions and scripts to support automation.
+      - Implemented changes and deployments as required.
+
+  - name: Undisclosed Medical Supply
+    position: Systems Engineer, Infrastructure
+    location: Greater Nashville Area, TN
+    startDate: "2016-09"
+    endDate: "2018-10"
+    highlights:
+      - Created migration workflow for Office 365 and Exchange Online using PowerShell to prepare user AD objects for migration of user mailboxes from two local domains, license the target accounts, and copy mailbox contents from source to target mailbox.
+      - Created user synchronization script to create new accounts in secondary domain based on account in primary.
+      - Created several PowerShell scripts to aid in data-mining for reporting, environment documentation, and data integrity.
+      - Redesigned Active Directory Sites for smaller forest; migrated SYSVOL replication to DFS-R from deprecated FRS technology; extended schema.
+      - Established and implemented group policy standards; created several startup scripts to deploy required applications.
+
+  - name: University
+    position: Development Support & Systems Lead
+    location: California
+    startDate: "2014-02"
+    endDate: "2016-04"
+    highlights:
+      - Provided primary support for approximately 200 Microsoft Windows servers, Active Directory, group policies, and several applications (vendor and in-house).
+      - Developed method of manually identifying infrastructure, database, and application dependencies to allow for a cascading system restart in a given functional area.
+      - Continued providing PowerShell functions and scripts to ensure higher accuracy and better efficiency in daily tasks.
+      - Increased service and support consistency by establishing standards and policies.
+      - Trained team members on PowerShell usage and advanced troubleshooting skills.
+      - Managed Microsoft Certificate Services PKI; requisitioned all public CA certificates.
+      - Supervised a team of deployment engineers.
+
+  - name: University
+    position: Senior Systems Engineer
+    location: California
+    startDate: "2012-06"
+    endDate: "2014-02"
+    highlights:
+      - Designed and implemented infrastructure to support identity and access management for converted web applications comprising the in-house student information systems. This infrastructure included Active Directory Federation Services and Microsoft Forefront Identity Manager.
+      - Improved efficiency and accuracy of many daily tasks through the creation of PowerShell functions and scripts.
+      - Implemented and supported Microsoft Certificate Services PKI; requisitioned all public certificate authority certificates.
+      - Migrated primary electronic medical records application suite to newer Windows Server operating system. This project involved becoming familiar with the application suite and its supporting services.
+
+  - name: Community College
+    position: Systems Administrator
+    location: Jackson, Tennessee
+    startDate: "2004-06"
+    endDate: "2012-05"
+    highlights:
+      - Saved the institution over $40K by creating a home-grown identity solution utilizing Active Directory, PowerShell, Oracle SQL, and SunOne LDAP with a Linux/Apache/PHP web front end for end-users and support staff.
+      - Supported Microsoft Windows Server and several Linux-based operating systems.
+      - Designed and managed Active Directory and group policies.
+      - Designed and managed virtual infrastructure consisting of VMware vSphere/ESX servers and vCenter Server; leveraged other virtualization technologies for ERP and VDI.
+      - Implemented and supported Microsoft Exchange and spam filter appliances.
+      - Designed and implemented VLANs to provide a more robust, secure network.
+      - Deployed and managed Cisco firewall; migrated configuration to Fortinet FortiGate firewall.
+      - Served as institution liaison for statewide IT advisory groups and projects.
+      - Provided project leadership for various technology implementations.
+      - Presented on various technical topics at local, state, and regional conferences.
+
+  - name: Community College
+    position: Webmaster
+    location: Tennessee
+    startDate: "2001-06"
+    endDate: "2004-06"
+    highlights:
+      - Designed and maintained new website; promulgated campus web policies.
+      - Continued server administration duties.
+
+  - name: Community College
+    position: Technical Support Coordinator/Manager
+    location: Tennessee
+    startDate: "1998-11"
+    endDate: "2001-06"
+    highlights:
+      - Improved customer satisfaction through establishing service standards and training campus end user support team.
+      - Acquired server administration duties.
+
+  - name: Engineering Staffing Company
+    position: Systems Administrator
+    location: Jackson, Tennessee
+    startDate: "1997-11"
+    endDate: "1998-09"
+    highlights:
+      - Supported branch server running Netware, including backup and Lotus ccMail.
+      - Created inventory control database and work order system in Microsoft Access.
+      - Supported desktops, plotters, and printers in an engineering environment.
+
+  - name: C&M Computer Center
+    position: Technician
+    location: Jackson, Tennessee
+    startDate: "1994-11"
+    endDate: "1997-11"
+    summary: "Prior positions: Service Manager, General Manager."
+    highlights:
+      - Supported various operating systems and networking devices, including cable installation.
+      - Supported PC and server hardware, and desktop applications.
+      - Supported printers, including warranty repair for HP printer devices.
+      - Provided customers quotes for new systems and applications.
+      - Created store policies and implemented better inventory control procedures.
+
+# Template for a further entry:
+#   - name: Company
+#     position: Job title
+#     location: City, State
+#     url: https://example.com/
+#     startDate: "2020-01"
+#     endDate: "2024-06"
+#     summary: One or two sentences about the role.
+#     highlights:
+#       - Something you did, and what it changed.
+
+projects:
+  - name: BluebirdPS (Open-Source PowerShell Module)
+    description: BluebirdPS is an open-source PowerShell 7 module that provides an automation client for the Twitter API. The repository was archived in December 2024.
+    url: https://github.com/thedavecarroll/BluebirdPS
+    startDate: "2020-05"
+    endDate: "2024-12"
+
+  - name: PoShEvents (Open-Source PowerShell Module)
+    description: PoShEvents is an open-source PowerShell module which assists users with querying the Windows event logs. It also provides a function to write structured data to event entries.
+    url: https://github.com/thedavecarroll/PoShEvents
+    startDate: "2018-05"
+
+  - name: PoShGroupPolicy (Open-Source PowerShell Module)
+    description: PoShGroupPolicy is an open-source PowerShell module that deciphers several group policy settings into easy to save, search, and manipulate custom PowerShell objects.
+    url: https://github.com/thedavecarroll/PoShGroupPolicy
+    startDate: "2018-03"
+
+# Template for a further entry:
+#   - name: Project
+#     description: What it is.
+#     url: https://example.com/
+#     startDate: "2019"
+#     roles:
+#       - Author
+#     keywords:
+#       - PowerShell
+#     highlights:
+#       - A result worth naming.
+
+# skills:
+#   - name: Area
+#     level: Advanced
+#     keywords:
+#       - Skill
+#       - Another skill
+
+education:
+  - institution: University of Illinois Springfield
+    area: English Language and Literature, General
+    startDate: "2006"
+    endDate: "2007"
+
+  - institution: Jackson State Community College
+    studyType: A.S.
+    area: Information Systems
+    startDate: "2000"
+    endDate: "2002"
+
+  - institution: University of Memphis
+    area: English Language and Literature, General
+    startDate: "1988"
+    endDate: "1990"
+
+# Template for a further entry:
+#   - institution: School
+#     studyType: Degree
+#     area: Field
+#     startDate: "1990"
+#     endDate: "1994"
+
+certificates:
+  - name: "MCPS: Microsoft Certified Professional (Windows Server 2012)"
+    issuer: Microsoft
+    date: "2014-02"
+
+  - name: "MCSE1: Windows NT 4.0"
+    issuer: Microsoft
+    date: "2000-12"
+
+  - name: CompTIA Network+ Certification
+    issuer: CompTIA
+    date: "2000-11"
+
+  - name: CompTIA A+ Certification
+    issuer: CompTIA
+    date: "1996-02"
+
+# Template for a further entry:
+#   - name: Certificate
+#     issuer: Issuer
+#     date: "2022-05"
+#     url: https://example.com/
+
+publications:
+  - name: Writing Cross-Platform PowerShell
+    publisher: SQL Saturday Atlanta 2025 - AI & BI
+    releaseDate: "2025-03-08"
+    summary: |
+      Presenter
+
+      Since its release in March 2020, PowerShell 7 has transformed the scripting landscape by introducing official cross-platform support for Windows, macOS, and most Linux distributions, significantly reducing the barrier to adoption for developers and IT professionals in diverse environments. In this session, we’ll explore how to write OS-agnostic PowerShell scripts that seamlessly support these platforms, including practical techniques for handling OS-specific differences with clean, maintainable code.
+
+  - name: Writing Cross-Platform PowerShell
+    publisher: The PowerShell + DevOps Global Summit 2024
+    releaseDate: "2024-04"
+    summary: |
+      Presenter
+
+      When released, PowerShell 7 became the first PowerShell version to officially support cross-platform installations, meaning that you can run PowerShell on Windows, MacOS, and most Linux distributions. In this session, we will learn how to write PowerShell code that supports these platforms so you can keep your code consistent and avoid maintaining multiple OS specific scripts.
+
+  - name: "BluebirdPS: From Nesting to Hatched and Flying"
+    publisher: The PowerShell + DevOps Global Summit 2023
+    releaseDate: "2023-04"
+    summary: |
+      Presenter
+
+      BluebirdPS is a PowerShell 7 hybrid manifest module for the Twitter REST API and includes a .NET assembly written in C# used primarily for output. In this session, we will examine certain aspects of BluebirdPS in-depth. We will look at the basic framework and structure of the module, as well as how it has evolved over the last two plus years, what original design choices survived and which did not.
+
+  - name: Your Code is Flawless, But How YOU doing?
+    publisher: The PowerShell + DevOps Global Summit 2023
+    releaseDate: "2023-04"
+    summary: |
+      Co-presenter, with Andrew Pla
+
+      A session on our individual paths of self discovery leading to healthier mental states and happier lives.
+
+  - name: "Creating BluebirdPS: A PowerShell 7 Twitter Automation Client"
+    publisher: The PowerShell + DevOps Global Summit 2021
+    releaseDate: "2021-04-27"
+    summary: |
+      Video on Demand Presentation
+
+      In this talk, we will examine the process used in creating BluebirdPS, a PowerShell 7 module for the Twitter REST API. Topics will include learning the API, authentication, module structure, response and error handling, and customizing the output.
+
+  - name: The PowerShell Conference Book Volume 3
+    publisher: Leanpub
+    releaseDate: "2020-08"
+    summary: |
+      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
+
+      I provided a chapter entitled, "Exploring Experimental Features in PowerShell 7".
+
+  - name: "#PS7Now"
+    publisher: Leanpub
+    releaseDate: "2020-03-26"
+    summary: |
+      A PowerShell community project highlighting new features in PowerShell 7 and why you should begin adopting it as your daily management tool. This ebook is an edited collection of articles published during a #PSBlogWeek event in March 2020 that focused on the release of PowerShell 7. The articles are written by members of the PowerShell community excited about everything that PowerShell 7 has to offer.
+
+      I contributed two articles for PSBlogWeek PS7Now: "PowerShell 7 Changes to JSON Cmdlets" and "PowerShell 7 Experimental Features".
+
+  - name: The PowerShell Conference Book Volume 2
+    publisher: Leanpub
+    releaseDate: "2020-01-31"
+    summary: |
+      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
+
+      I provided a chapter on the cultural shift to DevOps entitled, "On the Road to DevOps, Don’t Forget the Soft Skills".
+
+  - name: "Crossing the Divide: A System Administrator's Path to DevOps"
+    publisher: Research Triangle PowerShell User Group - PowerShell Saturday
+    releaseDate: "2019-09-21"
+    summary: |
+      Presenter
+
+      An examination of one systems administrator’s journey to see how they acquired some of the prerequisite skill sets and changed their mindset on the continuous path to DevOps methodology integration.
+
+  - name: Luminis Integration with Live@EDU
+    publisher: Tennessee Summit on Administrative Computing Technologies
+    releaseDate: "2010-10"
+    summary: Lead Presenter
+
+  - name: Multiple EAS and Luminis LDAP
+    publisher: Tennessee Summit on Administrative Computing Technologies
+    releaseDate: "2010-10"
+    summary: Presenter
+
+  - name: "Solaris LDoms Are Logical: A Technical View on LDom Configuration to Support ODS"
+    publisher: Tennessee Summit on Administrative Computing Technologies
+    releaseDate: "2009-10"
+    summary: Presenter
+
+  - name: "Spam Filter Appliances: A Comparison"
+    publisher: TN Higher Education IT Symposium
+    releaseDate: "2008-04"
+    summary: Lead Presenter
+
+  - name: "The Faculty Credential Database: A Case Study"
+    publisher: Southern Association of Colleges and Schools - Commission on Colleges Annual Meeting
+    releaseDate: "2005-12-05"
+    summary: Co-presenter
+
+  - name: "IT Tracker: A Microsoft Access Database Application from Design to Implementation"
+    releaseDate: "2004-02"
+    summary: Guest Speaker for Data Management II Class
+
+  - name: Building Effective Instructional Web Sites with Security and Vision
+    publisher: League of Innovation - Conference on Information Technology, Chicago
+    releaseDate: "1998"
+    summary: Co-presenter
+
+  - name: Establishing a Friendship With Outlook to Increase Productivity
+
+# Template for a further entry:
+#   - name: Title
+#     publisher: Publisher
+#     releaseDate: "2021-10"
+#     url: https://example.com/
+#     summary: What it covers.
+
+# awards:
+#   - title: Award
+#     awarder: Who gave it
+#     date: "2020"
+#     summary: What it was for.
+
+# volunteer:
+#   - organization: Organisation
+#     position: Role
+#     url: https://example.com/
+#     startDate: "2018"
+#     summary: What you do there.
+#     highlights:
+#       - Something specific.
+
+# languages:
+#   - language: English
+#     fluency: Native speaker
+
+# interests:
+#   - name: Interest
+#     keywords:
+#       - Detail
+
+# references:
+#   - name: Person
+#     reference: What they said.

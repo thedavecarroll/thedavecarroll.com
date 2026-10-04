@@ -1,0 +1,219 @@
+@use "variables" as *;
+
+// Résumé page. Self-contained: this file is inlined into the page by
+// layouts/page/resume.html and nothing else from the theme is loaded.
+// Minimal layout: section labels in the left margin, content beside them.
+
+:root {
+  --resume-bg: #{$light-bg-tertiary};
+  --resume-text: #{$light-text-primary};
+  --resume-muted: #{$light-text-secondary};
+  --resume-accent: #{$light-accent-primary};
+  --resume-border: #{$light-border};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --resume-bg: #{$dark-bg-primary};
+    --resume-text: #{$dark-text-primary};
+    --resume-muted: #{$dark-text-secondary};
+    --resume-accent: #{$dark-accent-primary};
+    --resume-border: #{$dark-border};
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.tj-resume {
+  margin: 0;
+  background-color: var(--resume-bg);
+  color: var(--resume-text);
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  a {
+    color: var(--resume-accent);
+    overflow-wrap: anywhere;
+    text-underline-offset: 0.15em;
+  }
+
+  &__page {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 4rem 2rem 5rem;
+    }
+  }
+
+  &__header {
+    margin-bottom: 2.5rem;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  &__label {
+    margin: 0.25rem 0 0;
+    color: var(--resume-muted);
+    font-size: 1.125rem;
+  }
+
+  &__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    list-style: none;
+  }
+
+  &__section {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--resume-border);
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: 9rem minmax(0, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  &__heading {
+    margin: 0;
+    color: var(--resume-muted);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 2.1;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    min-width: 0;
+  }
+
+  &__entry {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  &__meta,
+  &__tags {
+    margin: 0.125rem 0 0;
+    color: var(--resume-muted);
+    font-size: 0.9375rem;
+  }
+
+  &__tags {
+    margin-top: 0.5rem;
+  }
+
+  &__text {
+    p {
+      margin: 0 0 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__entry &__text {
+    margin-top: 0.5rem;
+  }
+
+  &__list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &__footer {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--resume-border);
+    color: var(--resume-muted);
+    font-size: 0.875rem;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// Paper: black on white, tighter, no web-only extras
+@media print {
+  :root {
+    --resume-bg: #FFFFFF;
+    --resume-text: #000000;
+    --resume-muted: #333333;
+    --resume-accent: #000000;
+    --resume-border: #999999;
+  }
+
+  @page {
+    margin: 0.6in;
+  }
+
+  .tj-resume {
+    font-size: 10.5pt;
+    line-height: 1.45;
+
+    a {
+      text-decoration: none;
+    }
+
+    &__page {
+      max-width: none;
+      padding: 0;
+    }
+
+    &__header {
+      margin-bottom: 1.25rem;
+    }
+
+    &__name {
+      font-size: 22pt;
+    }
+
+    &__section {
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      gap: 1.25rem;
+      padding: 0.75rem 0;
+    }
+
+    &__entry {
+      margin-bottom: 0.75rem;
+      break-inside: avoid;
+    }
+
+    &__footer {
+      display: none;
+    }
+  }
+}
