@@ -19,10 +19,10 @@
   <meta name="author" content="{{ $basics.name }}">
   <link rel="canonical" href="{{ $canonical }}">
   {{- range .AlternativeOutputFormats }}
-  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}">
+  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}">
   {{- end }}
-  <link rel="icon" type="image/x-icon" href="{{ "icons/favicon.ico" | absURL }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "icons/apple-touch-icon.png" | absURL }}">
+  <link rel="icon" type="image/x-icon" href="{{ "icons/favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "icons/apple-touch-icon.png" | relURL }}">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="{{ $basics.name }}{{ with $basics.label }} | {{ . }}{{ end }}">
   <meta property="og:description" content="{{ .Description }}">
@@ -219,14 +219,18 @@
     </section>
     {{- end }}
 
-    {{- /* Other formats. The PDF is made by scripts/resume-pdf.js and is linked once it exists. */ -}}
+    {{- /*
+      Other formats. The PDF is made by scripts/resume-pdf.js and is linked once
+      it exists. These links and the icons above have no hostname, so they stay
+      on whichever name serves the page (thedavecarroll.com or thedavecarroll.dev).
+    */ -}}
     {{- $pdf := "resume/resume.pdf" }}
     {{- $formats := slice }}
     {{- if fileExists (printf "static/%s" $pdf) }}
-    {{- $formats = $formats | append (dict "name" "PDF" "url" ($pdf | absURL)) }}
+    {{- $formats = $formats | append (dict "name" "PDF" "url" ($pdf | relURL)) }}
     {{- end }}
     {{- range .AlternativeOutputFormats }}
-    {{- $formats = $formats | append (dict "name" (.Name | upper) "url" .Permalink) }}
+    {{- $formats = $formats | append (dict "name" (.Name | upper) "url" .RelPermalink) }}
     {{- end }}
     {{- with $formats }}
     <footer class="tj-resume__footer">
