@@ -28,6 +28,12 @@ module.exports = {
     allowMultipleH1: false, // and only one
   },
 
+  // Image metadata (hugo-validator 2.2.0). A commit strips it from staged images;
+  // any other validate run fails when an image carries it.
+  images: {
+    scrubMetadata: true,
+  },
+
   // Responsive testing configuration
   responsive: {
     // CSS selector for your main page wrapper
