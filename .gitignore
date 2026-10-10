@@ -4,6 +4,9 @@
 .hugo_stats.json
 .hugo_build.lock
 
+# IndexNow: what was last submitted (scripts/indexnow.sh)
+.indexnow-state
+
 # Logs and databases
 *.log
 *.sql
