@@ -1,0 +1,14 @@
+#!/bin/sh
+# After a pull on main that changed content/, submit the sitemap to IndexNow.
+# Cloudflare builds the site after the merge, so wait for the build first.
+# The key and the submission live in scripts/indexnow.sh.
+
+[ "$(git branch --show-current)" = "main" ] || exit 0
+
+# ORIG_HEAD is where main was before the pull
+git diff --quiet ORIG_HEAD HEAD -- content/ && exit 0
+
+DELAY=180
+echo "content/ changed: submitting the sitemap to IndexNow in ${DELAY}s (background)"
+( sleep "$DELAY"; ./scripts/indexnow.sh ) >/dev/null 2>&1 &
+exit 0

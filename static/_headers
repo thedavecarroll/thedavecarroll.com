@@ -9,3 +9,6 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 0
+
+/.well-known/webfinger
+  Content-Type: application/jrd+json
