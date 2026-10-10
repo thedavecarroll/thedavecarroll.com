@@ -3,7 +3,9 @@
     {{- with site.Params.author.avatar }}
       {{- $avatar := resources.Get . }}
       {{- if $avatar }}
-    <img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.author.name }}" class="tj-profile__avatar">
+        {{- /* Shown at 100px (_profile.scss); 200px covers high-density screens. The source is 3072px. */}}
+        {{- $avatar = $avatar.Resize "200x webp q85" }}
+    <img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.author.name }}" class="tj-profile__avatar" width="100" height="100">
       {{- end }}
     {{- end }}
 
