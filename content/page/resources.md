@@ -1,7 +1,7 @@
 ---
 title: Helpful Resources
 url: /resources/
-image: /images/resources.png
+image: /images/resources.jpg
 layout: page
 toc: false
 readingTime: false
