@@ -2,11 +2,11 @@
 # No "noai" directive here on purpose: this site allows AI search and agents and
 # blocks only training crawlers, which is enforced at the Cloudflare edge.
 
-# Content-Security-Policy-Report-Only is a trial: violations show in the browser console and nothing is blocked.
+# Content-Security-Policy is enforced (2026-10-10) after a report-only trial with no violations.
+# A new external source (script, style, image, frame) must be added here or the browser blocks it.
 /*
   X-Frame-Options: DENY
-  Content-Security-Policy: frame-ancestors 'none'
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://giscus.app https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com https://giscus.app; img-src 'self' data: https://img.shields.io; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://giscus.app https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com https://giscus.app; img-src 'self' data: https://img.shields.io; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=(), interest-cohort=()
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
