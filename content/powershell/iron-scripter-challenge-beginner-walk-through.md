@@ -1,7 +1,7 @@
 ---
 title: "PowerShell Beginners Have to Start Somewhere"
 description: "Learn basic PowerShell concepts and apply them to the beginner's Iron Scripter challenge."
-image: /images/iron-scripter-beginner.png
+image: /images/iron-scripter-beginner.jpg
 published: 2019-10-13
 tags: ["powershell", "powershell concepts", "learn powershell", "powershell beginner", "iron scripter", "iron scripter challenge", "iron scripter walk-through"]
 categories: ["PowerShell"]

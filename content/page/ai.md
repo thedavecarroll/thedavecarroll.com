@@ -1,7 +1,7 @@
 ---
 title: My General Statement on AI
 url: /ai/
-image: /images/ai-manifesto.png
+image: /images/ai-manifesto.jpg
 layout: page
 toc: false
 readingTime: false
