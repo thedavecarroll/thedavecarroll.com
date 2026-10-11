@@ -4,7 +4,7 @@
     <h1 class="tj-header__brand-heading">
       <a href="{{ "/" | relLangURL }}" class="tj-header__brand">
         {{- if site.Params.logo }}
-        <img src="{{ site.Params.logo }}" alt="" class="tj-header__logo">
+        <img src="{{ site.Params.logo }}" {{ with partial "image-size.html" site.Params.logo }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="" class="tj-header__logo">
         {{- end }}
         <span>{{ site.Title }}</span>
       </a>
@@ -12,7 +12,7 @@
     {{- else }}
     <a href="{{ "/" | relLangURL }}" class="tj-header__brand">
       {{- if site.Params.logo }}
-      <img src="{{ site.Params.logo }}" alt="" class="tj-header__logo">
+      <img src="{{ site.Params.logo }}" {{ with partial "image-size.html" site.Params.logo }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="" class="tj-header__logo">
       {{- end }}
       <span>{{ site.Title }}</span>
     </a>

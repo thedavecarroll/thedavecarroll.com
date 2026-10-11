@@ -14,7 +14,7 @@
       <a href="{{ .RelPermalink }}" class="tj-card">
         {{- if .Params.image }}
         <div class="tj-card__image">
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+          <img src="{{ .Params.image }}" {{ with partial "image-size.html" .Params.image }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="{{ .Title }}" loading="lazy">
         </div>
         {{- end }}
         <div class="tj-card__body">

@@ -20,10 +20,10 @@
 
       <div class="tj-footer__right">
         <a href="/valida11y/" title="Validation & Accessibility">
-          <img src="/images/badges/vcss.png" alt="Valid CSS">
+          <img src="/images/badges/vcss.png" {{ with partial "image-size.html" "/images/badges/vcss.png" }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="Valid CSS">
         </a>
         <a href="/valida11y/" title="Validation & Accessibility">
-          <img src="/images/badges/wcag2.1AA-v.png" alt="WCAG 2.1 AA">
+          <img src="/images/badges/wcag2.1AA-v.png" {{ with partial "image-size.html" "/images/badges/wcag2.1AA-v.png" }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="WCAG 2.1 AA">
         </a>
         <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Protected by Cloudflare" class="tj-footer__cloudflare">
           <img src="/images/badges/logo-cloudflare-dark.svg" alt="Cloudflare">

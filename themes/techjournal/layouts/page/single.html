@@ -8,7 +8,7 @@
     <article class="tj-article">
       {{- if .Params.image }}
       <div class="tj-article__hero">
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="tj-article__hero-image">
+        <img src="{{ .Params.image }}" {{ with partial "image-size.html" .Params.image }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="{{ .Title }}" class="tj-article__hero-image">
       </div>
       {{- end }}
 

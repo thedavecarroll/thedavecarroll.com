@@ -10,7 +10,7 @@
     <section class="tj-featured">
       <a href="{{ .RelPermalink }}" class="tj-card tj-card--featured">
         {{- if .Params.image }}
-        <img src="{{ .Params.image }}" alt="" class="tj-card__image" loading="lazy">
+        <img src="{{ .Params.image }}" {{ with partial "image-size.html" .Params.image }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="" class="tj-card__image" loading="lazy">
         {{- end }}
         <div class="tj-card__body">
           <span class="tj-category">Featured</span>
