@@ -1,0 +1,20 @@
+{{- /*
+  Returns the image config (.Width, .Height) of a local raster image given its
+  site path ("/images/x.png"), looked up in the site's and the theme's static/,
+  or nothing for SVGs, external URLs and missing files. Used to put width and
+  height on <img> so the page does not shift while images load.
+*/ -}}
+{{- $config := false -}}
+{{- $src := . | default "" | string -}}
+{{- if and (strings.HasPrefix $src "/") (not (strings.HasPrefix $src "//")) -}}
+  {{- $path := index (split $src "?") 0 -}}
+  {{- if in (slice ".png" ".jpg" ".jpeg" ".gif" ".webp") (lower (path.Ext $path)) -}}
+    {{- range slice "static" "themes/techjournal/static" -}}
+      {{- $file := printf "%s%s" . $path -}}
+      {{- if and (not $config) (fileExists $file) -}}
+        {{- $config = images.Config $file -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $config -}}

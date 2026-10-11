@@ -6,7 +6,8 @@
     <div class="tj-related__list">
       {{- range $related }}
       <a href="{{ .RelPermalink }}" class="tj-related__item">
-        <img src="{{ .Params.image | default (site.Params.defaultImage.opengraph.src | default "/images/grid.png") }}" alt="{{ .Title }}" class="tj-related__image" loading="lazy">
+        {{- $relImg := .Params.image | default (site.Params.defaultImage.opengraph.src | default "/images/grid.png") }}
+        <img src="{{ $relImg }}" {{ with partial "image-size.html" $relImg }}width="{{ .Width }}" height="{{ .Height }}" {{ end }}alt="{{ .Title }}" class="tj-related__image" loading="lazy">
         <div class="tj-related__content">
           <h3 class="tj-related__title">{{ .Title }}</h3>
           <span class="tj-related__date">{{ .Date.Format "Jan 2, 2006" }}</span>

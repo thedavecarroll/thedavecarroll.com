@@ -1,0 +1,3 @@
+{{- /* Markdown images as Goldmark renders them, plus width and height for local raster images. */ -}}
+<img src="{{ .Destination | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with partial "image-size.html" .Destination }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}>
+{{- /**/ -}}
