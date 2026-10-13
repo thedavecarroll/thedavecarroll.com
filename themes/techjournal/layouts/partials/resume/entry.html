@@ -6,8 +6,9 @@
     text        optional Markdown paragraph(s)
     highlights  optional list of Markdown items
     tags        optional list shown as one comma-separated line
+    class       optional extra class on the entry
 */ -}}
-<article class="tj-resume__entry">
+<article class="tj-resume__entry{{ with .class }} {{ . }}{{ end }}">
   <h3 class="tj-resume__title">
     {{- with .url }}<a href="{{ . }}">{{ $.title }}</a>{{ else }}{{ .title }}{{ end -}}
   </h3>

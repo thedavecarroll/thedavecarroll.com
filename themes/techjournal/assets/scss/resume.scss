@@ -2,10 +2,13 @@
 
 // Résumé page. Self-contained: this file is inlined into the page by
 // layouts/page/resume.html and nothing else from the theme is loaded.
-// Minimal layout: section labels in the left margin, content beside them.
+// Centred header, then a main column and a sidebar (two columns from the md
+// breakpoint and on paper; one column on phones, sidebar first).
 
 :root {
   --resume-bg: #{$light-bg-tertiary};
+  --resume-panel: #{$light-bg-primary};
+  --resume-band: #{$light-bg-secondary};
   --resume-text: #{$light-text-primary};
   --resume-muted: #{$light-text-secondary};
   --resume-accent: #{$light-accent-primary};
@@ -15,6 +18,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --resume-bg: #{$dark-bg-primary};
+    --resume-panel: #{$dark-bg-secondary};
+    --resume-band: #{$dark-bg-tertiary};
     --resume-text: #{$dark-text-primary};
     --resume-muted: #{$dark-text-secondary};
     --resume-accent: #{$dark-accent-primary};
@@ -34,7 +39,7 @@
   color: var(--resume-text);
   font-family: $font-family-base;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.55;
 
   a {
     color: var(--resume-accent);
@@ -43,70 +48,81 @@
   }
 
   &__page {
-    max-width: 52rem;
+    max-width: 68rem;
     margin: 0 auto;
     padding: 2rem 1.25rem 3rem;
 
     @media (min-width: $breakpoint-md) {
-      padding: 4rem 2rem 5rem;
+      padding: 3.5rem 2rem 4rem;
     }
   }
 
+  // Header: centred name and title, rule below
   &__header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--resume-border);
+    text-align: center;
   }
 
   &__name {
     margin: 0;
     font-size: 2.25rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    text-transform: uppercase;
   }
 
   &__label {
-    margin: 0.25rem 0 0;
+    margin: 0.35rem 0 0;
     color: var(--resume-muted);
     font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 
-  &__contact {
+  // Columns: sidebar first on phones, main 62 % / sidebar 38 % from md
+  &__columns {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
-    margin: 1rem 0 0;
-    padding: 0;
-    font-size: 0.9375rem;
-    list-style: none;
+    flex-direction: column-reverse;
+    gap: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      display: grid;
+      grid-template-columns: minmax(0, 62fr) minmax(0, 38fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  &__main,
+  &__side {
+    min-width: 0;
   }
 
   &__section {
-    display: grid;
-    gap: 0.5rem;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--resume-border);
+    margin-bottom: 2rem;
 
-    @media (min-width: $breakpoint-md) {
-      grid-template-columns: 9rem minmax(0, 1fr);
-      gap: 2rem;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 
   &__heading {
-    margin: 0;
-    color: var(--resume-muted);
-    font-size: 0.8125rem;
-    font-weight: 600;
+    margin: 0 0 0.85rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--resume-accent);
+    color: var(--resume-accent);
+    font-size: 1rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
-    line-height: 2.1;
     text-transform: uppercase;
   }
 
-  &__body {
-    min-width: 0;
-  }
-
-  &__entry {
+  // Experience: a band per employer, roles beneath it
+  &__employer {
     margin-bottom: 1.5rem;
 
     &:last-child {
@@ -114,21 +130,77 @@
     }
   }
 
-  &__title {
+  &__employer-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 1rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--resume-band);
+    border-left: 3px solid var(--resume-accent);
+  }
+
+  &__employer-name {
     margin: 0;
     font-size: 1.0625rem;
+    font-weight: 700;
+  }
+
+  &__employer-place {
+    margin-left: auto;
     font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  &__employer-dates {
+    flex-basis: 100%;
+    margin: 0;
+    color: var(--resume-muted);
+    font-size: 0.875rem;
+  }
+
+  &__role {
+    padding: 0.6rem 0.8rem 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__older {
+    margin-top: 0.5rem;
+
+    summary {
+      cursor: pointer;
+      color: var(--resume-muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    &[open] summary {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  &__entry {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__meta,
   &__tags {
     margin: 0.125rem 0 0;
     color: var(--resume-muted);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 
   &__tags {
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
   }
 
   &__text {
@@ -141,24 +213,60 @@
     }
   }
 
+  &__role &__text,
   &__entry &__text {
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
   }
 
   &__list {
-    margin: 0.5rem 0 0;
-    padding-left: 1.25rem;
+    margin: 0.4rem 0 0;
+    padding-left: 1.2rem;
 
     li {
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
   }
 
+  // Sidebar
+  &__side {
+    @media (min-width: $breakpoint-md) {
+      padding: 1.25rem;
+      background: var(--resume-panel);
+      border: 1px solid var(--resume-border);
+    }
+
+    .tj-resume__title {
+      font-size: 0.9375rem;
+    }
+  }
+
+  &__contact {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9375rem;
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+  }
+
+  &__contact-label {
+    display: block;
+    color: var(--resume-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
   &__footer {
-    padding-top: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--resume-border);
     color: var(--resume-muted);
     font-size: 0.875rem;
+    text-align: center;
 
     p {
       margin: 0;
@@ -166,10 +274,12 @@
   }
 }
 
-// Paper: black on white, tighter, no web-only extras
+// Paper: black on white, two columns, tighter, no web-only extras
 @media print {
   :root {
     --resume-bg: #FFFFFF;
+    --resume-panel: #FFFFFF;
+    --resume-band: #F2F2F2;
     --resume-text: #000000;
     --resume-muted: #333333;
     --resume-accent: #000000;
@@ -177,14 +287,17 @@
   }
 
   @page {
-    margin: 0.6in;
+    margin: 0.4in;
   }
 
   .tj-resume {
-    font-size: 10.5pt;
-    line-height: 1.45;
+    font-size: 9pt;
+    line-height: 1.3;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
@@ -194,22 +307,115 @@
     }
 
     &__header {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
     }
 
     &__name {
-      font-size: 22pt;
+      font-size: 20pt;
+    }
+
+    &__label {
+      font-size: 11pt;
+    }
+
+    &__columns {
+      display: grid;
+      grid-template-columns: minmax(0, 63fr) minmax(0, 37fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    &__side {
+      padding: 0 0 0 1rem;
+      border: 0;
+      border-left: 1px solid var(--resume-border);
+      background: none;
     }
 
     &__section {
-      grid-template-columns: 7.5rem minmax(0, 1fr);
-      gap: 1.25rem;
-      padding: 0.75rem 0;
+      margin-bottom: 1rem;
     }
 
-    &__entry {
+    &__heading {
+      margin-bottom: 0.5rem;
+      font-size: 10pt;
+    }
+
+    &__employer {
       margin-bottom: 0.75rem;
+    }
+
+    &__employer-head,
+    &__entry,
+    &__role {
       break-inside: avoid;
+    }
+
+    &__list li {
+      break-inside: avoid;
+    }
+
+    // Employer band on paper: one tight block, name and dates on the first
+    // line, place under the name. Never left at the foot of a page without
+    // its first role.
+    &__employer-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "name dates"
+        "place place";
+      gap: 0 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-left-width: 2px;
+      break-after: avoid;
+    }
+
+    &__employer-name {
+      grid-area: name;
+      font-size: 10pt;
+    }
+
+    &__employer-place {
+      grid-area: place;
+      margin-left: 0;
+      color: var(--resume-muted);
+      font-size: 8.5pt;
+      font-weight: 400;
+    }
+
+    &__employer-dates {
+      grid-area: dates;
+      align-self: baseline;
+      font-size: 8.5pt;
+    }
+
+    &__role {
+      padding: 0.35rem 0.5rem 0;
+    }
+
+    // Role and entry headings at text size, their facts a step smaller
+    &__title,
+    &__side .tj-resume__title {
+      font-size: 9.5pt;
+    }
+
+    &__meta,
+    &__tags,
+    &__contact-label {
+      font-size: 8.5pt;
+    }
+
+    &__contact {
+      font-size: 9.5pt;
+    }
+
+    // The two-page version: older roles drop entirely (title included); the
+    // employer band's own name, location and date range stands in for them.
+    &__role--brief,
+    &__entry--web-only,
+    &__older {
+      display: none;
     }
 
     &__footer {
