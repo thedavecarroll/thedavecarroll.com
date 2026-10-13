@@ -7,16 +7,18 @@
 
 basics:
   name: Dave Carroll
-  # label: A short professional title
+  label: Autistic Platform Engineer
   url: https://thedavecarroll.com/
   # email: you@example.com
   # phone: "+1 555 000 0000"
-  # summary: |
-  #   Two or three sentences on what you do.
-  # location:
-  #   city: City
-  #   region: State
-  #   countryCode: US
+  summary: |
+    Platform engineer who builds automation for process improvement and a clearer understanding of systems.
+    Three decades in IT, from Windows infrastructure and identity to DevOps, 
+    with a long record of sharing knowledge through clear documentation, talks, and blogging.
+  location:
+    city: Greater Nashville Area
+    region: Tennessee
+    countryCode: US
   profiles:
     - network: GitHub
       username: thedavecarroll
@@ -29,16 +31,31 @@ basics:
       url: https://bsky.app/profile/thedavecarroll.com
 
 work:
-  - name: Undisclosed
-    position: Senior DevOps Engineer
+  - name: Undisclosed Mortgage
+    position: Senior DevOps Engineer / Senior Platform Engineer
     location: California
-    startDate: "2024-10"
+    startDate: "2024-10-16"
+    highlights:
+      - A subject-matter expert for Windows Server, Active Directory, and Microsoft SQL Server.
+      - Builds Windows Server AMIs with HashiCorp Packer and PowerShell provisioning scripts, including updated build pipelines.
+      - Manages multiple Chef organizations, each with unique cookbooks, environments, and roles.
+      - Redesigned Chef cookbooks to be organization-agnostic, with environment-specific details applied through Chef environment files and roles, and added performance improvements such as in-memory caching during client runs; developed Cursor rules for the team's cookbook development.
+      - Uses Gemini and Cursor daily across development, troubleshooting, and automation work.
+      - Provisions AWS resources with OpenTofu.
+      - Mentors junior engineers and interns on DevOps practices, automation scripting, and AWS resource management.
 
-  - name: Undisclosed
-    position: DevOps Engineer
+  - name: Undisclosed Mortgage
+    position: DevOps Engineer / Senior DevOps Engineer
     location: California
-    startDate: "2020-09"
-    endDate: "2024-10"
+    startDate: "2020-08-31"
+    endDate: "2024-10-15"
+    highlights:
+      - Initially worked without a general team; joined a vertical team supporting one division in April 2021.
+      - Supported dozens of in-house web applications for that division, on AWS with CloudFormation, Troposphere, Chef, and PowerShell.
+      - Led RDS cost reduction and right-sizing efforts across the division's AWS environment.
+      - Established the migration pattern from Windows Server 2012 R2 (Chef 12) to Windows Server 2022 (Chef 17) and completed the majority of the migrations.
+      - Wrote PowerShell modules to simplify working with AWS Auto Scaling Groups, other AWS services, and Chef.
+      - Joined an on-premises-to-cloud migration effort in its later stages, supporting ongoing moves to AWS.
 
   - name: University
     position: IAM Applications Developer
@@ -46,10 +63,9 @@ work:
     startDate: "2019-11"
     endDate: "2020-05"
     highlights:
-      - Wrote WebAPI in C# for management of Active Directory groups, group membership, and user attribute updates.
-      - Used Azure DevOps pipelines to create builds for WebAPI service.
-      - Used OctoDeploy to deploy service into multiple environments.
-      - Enhanced logging of Active Directory Federation Service (ADFS) logon failures by updating PowerShell script.
+      - Built a C# Web API for managing Active Directory groups, membership and user attributes.
+      - Automated its builds in Azure DevOps and its releases across environments with Octopus Deploy.
+      - Improved ADFS logon-failure logging in PowerShell.
 
   - name: Undisclosed Global Financial
     position: Identity Management and Automation Engineer
@@ -57,9 +73,8 @@ work:
     startDate: "2018-10"
     endDate: "2019-10"
     highlights:
-      - Member of global team focusing on Active Directory and other critical services.
-      - Created several PowerShell functions and scripts to support automation.
-      - Implemented changes and deployments as required.
+      - Collaborated with a team spanning the US, UK, Switzerland, Germany, China, and Singapore, writing PowerShell automation for build configuration and validation checks.
+      - Deployed Active Directory infrastructure changes under formal change management, including new domain controllers and GPO updates via Microsoft's Advanced Group Policy Management (AGPM).
 
   - name: Undisclosed Medical Supply
     position: Systems Engineer, Infrastructure
@@ -67,11 +82,9 @@ work:
     startDate: "2016-09"
     endDate: "2018-10"
     highlights:
-      - Created migration workflow for Office 365 and Exchange Online using PowerShell to prepare user AD objects for migration of user mailboxes from two local domains, license the target accounts, and copy mailbox contents from source to target mailbox.
-      - Created user synchronization script to create new accounts in secondary domain based on account in primary.
-      - Created several PowerShell scripts to aid in data-mining for reporting, environment documentation, and data integrity.
-      - Redesigned Active Directory Sites for smaller forest; migrated SYSVOL replication to DFS-R from deprecated FRS technology; extended schema.
-      - Established and implemented group policy standards; created several startup scripts to deploy required applications.
+      - Built a PowerShell migration workflow that moved roughly 2,000 mailboxes from two on-premises domains to Exchange Online, preparing AD objects, licensing target accounts, and copying mailbox contents; used for the initial cutover and later ad-hoc migrations.
+      - "Completed an AD modernization project: redesigned AD Sites for a smaller forest, migrated SYSVOL replication from FRS to DFS-R, extended the schema with custom attributes, and wrote a user synchronization script to provision mirrored accounts in a resource/trust domain."
+      - Established group policy standards, wrote startup scripts to deploy required applications, and wrote PowerShell scripts for reporting, environment documentation, and data integrity checks.
 
   - name: University
     position: Development Support & Systems Lead
@@ -98,24 +111,19 @@ work:
       - Implemented and supported Microsoft Certificate Services PKI; requisitioned all public certificate authority certificates.
       - Migrated primary electronic medical records application suite to newer Windows Server operating system. This project involved becoming familiar with the application suite and its supporting services.
 
-  - name: Community College
+  - name: Undisclosed Community College
     position: Systems Administrator
-    location: Jackson, Tennessee
+    location: Tennessee
     startDate: "2004-06"
     endDate: "2012-05"
     highlights:
       - Saved the institution over $40K by creating a home-grown identity solution utilizing Active Directory, PowerShell, Oracle SQL, and SunOne LDAP with a Linux/Apache/PHP web front end for end-users and support staff.
-      - Supported Microsoft Windows Server and several Linux-based operating systems.
-      - Designed and managed Active Directory and group policies.
-      - Designed and managed virtual infrastructure consisting of VMware vSphere/ESX servers and vCenter Server; leveraged other virtualization technologies for ERP and VDI.
-      - Implemented and supported Microsoft Exchange and spam filter appliances.
-      - Designed and implemented VLANs to provide a more robust, secure network.
-      - Deployed and managed Cisco firewall; migrated configuration to Fortinet FortiGate firewall.
+      - Designed and managed the Windows Server and Linux infrastructure, Active Directory, and group policies; extended virtualization (VMware vSphere/ESX, vCenter Server) to ERP and VDI.
+      - Implemented and supported Exchange and spam filtering, designed VLANs for network segmentation, and migrated the firewall platform from Cisco to Fortinet FortiGate.
       - Served as institution liaison for statewide IT advisory groups and projects.
-      - Provided project leadership for various technology implementations.
       - Presented on various technical topics at local, state, and regional conferences.
 
-  - name: Community College
+  - name: Undisclosed Community College
     position: Webmaster
     location: Tennessee
     startDate: "2001-06"
@@ -124,7 +132,7 @@ work:
       - Designed and maintained new website; promulgated campus web policies.
       - Continued server administration duties.
 
-  - name: Community College
+  - name: Undisclosed Community College
     position: Technical Support Coordinator/Manager
     location: Tennessee
     startDate: "1998-11"
@@ -251,6 +259,38 @@ certificates:
 #     url: https://example.com/
 
 publications:
+  - name: The PowerShell Conference Book Volume 3
+    publisher: Leanpub
+    releaseDate: "2020-08"
+    summary: |
+      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
+
+      I provided a chapter entitled, "Exploring Experimental Features in PowerShell 7".
+
+  - name: "#PS7Now"
+    publisher: Leanpub
+    releaseDate: "2020-03-26"
+    summary: |
+      A PowerShell community project highlighting new features in PowerShell 7 and why you should begin adopting it as your daily management tool. This ebook is an edited collection of articles published during a #PSBlogWeek event in March 2020 that focused on the release of PowerShell 7. The articles are written by members of the PowerShell community excited about everything that PowerShell 7 has to offer.
+
+      I contributed two articles for PSBlogWeek PS7Now: "PowerShell 7 Changes to JSON Cmdlets" and "PowerShell 7 Experimental Features".
+
+  - name: The PowerShell Conference Book Volume 2
+    publisher: Leanpub
+    releaseDate: "2020-01-31"
+    summary: |
+      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
+
+      I provided a chapter on the cultural shift to DevOps entitled, "On the Road to DevOps, Don’t Forget the Soft Skills".
+
+# Template for a further entry:
+#   - name: Title
+#     publisher: Publisher
+#     releaseDate: "2021-10"
+#     url: https://example.com/
+#     summary: What it covers.
+
+presentations:
   - name: Writing Cross-Platform PowerShell
     publisher: SQL Saturday Atlanta 2025 - AI & BI
     releaseDate: "2025-03-08"
@@ -290,30 +330,6 @@ publications:
       Video on Demand Presentation
 
       In this talk, we will examine the process used in creating BluebirdPS, a PowerShell 7 module for the Twitter REST API. Topics will include learning the API, authentication, module structure, response and error handling, and customizing the output.
-
-  - name: The PowerShell Conference Book Volume 3
-    publisher: Leanpub
-    releaseDate: "2020-08"
-    summary: |
-      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
-
-      I provided a chapter entitled, "Exploring Experimental Features in PowerShell 7".
-
-  - name: "#PS7Now"
-    publisher: Leanpub
-    releaseDate: "2020-03-26"
-    summary: |
-      A PowerShell community project highlighting new features in PowerShell 7 and why you should begin adopting it as your daily management tool. This ebook is an edited collection of articles published during a #PSBlogWeek event in March 2020 that focused on the release of PowerShell 7. The articles are written by members of the PowerShell community excited about everything that PowerShell 7 has to offer.
-
-      I contributed two articles for PSBlogWeek PS7Now: "PowerShell 7 Changes to JSON Cmdlets" and "PowerShell 7 Experimental Features".
-
-  - name: The PowerShell Conference Book Volume 2
-    publisher: Leanpub
-    releaseDate: "2020-01-31"
-    summary: |
-      This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
-
-      I provided a chapter on the cultural shift to DevOps entitled, "On the Road to DevOps, Don’t Forget the Soft Skills".
 
   - name: "Crossing the Divide: A System Administrator's Path to DevOps"
     publisher: Research Triangle PowerShell User Group - PowerShell Saturday
