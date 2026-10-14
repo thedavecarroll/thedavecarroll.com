@@ -83,10 +83,12 @@
     text-transform: uppercase;
   }
 
-  // Columns: sidebar first on phones, main 62 % / sidebar 38 % from md
+  // Columns: on phones, sections interleave by explicit order (contact,
+  // about, experience, publications, presentations, education, then
+  // projects and certificates); main 62 % / sidebar 38 % side by side from md.
   &__columns {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 2rem;
 
     @media (min-width: $breakpoint-md) {
@@ -100,14 +102,33 @@
   &__main,
   &__side {
     min-width: 0;
+    display: contents;
+
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
   }
 
   &__section {
     margin-bottom: 2rem;
 
-    &:last-child {
-      margin-bottom: 0;
+    @media (min-width: $breakpoint-md) {
+      // DOM order (within __main or __side) matches visual order again here,
+      // so :last-child correctly means the last section in each column.
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+
+    // Phone order, interleaving __main and __side's sections by appearance.
+    &[aria-labelledby="resume-contact"] { order: 1; }
+    &[aria-labelledby="resume-summary"] { order: 2; }
+    &[aria-labelledby="resume-experience"] { order: 3; }
+    &[aria-labelledby="resume-publications"] { order: 4; }
+    &[aria-labelledby="resume-presentations"] { order: 5; }
+    &[aria-labelledby="resume-education"] { order: 6; }
+    &[aria-labelledby="resume-projects"] { order: 7; }
+    &[aria-labelledby="resume-certificates"] { order: 8; }
   }
 
   &__heading {
@@ -324,6 +345,13 @@
       grid-template-columns: minmax(0, 63fr) minmax(0, 37fr);
       gap: 1.25rem;
       align-items: start;
+    }
+
+    // Always the two-column layout on paper, regardless of whether the
+    // print viewport happens to match the screen min-width breakpoint.
+    &__main,
+    &__side {
+      display: block;
     }
 
     &__side {

@@ -7,7 +7,7 @@
 
 basics:
   name: Dave Carroll
-  label: Autistic Platform Engineer
+  label: Platform Engineer
   url: https://thedavecarroll.com/
   # email: you@example.com
   # phone: "+1 555 000 0000"
@@ -262,6 +262,7 @@ publications:
   - name: The PowerShell Conference Book Volume 3
     publisher: Leanpub
     releaseDate: "2020-08"
+    url: https://leanpub.com/psconfbook3
     summary: |
       This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
 
@@ -270,6 +271,7 @@ publications:
   - name: "#PS7Now"
     publisher: Leanpub
     releaseDate: "2020-03-26"
+    url: https://leanpub.com/ps7now
     summary: |
       A PowerShell community project highlighting new features in PowerShell 7 and why you should begin adopting it as your daily management tool. This ebook is an edited collection of articles published during a #PSBlogWeek event in March 2020 that focused on the release of PowerShell 7. The articles are written by members of the PowerShell community excited about everything that PowerShell 7 has to offer.
 
@@ -278,6 +280,7 @@ publications:
   - name: The PowerShell Conference Book Volume 2
     publisher: Leanpub
     releaseDate: "2020-01-31"
+    url: https://leanpub.com/psconfbook2
     summary: |
       This book is designed to be like a conference in a book where each chapter is written by a different author who is a subject matter expert on the topic covered in their chapter.
 

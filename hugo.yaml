@@ -70,11 +70,17 @@ params:
         # Available values: auto, light, dark
         default: auto
 
-# YAML as an output format, used by the résumé page (/resume/index.yaml)
+# Output formats for the résumé page only: /resume/Dave-Carroll-Resume.yaml
+# and .json (the built-in json format keeps its default baseName, since tips
+# and search also use it for their own data endpoints).
 outputFormats:
     yaml:
         mediaType: application/yaml
-        baseName: index
+        baseName: Dave-Carroll-Resume
+        isPlainText: true
+    resumejson:
+        mediaType: application/json
+        baseName: Dave-Carroll-Resume
         isPlainText: true
 
 ### Menu items are defined in content front matter.

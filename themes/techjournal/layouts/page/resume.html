@@ -239,13 +239,14 @@
       it exists. These links have no hostname, so they stay on whichever name
       serves the page (thedavecarroll.com or thedavecarroll.dev).
     */ -}}
-    {{- $pdf := "resume/resume.pdf" }}
+    {{- $pdf := "resume/Dave-Carroll-Resume.pdf" }}
     {{- $formats := slice }}
     {{- if fileExists (printf "static/%s" $pdf) }}
     {{- $formats = $formats | append (dict "name" "PDF" "url" ($pdf | relURL)) }}
     {{- end }}
+    {{- $labels := dict "yaml" "YAML" "resumejson" "JSON" }}
     {{- range .AlternativeOutputFormats }}
-    {{- $formats = $formats | append (dict "name" (.Name | upper) "url" .RelPermalink) }}
+    {{- $formats = $formats | append (dict "name" (index $labels .Name | default (.Name | upper)) "url" .RelPermalink) }}
     {{- end }}
     {{- with $formats }}
     <footer class="tj-resume__footer">
