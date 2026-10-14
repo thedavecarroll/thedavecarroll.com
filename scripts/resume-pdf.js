@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Print the résumé page to static/resume/resume.pdf.
+// Print the résumé page to static/resume/Dave-Carroll-Resume.pdf.
 //
 //   node scripts/resume-pdf.js [--drafts] [--a4]
 //
@@ -27,7 +27,7 @@ if (unknown.length > 0) {
 }
 
 const root = path.join(__dirname, '..');
-const output = path.join(root, 'static', 'resume', 'resume.pdf');
+const output = path.join(root, 'static', 'resume', 'Dave-Carroll-Resume.pdf');
 
 function fail(message) {
   console.error(`resume-pdf: ${message}`);

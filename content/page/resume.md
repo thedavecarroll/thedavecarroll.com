@@ -8,7 +8,7 @@ description: Résumé of Dave Carroll.
 canonical: https://thedavecarroll.dev/
 outputs:
   - html
-  - json
+  - resumejson
   - yaml
 # Which basics.profiles networks the page and PDF show (all stay in the data,
 # JSON and YAML).
