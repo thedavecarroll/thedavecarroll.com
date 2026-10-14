@@ -110,7 +110,7 @@
   }
 
   &__section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 
     @media (min-width: $breakpoint-md) {
       // DOM order (within __main or __side) matches visual order again here,
@@ -132,8 +132,8 @@
   }
 
   &__heading {
-    margin: 0 0 0.85rem;
-    padding-bottom: 0.3rem;
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.2rem;
     border-bottom: 2px solid var(--resume-accent);
     color: var(--resume-accent);
     font-size: 1rem;
@@ -368,6 +368,7 @@
     &__heading {
       margin-bottom: 0.5rem;
       font-size: 10pt;
+      break-after: avoid;
     }
 
     &__employer {
