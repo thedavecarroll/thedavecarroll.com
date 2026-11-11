@@ -56,8 +56,6 @@ but I haven't had the energy to dig into finding the best one.
 By the way, I have adopted the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license for this site.
 The site footer includes this license, as does each article.
 
-![Attribution Example](/images/attribution-example.png)
-
 ## Where to find me
 
 I hope to be writing more articles of a technical nature, but I believe the format will be changing.
