@@ -15,7 +15,7 @@ I'm not sure if people are still finding this site useful, or even simply findin
 
 The topics of this post diverge from the technical and focuses on the human (me).
 
-## Social Media
+## Social media
 
 Some of you may have found me through social media, primarily Twitter (now X), Mastodon, and LinkedIn.
 You may have noticed that, like this blog, I have not post much over the last few years.
@@ -30,8 +30,8 @@ And MySpace in November 2010.
 >Now to wait the 30 days for it to self-destruct (delete).
 
 The main reason for this post is to let you know that I will be deleting my LinkedIn account.
-It served me well, but I have logged in less, and less.
-I've realized that my data and my usage has benefited LinkedIn much more than Linked has benefited me.
+It served me well, but I have logged in less and less.
+I've realized that my data and my usage have benefited LinkedIn much more than Linked has benefited me.
 That needs to stop.
 
 At the end of December 2026, I will delete my LinkedIn account.
@@ -47,13 +47,13 @@ Or Subway, Etsy, Netflix, Longhorn, and many, many others?
 
 Convenience?
 Maybe.
-Data breaches are prevalent, and I believe will become moreso.
+Data breaches are prevalent, and I believe they will become moreso.
 At some point, security must come before convenience.
 
 I have considered using a personal data scrubbing service,
 but I haven't had the energy to dig into finding the best one.
 
-By the way, I have adopted the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+By the way, I have adopted the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license for this site.
 The site footer includes this license, as does each article.
 
 ![Attribution Example](/images/attribution-example.png)
@@ -61,7 +61,7 @@ The site footer includes this license, as does each article.
 ## Where to find me
 
 I hope to be writing more articles of a technical nature, but I believe the format will be changing.
-With the proliferation of AI tools available (and forced upon) the masses, I won't be providing fully functioning scripts.
+With the proliferation of AI tools available to (and forced upon) the masses, I won't be providing fully functioning scripts.
 I will be providing seeds of ideas and tell you what I've been learning and doing (with and without the help of AI).
 
 Besides this site, I am still on GitHub and will continue to be for the foreseeable future.
